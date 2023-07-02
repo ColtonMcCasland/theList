@@ -6,18 +6,24 @@ struct ContentView: View {
     @AppStorage("isLoggedIn") private var isLoggedIn = false
 
     var body: some View {
-            Group {
-                if isLoggedIn {
-                    ListView()
+        Group {
+            #if targetEnvironment(simulator)
+            // Skip login logic if running on simulator
+            ListView()
+                .environment(\.managedObjectContext, viewContext)
+            #else
+            if isLoggedIn {
+                ListView()
+                    .environment(\.managedObjectContext, viewContext)
+            } else {
+                NavigationView {
+                    ICloudLoginView()
+                        .frame(minWidth: 200, idealWidth: 300, maxWidth: .infinity, minHeight: 200, idealHeight: 300, maxHeight: .infinity)
+                        .navigationTitle("Items")
                         .environment(\.managedObjectContext, viewContext)
-                } else {
-                    NavigationView {
-                        ICloudLoginView()
-                            .frame(minWidth: 200, idealWidth: 300, maxWidth: .infinity, minHeight: 200, idealHeight: 300, maxHeight: .infinity)
-                            .navigationTitle("Items")
-                            .environment(\.managedObjectContext, viewContext)
                 }
             }
+            #endif
         }
     }
 }

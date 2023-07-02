@@ -27,6 +27,8 @@
 		9AA7220C2A5202BA0014BF46 /* Kitchen_SyncCompanion_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7220B2A5202BA0014BF46 /* Kitchen_SyncCompanion_Watch_AppUITestsLaunchTests.swift */; };
 		9AA7220F2A5202BA0014BF46 /* Kitchen_SyncCompanion Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9AA721EC2A5202B90014BF46 /* Kitchen_SyncCompanion Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9AA7221A2A5203080014BF46 /* Kitchen_Sync.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */; };
+		9AA7221C2A520A620014BF46 /* WatchConnectivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7221B2A520A620014BF46 /* WatchConnectivityHandler.swift */; };
+		9AA7221F2A520B010014BF46 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7221E2A520B010014BF46 /* ListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,8 @@
 		9AA722052A5202BA0014BF46 /* Kitchen_SyncCompanion Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kitchen_SyncCompanion Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA722092A5202BA0014BF46 /* Kitchen_SyncCompanion_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncCompanion_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		9AA7220B2A5202BA0014BF46 /* Kitchen_SyncCompanion_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncCompanion_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9AA7221B2A520A620014BF46 /* WatchConnectivityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityHandler.swift; sourceTree = "<group>"; };
+		9AA7221E2A520B010014BF46 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,13 +163,10 @@
 		9A91BDF72A50F64500C2BBCA = {
 			isa = PBXGroup;
 			children = (
-				9AA721752A510EF40014BF46 /* Shared */,
 				9A91BE022A50F64500C2BBCA /* Kitchen_Sync */,
-				9A91BE192A50F64600C2BBCA /* Kitchen_SyncTests */,
-				9A91BE232A50F64600C2BBCA /* Kitchen_SyncUITests */,
 				9AA721ED2A5202B90014BF46 /* Kitchen_SyncCompanion Watch App */,
-				9AA721FE2A5202BA0014BF46 /* Kitchen_SyncCompanion Watch AppTests */,
-				9AA722082A5202BA0014BF46 /* Kitchen_SyncCompanion Watch AppUITests */,
+				9AA721752A510EF40014BF46 /* Shared */,
+				9AA722202A520EAC0014BF46 /* Tests */,
 				9A91BE012A50F64500C2BBCA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -243,10 +244,11 @@
 		9AA721ED2A5202B90014BF46 /* Kitchen_SyncCompanion Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				9AA7221D2A520ACD0014BF46 /* Views */,
 				9AA721EE2A5202B90014BF46 /* Kitchen_SyncCompanionApp.swift */,
-				9AA721F02A5202B90014BF46 /* ContentView.swift */,
 				9AA721F22A5202BA0014BF46 /* Assets.xcassets */,
 				9AA721F42A5202BA0014BF46 /* Preview Content */,
+				9AA7221B2A520A620014BF46 /* WatchConnectivityHandler.swift */,
 			);
 			path = "Kitchen_SyncCompanion Watch App";
 			sourceTree = "<group>";
@@ -274,6 +276,26 @@
 				9AA7220B2A5202BA0014BF46 /* Kitchen_SyncCompanion_Watch_AppUITestsLaunchTests.swift */,
 			);
 			path = "Kitchen_SyncCompanion Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		9AA7221D2A520ACD0014BF46 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9AA721F02A5202B90014BF46 /* ContentView.swift */,
+				9AA7221E2A520B010014BF46 /* ListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9AA722202A520EAC0014BF46 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				9A91BE192A50F64600C2BBCA /* Kitchen_SyncTests */,
+				9A91BE232A50F64600C2BBCA /* Kitchen_SyncUITests */,
+				9AA721FE2A5202BA0014BF46 /* Kitchen_SyncCompanion Watch AppTests */,
+				9AA722082A5202BA0014BF46 /* Kitchen_SyncCompanion Watch AppUITests */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -529,6 +551,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AA721F12A5202B90014BF46 /* ContentView.swift in Sources */,
+				9AA7221C2A520A620014BF46 /* WatchConnectivityHandler.swift in Sources */,
+				9AA7221F2A520B010014BF46 /* ListView.swift in Sources */,
 				9AA7221A2A5203080014BF46 /* Kitchen_Sync.xcdatamodeld in Sources */,
 				9AA721EF2A5202B90014BF46 /* Kitchen_SyncCompanionApp.swift in Sources */,
 			);
