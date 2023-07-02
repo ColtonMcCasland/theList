@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		9A91BE042A50F64500C2BBCA /* Kitchen_SyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE032A50F64500C2BBCA /* Kitchen_SyncApp.swift */; };
 		9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE052A50F64500C2BBCA /* Persistence.swift */; };
-		9A91BE092A50F64500C2BBCA /* Kitchen_Sync.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE072A50F64500C2BBCA /* Kitchen_Sync.xcdatamodeld */; };
 		9A91BE0B2A50F64500C2BBCA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE0A2A50F64500C2BBCA /* ContentView.swift */; };
 		9A91BE0D2A50F64600C2BBCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A91BE0C2A50F64600C2BBCA /* Assets.xcassets */; };
 		9A91BE112A50F64600C2BBCA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A91BE102A50F64600C2BBCA /* Preview Assets.xcassets */; };
 		9A91BE1B2A50F64600C2BBCA /* Kitchen_SyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE1A2A50F64600C2BBCA /* Kitchen_SyncTests.swift */; };
 		9A91BE252A50F64600C2BBCA /* Kitchen_SyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */; };
 		9A91BE272A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */; };
+		9AA721792A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,16 +39,16 @@
 		9A91BE002A50F64500C2BBCA /* Kitchen_Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kitchen_Sync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A91BE032A50F64500C2BBCA /* Kitchen_SyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncApp.swift; sourceTree = "<group>"; };
 		9A91BE052A50F64500C2BBCA /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		9A91BE082A50F64500C2BBCA /* Kitchen_Sync.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kitchen_Sync.xcdatamodel; sourceTree = "<group>"; };
 		9A91BE0A2A50F64500C2BBCA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9A91BE0C2A50F64600C2BBCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9A91BE0E2A50F64600C2BBCA /* Kitchen_Sync.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kitchen_Sync.entitlements; sourceTree = "<group>"; };
 		9A91BE102A50F64600C2BBCA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9A91BE162A50F64600C2BBCA /* Kitchen_SyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kitchen_SyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A91BE1A2A50F64600C2BBCA /* Kitchen_SyncTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncTests.swift; sourceTree = "<group>"; };
 		9A91BE202A50F64600C2BBCA /* Kitchen_SyncUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kitchen_SyncUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncUITests.swift; sourceTree = "<group>"; };
 		9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9AA721762A510EF40014BF46 /* Kitchen_Sync.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Kitchen_Sync.entitlements; sourceTree = "<group>"; };
+		9AA721782A510EF40014BF46 /* Kitchen_Sync.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kitchen_Sync.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +79,7 @@
 		9A91BDF72A50F64500C2BBCA = {
 			isa = PBXGroup;
 			children = (
-				9A91BE332A50F65100C2BBCA /* Shared */,
+				9AA721752A510EF40014BF46 /* Shared */,
 				9A91BE022A50F64500C2BBCA /* Kitchen_Sync */,
 				9A91BE192A50F64600C2BBCA /* Kitchen_SyncTests */,
 				9A91BE232A50F64600C2BBCA /* Kitchen_SyncUITests */,
@@ -134,11 +134,11 @@
 			path = Kitchen_SyncUITests;
 			sourceTree = "<group>";
 		};
-		9A91BE332A50F65100C2BBCA /* Shared */ = {
+		9AA721752A510EF40014BF46 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				9A91BE0E2A50F64600C2BBCA /* Kitchen_Sync.entitlements */,
-				9A91BE072A50F64500C2BBCA /* Kitchen_Sync.xcdatamodeld */,
+				9AA721762A510EF40014BF46 /* Kitchen_Sync.entitlements */,
+				9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -274,8 +274,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A91BE042A50F64500C2BBCA /* Kitchen_SyncApp.swift in Sources */,
-				9A91BE092A50F64500C2BBCA /* Kitchen_Sync.xcdatamodeld in Sources */,
 				9A91BE0B2A50F64500C2BBCA /* ContentView.swift in Sources */,
+				9AA721792A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld in Sources */,
 				9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,7 +445,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -483,7 +483,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -630,12 +630,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		9A91BE072A50F64500C2BBCA /* Kitchen_Sync.xcdatamodeld */ = {
+		9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9A91BE082A50F64500C2BBCA /* Kitchen_Sync.xcdatamodel */,
+				9AA721782A510EF40014BF46 /* Kitchen_Sync.xcdatamodel */,
 			);
-			currentVersion = 9A91BE082A50F64500C2BBCA /* Kitchen_Sync.xcdatamodel */;
+			currentVersion = 9AA721782A510EF40014BF46 /* Kitchen_Sync.xcdatamodel */;
 			path = Kitchen_Sync.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
