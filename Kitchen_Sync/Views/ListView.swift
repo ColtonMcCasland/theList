@@ -21,7 +21,6 @@ struct ListView: View {
                 )
             }
             .onDelete(perform: deleteItems)
-            //
         }
         .toolbar {
             #if os(iOS)
