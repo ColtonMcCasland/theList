@@ -79,6 +79,7 @@
 		9A91BDF72A50F64500C2BBCA = {
 			isa = PBXGroup;
 			children = (
+				9A91BE332A50F65100C2BBCA /* Shared */,
 				9A91BE022A50F64500C2BBCA /* Kitchen_Sync */,
 				9A91BE192A50F64600C2BBCA /* Kitchen_SyncTests */,
 				9A91BE232A50F64600C2BBCA /* Kitchen_SyncUITests */,
@@ -103,8 +104,6 @@
 				9A91BE052A50F64500C2BBCA /* Persistence.swift */,
 				9A91BE0A2A50F64500C2BBCA /* ContentView.swift */,
 				9A91BE0C2A50F64600C2BBCA /* Assets.xcassets */,
-				9A91BE0E2A50F64600C2BBCA /* Kitchen_Sync.entitlements */,
-				9A91BE072A50F64500C2BBCA /* Kitchen_Sync.xcdatamodeld */,
 				9A91BE0F2A50F64600C2BBCA /* Preview Content */,
 			);
 			path = Kitchen_Sync;
@@ -133,6 +132,15 @@
 				9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */,
 			);
 			path = Kitchen_SyncUITests;
+			sourceTree = "<group>";
+		};
+		9A91BE332A50F65100C2BBCA /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				9A91BE0E2A50F64600C2BBCA /* Kitchen_Sync.entitlements */,
+				9A91BE072A50F64500C2BBCA /* Kitchen_Sync.xcdatamodeld */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,7 +427,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Kitchen_Sync/Kitchen_Sync.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Shared/Kitchen_Sync.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Kitchen_Sync/Preview Content\"";
@@ -457,7 +465,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Kitchen_Sync/Kitchen_Sync.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Shared/Kitchen_Sync.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Kitchen_Sync/Preview Content\"";
