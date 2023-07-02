@@ -16,6 +16,7 @@
 		9A91BE252A50F64600C2BBCA /* Kitchen_SyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */; };
 		9A91BE272A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */; };
 		9AA721792A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */; };
+		9AA7217F2A5129270014BF46 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7217E2A5129270014BF46 /* ListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		9AA721762A510EF40014BF46 /* Kitchen_Sync.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Kitchen_Sync.entitlements; sourceTree = "<group>"; };
 		9AA721782A510EF40014BF46 /* Kitchen_Sync.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kitchen_Sync.xcdatamodel; sourceTree = "<group>"; };
 		9AA7217B2A511C380014BF46 /* Kitchen-Sync-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Kitchen-Sync-Info.plist"; sourceTree = SOURCE_ROOT; };
+		9AA7217E2A5129270014BF46 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +103,9 @@
 		9A91BE022A50F64500C2BBCA /* Kitchen_Sync */ = {
 			isa = PBXGroup;
 			children = (
+				9AA7217D2A5128D20014BF46 /* Views */,
 				9AA7217B2A511C380014BF46 /* Kitchen-Sync-Info.plist */,
 				9A91BE032A50F64500C2BBCA /* Kitchen_SyncApp.swift */,
-				9A91BE0A2A50F64500C2BBCA /* ContentView.swift */,
 				9A91BE0C2A50F64600C2BBCA /* Assets.xcassets */,
 				9A91BE0F2A50F64600C2BBCA /* Preview Content */,
 			);
@@ -143,6 +145,15 @@
 				9A91BE052A50F64500C2BBCA /* Persistence.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		9AA7217D2A5128D20014BF46 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9A91BE0A2A50F64500C2BBCA /* ContentView.swift */,
+				9AA7217E2A5129270014BF46 /* ListView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +290,7 @@
 				9A91BE0B2A50F64500C2BBCA /* ContentView.swift in Sources */,
 				9AA721792A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld in Sources */,
 				9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */,
+				9AA7217F2A5129270014BF46 /* ListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
