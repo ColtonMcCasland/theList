@@ -48,7 +48,25 @@ struct PersistenceController {
         })
 
         container.viewContext.automaticallyMergesChangesFromParent = true
+        
         container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+    }
+    
+    private func processCloudKitChanges(_ notification: Notification) {
+//        guard let userInfo = notification.userInfo else { return }
+        
+        let context = container.viewContext
+        context.perform {
+            // Refresh the objects in the context
+            context.refreshAllObjects()
+            
+            do {
+                try context.save()
+            } catch {
+                // Handle the error appropriately
+                print("Error saving view context: \(error)")
+            }
+        }
     }
 
 }
