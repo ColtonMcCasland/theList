@@ -18,6 +18,7 @@
 		9AA721792A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */; };
 		9AA7217F2A5129270014BF46 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7217E2A5129270014BF46 /* ListView.swift */; };
 		9AA721812A512E760014BF46 /* ICloudLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721802A512E760014BF46 /* ICloudLoginView.swift */; };
+		9AA721842A513AF30014BF46 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721832A513AF30014BF46 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		9AA7217B2A511C380014BF46 /* Kitchen-Sync-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Kitchen-Sync-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9AA7217E2A5129270014BF46 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		9AA721802A512E760014BF46 /* ICloudLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudLoginView.swift; sourceTree = "<group>"; };
+		9AA721832A513AF30014BF46 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		9A91BDF72A50F64500C2BBCA = {
 			isa = PBXGroup;
 			children = (
+				9AA721822A513AE40014BF46 /* Model */,
 				9AA721752A510EF40014BF46 /* Shared */,
 				9A91BE022A50F64500C2BBCA /* Kitchen_Sync */,
 				9A91BE192A50F64600C2BBCA /* Kitchen_SyncTests */,
@@ -157,6 +160,14 @@
 				9AA721802A512E760014BF46 /* ICloudLoginView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9AA721822A513AE40014BF46 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9AA721832A513AF30014BF46 /* Item.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +304,7 @@
 				9A91BE042A50F64500C2BBCA /* Kitchen_SyncApp.swift in Sources */,
 				9A91BE0B2A50F64500C2BBCA /* ContentView.swift in Sources */,
 				9AA721792A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld in Sources */,
+				9AA721842A513AF30014BF46 /* Item.swift in Sources */,
 				9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */,
 				9AA7217F2A5129270014BF46 /* ListView.swift in Sources */,
 			);
