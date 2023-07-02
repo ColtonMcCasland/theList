@@ -7,7 +7,35 @@
 		<key>Kitchen_Sync.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
+		</dict>
+		<key>Kitchen_SyncCompanion Watch App.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>9A91BDFF2A50F64500C2BBCA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9AA721EB2A5202B90014BF46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9AA721FA2A5202BA0014BF46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9AA722042A5202BA0014BF46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
