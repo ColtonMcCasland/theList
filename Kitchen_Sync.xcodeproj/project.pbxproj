@@ -1,0 +1,638 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A91BE042A50F64500C2BBCA /* Kitchen_SyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE032A50F64500C2BBCA /* Kitchen_SyncApp.swift */; };
+		9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE052A50F64500C2BBCA /* Persistence.swift */; };
+		9A91BE092A50F64500C2BBCA /* Kitchen_Sync.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE072A50F64500C2BBCA /* Kitchen_Sync.xcdatamodeld */; };
+		9A91BE0B2A50F64500C2BBCA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE0A2A50F64500C2BBCA /* ContentView.swift */; };
+		9A91BE0D2A50F64600C2BBCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A91BE0C2A50F64600C2BBCA /* Assets.xcassets */; };
+		9A91BE112A50F64600C2BBCA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A91BE102A50F64600C2BBCA /* Preview Assets.xcassets */; };
+		9A91BE1B2A50F64600C2BBCA /* Kitchen_SyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE1A2A50F64600C2BBCA /* Kitchen_SyncTests.swift */; };
+		9A91BE252A50F64600C2BBCA /* Kitchen_SyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */; };
+		9A91BE272A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9A91BE172A50F64600C2BBCA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A91BDF82A50F64500C2BBCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A91BDFF2A50F64500C2BBCA;
+			remoteInfo = Kitchen_Sync;
+		};
+		9A91BE212A50F64600C2BBCA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A91BDF82A50F64500C2BBCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A91BDFF2A50F64500C2BBCA;
+			remoteInfo = Kitchen_Sync;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9A91BE002A50F64500C2BBCA /* Kitchen_Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kitchen_Sync.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A91BE032A50F64500C2BBCA /* Kitchen_SyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncApp.swift; sourceTree = "<group>"; };
+		9A91BE052A50F64500C2BBCA /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		9A91BE082A50F64500C2BBCA /* Kitchen_Sync.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kitchen_Sync.xcdatamodel; sourceTree = "<group>"; };
+		9A91BE0A2A50F64500C2BBCA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9A91BE0C2A50F64600C2BBCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9A91BE0E2A50F64600C2BBCA /* Kitchen_Sync.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kitchen_Sync.entitlements; sourceTree = "<group>"; };
+		9A91BE102A50F64600C2BBCA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9A91BE162A50F64600C2BBCA /* Kitchen_SyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kitchen_SyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A91BE1A2A50F64600C2BBCA /* Kitchen_SyncTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncTests.swift; sourceTree = "<group>"; };
+		9A91BE202A50F64600C2BBCA /* Kitchen_SyncUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kitchen_SyncUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncUITests.swift; sourceTree = "<group>"; };
+		9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A91BDFD2A50F64500C2BBCA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A91BE132A50F64600C2BBCA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A91BE1D2A50F64600C2BBCA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9A91BDF72A50F64500C2BBCA = {
+			isa = PBXGroup;
+			children = (
+				9A91BE022A50F64500C2BBCA /* Kitchen_Sync */,
+				9A91BE192A50F64600C2BBCA /* Kitchen_SyncTests */,
+				9A91BE232A50F64600C2BBCA /* Kitchen_SyncUITests */,
+				9A91BE012A50F64500C2BBCA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9A91BE012A50F64500C2BBCA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A91BE002A50F64500C2BBCA /* Kitchen_Sync.app */,
+				9A91BE162A50F64600C2BBCA /* Kitchen_SyncTests.xctest */,
+				9A91BE202A50F64600C2BBCA /* Kitchen_SyncUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A91BE022A50F64500C2BBCA /* Kitchen_Sync */ = {
+			isa = PBXGroup;
+			children = (
+				9A91BE032A50F64500C2BBCA /* Kitchen_SyncApp.swift */,
+				9A91BE052A50F64500C2BBCA /* Persistence.swift */,
+				9A91BE0A2A50F64500C2BBCA /* ContentView.swift */,
+				9A91BE0C2A50F64600C2BBCA /* Assets.xcassets */,
+				9A91BE0E2A50F64600C2BBCA /* Kitchen_Sync.entitlements */,
+				9A91BE072A50F64500C2BBCA /* Kitchen_Sync.xcdatamodeld */,
+				9A91BE0F2A50F64600C2BBCA /* Preview Content */,
+			);
+			path = Kitchen_Sync;
+			sourceTree = "<group>";
+		};
+		9A91BE0F2A50F64600C2BBCA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9A91BE102A50F64600C2BBCA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9A91BE192A50F64600C2BBCA /* Kitchen_SyncTests */ = {
+			isa = PBXGroup;
+			children = (
+				9A91BE1A2A50F64600C2BBCA /* Kitchen_SyncTests.swift */,
+			);
+			path = Kitchen_SyncTests;
+			sourceTree = "<group>";
+		};
+		9A91BE232A50F64600C2BBCA /* Kitchen_SyncUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */,
+				9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */,
+			);
+			path = Kitchen_SyncUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A91BDFF2A50F64500C2BBCA /* Kitchen_Sync */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A91BE2A2A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "Kitchen_Sync" */;
+			buildPhases = (
+				9A91BDFC2A50F64500C2BBCA /* Sources */,
+				9A91BDFD2A50F64500C2BBCA /* Frameworks */,
+				9A91BDFE2A50F64500C2BBCA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kitchen_Sync;
+			productName = Kitchen_Sync;
+			productReference = 9A91BE002A50F64500C2BBCA /* Kitchen_Sync.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9A91BE152A50F64600C2BBCA /* Kitchen_SyncTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A91BE2D2A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "Kitchen_SyncTests" */;
+			buildPhases = (
+				9A91BE122A50F64600C2BBCA /* Sources */,
+				9A91BE132A50F64600C2BBCA /* Frameworks */,
+				9A91BE142A50F64600C2BBCA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A91BE182A50F64600C2BBCA /* PBXTargetDependency */,
+			);
+			name = Kitchen_SyncTests;
+			productName = Kitchen_SyncTests;
+			productReference = 9A91BE162A50F64600C2BBCA /* Kitchen_SyncTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9A91BE1F2A50F64600C2BBCA /* Kitchen_SyncUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A91BE302A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "Kitchen_SyncUITests" */;
+			buildPhases = (
+				9A91BE1C2A50F64600C2BBCA /* Sources */,
+				9A91BE1D2A50F64600C2BBCA /* Frameworks */,
+				9A91BE1E2A50F64600C2BBCA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A91BE222A50F64600C2BBCA /* PBXTargetDependency */,
+			);
+			name = Kitchen_SyncUITests;
+			productName = Kitchen_SyncUITests;
+			productReference = 9A91BE202A50F64600C2BBCA /* Kitchen_SyncUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A91BDF82A50F64500C2BBCA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					9A91BDFF2A50F64500C2BBCA = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					9A91BE152A50F64600C2BBCA = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 9A91BDFF2A50F64500C2BBCA;
+					};
+					9A91BE1F2A50F64600C2BBCA = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 9A91BDFF2A50F64500C2BBCA;
+					};
+				};
+			};
+			buildConfigurationList = 9A91BDFB2A50F64500C2BBCA /* Build configuration list for PBXProject "Kitchen_Sync" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9A91BDF72A50F64500C2BBCA;
+			productRefGroup = 9A91BE012A50F64500C2BBCA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9A91BDFF2A50F64500C2BBCA /* Kitchen_Sync */,
+				9A91BE152A50F64600C2BBCA /* Kitchen_SyncTests */,
+				9A91BE1F2A50F64600C2BBCA /* Kitchen_SyncUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A91BDFE2A50F64500C2BBCA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A91BE112A50F64600C2BBCA /* Preview Assets.xcassets in Resources */,
+				9A91BE0D2A50F64600C2BBCA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A91BE142A50F64600C2BBCA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A91BE1E2A50F64600C2BBCA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A91BDFC2A50F64500C2BBCA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A91BE042A50F64500C2BBCA /* Kitchen_SyncApp.swift in Sources */,
+				9A91BE092A50F64500C2BBCA /* Kitchen_Sync.xcdatamodeld in Sources */,
+				9A91BE0B2A50F64500C2BBCA /* ContentView.swift in Sources */,
+				9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A91BE122A50F64600C2BBCA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A91BE1B2A50F64600C2BBCA /* Kitchen_SyncTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A91BE1C2A50F64600C2BBCA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A91BE272A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift in Sources */,
+				9A91BE252A50F64600C2BBCA /* Kitchen_SyncUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9A91BE182A50F64600C2BBCA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A91BDFF2A50F64500C2BBCA /* Kitchen_Sync */;
+			targetProxy = 9A91BE172A50F64600C2BBCA /* PBXContainerItemProxy */;
+		};
+		9A91BE222A50F64600C2BBCA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A91BDFF2A50F64500C2BBCA /* Kitchen_Sync */;
+			targetProxy = 9A91BE212A50F64600C2BBCA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9A91BE282A50F64600C2BBCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9A91BE292A50F64600C2BBCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		9A91BE2B2A50F64600C2BBCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Kitchen_Sync/Kitchen_Sync.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Kitchen_Sync/Preview Content\"";
+				DEVELOPMENT_TEAM = EYMBCDF9AD;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.coltonmccasland.Kitchen-Sync";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9A91BE2C2A50F64600C2BBCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Kitchen_Sync/Kitchen_Sync.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Kitchen_Sync/Preview Content\"";
+				DEVELOPMENT_TEAM = EYMBCDF9AD;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.coltonmccasland.Kitchen-Sync";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9A91BE2E2A50F64600C2BBCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EYMBCDF9AD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.coltonmccasland.Kitchen-SyncTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kitchen_Sync.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Kitchen_Sync";
+			};
+			name = Debug;
+		};
+		9A91BE2F2A50F64600C2BBCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EYMBCDF9AD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.coltonmccasland.Kitchen-SyncTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kitchen_Sync.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Kitchen_Sync";
+			};
+			name = Release;
+		};
+		9A91BE312A50F64600C2BBCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EYMBCDF9AD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.coltonmccasland.Kitchen-SyncUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Kitchen_Sync;
+			};
+			name = Debug;
+		};
+		9A91BE322A50F64600C2BBCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EYMBCDF9AD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.coltonmccasland.Kitchen-SyncUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Kitchen_Sync;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A91BDFB2A50F64500C2BBCA /* Build configuration list for PBXProject "Kitchen_Sync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A91BE282A50F64600C2BBCA /* Debug */,
+				9A91BE292A50F64600C2BBCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A91BE2A2A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "Kitchen_Sync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A91BE2B2A50F64600C2BBCA /* Debug */,
+				9A91BE2C2A50F64600C2BBCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A91BE2D2A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "Kitchen_SyncTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A91BE2E2A50F64600C2BBCA /* Debug */,
+				9A91BE2F2A50F64600C2BBCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A91BE302A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "Kitchen_SyncUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A91BE312A50F64600C2BBCA /* Debug */,
+				9A91BE322A50F64600C2BBCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9A91BE072A50F64500C2BBCA /* Kitchen_Sync.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9A91BE082A50F64500C2BBCA /* Kitchen_Sync.xcdatamodel */,
+			);
+			currentVersion = 9A91BE082A50F64500C2BBCA /* Kitchen_Sync.xcdatamodel */;
+			path = Kitchen_Sync.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 9A91BDF82A50F64500C2BBCA /* Project object */;
+}
