@@ -2,9 +2,16 @@ import WatchConnectivity
 
 class WatchConnectivityHandler: NSObject, WCSessionDelegate {
     static let shared = WatchConnectivityHandler()
-    @Published var items: [String] = []
+    @Published var items: [String] {
+        didSet {
+            UserDefaults.standard.set(items, forKey: "items")
+        }
+    }
 
     private override init() {
+        let savedItems = UserDefaults.standard.array(forKey: "items") as? [String] ?? []
+        items = savedItems
+
         super.init()
         
         if WCSession.isSupported() {
@@ -28,3 +35,4 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate {
         }
     }
 }
+
