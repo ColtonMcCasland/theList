@@ -11,7 +11,7 @@ struct ContentView: View {
                 .foregroundColor(.accentColor)
             
             List(connectivityHandler.items, id: \.self) { item in
-                Text(item)
+            Text(item)
             }
         }
         .padding()
