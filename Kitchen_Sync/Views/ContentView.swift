@@ -9,12 +9,16 @@ struct ContentView: View {
         Group {
             #if targetEnvironment(simulator)
             // Skip login logic if running on simulator
-            ListView()
-                .environment(\.managedObjectContext, viewContext)
-            #else
-            if isLoggedIn {
+            NavigationView {
                 ListView()
                     .environment(\.managedObjectContext, viewContext)
+            }
+            #else
+            if isLoggedIn {
+                NavigationView {
+                    ListView()
+                        .environment(\.managedObjectContext, viewContext)
+                }
             } else {
                 NavigationView {
                     ICloudLoginView()
@@ -25,5 +29,12 @@ struct ContentView: View {
             }
             #endif
         }
+    }
+}
+
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ICloudLoginView()
     }
 }

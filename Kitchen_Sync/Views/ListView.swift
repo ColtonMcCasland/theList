@@ -8,6 +8,7 @@ struct ListView: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
+    
     private var items: FetchedResults<Item>
 
     var body: some View {
@@ -61,7 +62,50 @@ struct ListView: View {
             }
         }
     }
+    
+    #if DEBUG
+        struct MockItem {
+            let timestamp: Date
+        }
+
+        static var previewItems: [MockItem] {
+            Array(repeating: MockItem(timestamp: Date()), count: 5)
+        }
+        #endif
 }
+
+#if DEBUG
+struct ListView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            List {
+                ForEach(ListView.previewItems, id: \.timestamp) { item in
+                    NavigationLink(
+                        destination: Text("Item at \(item.timestamp, formatter: itemFormatter)"),
+                        label: {
+                            Text(item.timestamp, formatter: itemFormatter)
+                        }
+                    )
+                }
+            }
+            .toolbar {
+                #if os(iOS)
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+                #endif
+                
+                ToolbarItem {
+                    Button(action: {}) {
+                        Label("Add Item", systemImage: "plus")
+                    }
+                }
+            }
+        }
+    }
+}
+#endif
+
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()

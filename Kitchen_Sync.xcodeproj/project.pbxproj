@@ -246,9 +246,9 @@
 			children = (
 				9AA7221D2A520ACD0014BF46 /* Views */,
 				9AA721EE2A5202B90014BF46 /* Kitchen_SyncCompanionApp.swift */,
+				9AA7221B2A520A620014BF46 /* WatchConnectivityHandler.swift */,
 				9AA721F22A5202BA0014BF46 /* Assets.xcassets */,
 				9AA721F42A5202BA0014BF46 /* Preview Content */,
-				9AA7221B2A520A620014BF46 /* WatchConnectivityHandler.swift */,
 			);
 			path = "Kitchen_SyncCompanion Watch App";
 			sourceTree = "<group>";
