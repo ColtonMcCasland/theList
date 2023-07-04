@@ -24,15 +24,49 @@ struct Kitchen_SyncApp: App {
 }
 
 
-class ConnectivityHandler: NSObject, ObservableObject {
-    override init() {
-        super.init()
-        
+class ConnectivityHandler: ObservableObject {
+    private let sessionDelegate = SessionDelegate()
+
+    init() {
         if WCSession.isSupported() {
             let session = WCSession.default
+            session.delegate = sessionDelegate
             session.activate()
         }
     }
-    
-    // Add methods to send data to the watchOS app here
+
+    func sendToWatchOS(data: [String: Any]) {
+        if WCSession.default.isReachable {
+            do {
+                try WCSession.default.updateApplicationContext(data)
+            } catch {
+                print("Failed to send data to watchOS: \(error)")
+            }
+        } else {
+            print("WatchOS app is not reachable")
+        }
+    }
+}
+
+class SessionDelegate: NSObject, WCSessionDelegate {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        // Handle session activation completion
+    }
+
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        // Handle received application context from watchOS app
+    }
+
+    // Add other required WCSessionDelegate methods
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        // Handle session becoming inactive
+    }
+
+    func sessionDidDeactivate(_ session: WCSession) {
+        // Handle session deactivation
+    }
+
+    func sessionWatchStateDidChange(_ session: WCSession) {
+        // Handle watch state change
+    }
 }
