@@ -17,7 +17,6 @@
 		9A786F772A546FD600C14196 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE052A50F64500C2BBCA /* Persistence.swift */; };
 		9A786F7C2A54772900C14196 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE052A50F64500C2BBCA /* Persistence.swift */; };
 		9A786F7D2A5477A800C14196 /* Kitchen_Sync.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */; };
-		9A786F842A547BAB00C14196 /* Watch_dataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A786F832A547BAB00C14196 /* Watch_dataModel.swift */; };
 		9A786F852A547F4400C14196 /* Kitchen_Sync.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */; };
 		9A786F882A54854700C14196 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A786F872A54854700C14196 /* ListView.swift */; };
 		9A91BE042A50F64500C2BBCA /* Kitchen_SynciOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE032A50F64500C2BBCA /* Kitchen_SynciOSApp.swift */; };
@@ -119,7 +118,6 @@
 		9A786F642A546C1600C14196 /* Kitchen_SyncMacOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncMacOSUITests.swift; sourceTree = "<group>"; };
 		9A786F662A546C1600C14196 /* Kitchen_SyncMacOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncMacOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9A786F792A5471A800C14196 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		9A786F832A547BAB00C14196 /* Watch_dataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watch_dataModel.swift; sourceTree = "<group>"; };
 		9A786F862A54806900C14196 /* Kitchen_SyncCompanion Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Kitchen_SyncCompanion Watch App.entitlements"; sourceTree = "<group>"; };
 		9A786F872A54854700C14196 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		9A91BE002A50F64500C2BBCA /* Kitchen_Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kitchen_Sync.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -262,14 +260,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		9A786F822A547BA100C14196 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				9A786F832A547BAB00C14196 /* Watch_dataModel.swift */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
 		9A91BDF72A50F64500C2BBCA = {
 			isa = PBXGroup;
 			children = (
@@ -359,7 +349,6 @@
 			isa = PBXGroup;
 			children = (
 				9A786F862A54806900C14196 /* Kitchen_SyncCompanion Watch App.entitlements */,
-				9A786F822A547BA100C14196 /* Data */,
 				9AA7221D2A520ACD0014BF46 /* Views */,
 				9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOSApp.swift */,
 				9AA721F22A5202BA0014BF46 /* Assets.xcassets */,
@@ -786,7 +775,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AA721F12A5202B90014BF46 /* ContentView.swift in Sources */,
-				9A786F842A547BAB00C14196 /* Watch_dataModel.swift in Sources */,
 				9A786F882A54854700C14196 /* ListView.swift in Sources */,
 				9A786F772A546FD600C14196 /* Persistence.swift in Sources */,
 				9A786F852A547F4400C14196 /* Kitchen_Sync.xcdatamodeld in Sources */,
