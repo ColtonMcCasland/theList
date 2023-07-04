@@ -11,12 +11,12 @@
 		9A786F462A546C1500C14196 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A786F452A546C1500C14196 /* ContentView.swift */; };
 		9A786F482A546C1600C14196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A786F472A546C1600C14196 /* Assets.xcassets */; };
 		9A786F4B2A546C1600C14196 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A786F4A2A546C1600C14196 /* Preview Assets.xcassets */; };
-		9A786F502A546C1600C14196 /* Kitchen_SyncMacOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A786F4E2A546C1600C14196 /* Kitchen_SyncMacOS.xcdatamodeld */; };
 		9A786F5B2A546C1600C14196 /* Kitchen_SyncMacOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A786F5A2A546C1600C14196 /* Kitchen_SyncMacOSTests.swift */; };
 		9A786F652A546C1600C14196 /* Kitchen_SyncMacOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A786F642A546C1600C14196 /* Kitchen_SyncMacOSUITests.swift */; };
 		9A786F672A546C1600C14196 /* Kitchen_SyncMacOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A786F662A546C1600C14196 /* Kitchen_SyncMacOSUITestsLaunchTests.swift */; };
 		9A786F772A546FD600C14196 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE052A50F64500C2BBCA /* Persistence.swift */; };
-		9A786F7A2A5471A800C14196 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A786F792A5471A800C14196 /* Persistence.swift */; };
+		9A786F7C2A54772900C14196 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE052A50F64500C2BBCA /* Persistence.swift */; };
+		9A786F7D2A5477A800C14196 /* Kitchen_Sync.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */; };
 		9A91BE042A50F64500C2BBCA /* Kitchen_SyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE032A50F64500C2BBCA /* Kitchen_SyncApp.swift */; };
 		9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE052A50F64500C2BBCA /* Persistence.swift */; };
 		9A91BE0B2A50F64500C2BBCA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE0A2A50F64500C2BBCA /* ContentView.swift */; };
@@ -112,8 +112,6 @@
 		9A786F452A546C1500C14196 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9A786F472A546C1600C14196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A786F4A2A546C1600C14196 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9A786F4F2A546C1600C14196 /* Kitchen_SyncMacOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kitchen_SyncMacOS.xcdatamodel; sourceTree = "<group>"; };
-		9A786F512A546C1600C14196 /* Kitchen_SyncMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kitchen_SyncMacOS.entitlements; sourceTree = "<group>"; };
 		9A786F562A546C1600C14196 /* Kitchen_SyncMacOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kitchen_SyncMacOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A786F5A2A546C1600C14196 /* Kitchen_SyncMacOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncMacOSTests.swift; sourceTree = "<group>"; };
 		9A786F602A546C1600C14196 /* Kitchen_SyncMacOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kitchen_SyncMacOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -329,8 +327,6 @@
 		9AA721752A510EF40014BF46 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				9A786F512A546C1600C14196 /* Kitchen_SyncMacOS.entitlements */,
-				9A786F4E2A546C1600C14196 /* Kitchen_SyncMacOS.xcdatamodeld */,
 				9AA721762A510EF40014BF46 /* Kitchen_Sync.entitlements */,
 				9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */,
 				9A91BE052A50F64500C2BBCA /* Persistence.swift */,
@@ -719,9 +715,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A786F462A546C1500C14196 /* ContentView.swift in Sources */,
+				9A786F7C2A54772900C14196 /* Persistence.swift in Sources */,
 				9A786F442A546C1500C14196 /* Kitchen_SyncMacOSApp.swift in Sources */,
-				9A786F502A546C1600C14196 /* Kitchen_SyncMacOS.xcdatamodeld in Sources */,
-				9A786F7A2A5471A800C14196 /* Persistence.swift in Sources */,
+				9A786F7D2A5477A800C14196 /* Kitchen_Sync.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,7 +843,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Shared/Kitchen_SyncMacOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Shared/Kitchen_Sync.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -876,7 +872,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Shared/Kitchen_SyncMacOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Shared/Kitchen_Sync.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1500,16 +1496,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		9A786F4E2A546C1600C14196 /* Kitchen_SyncMacOS.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				9A786F4F2A546C1600C14196 /* Kitchen_SyncMacOS.xcdatamodel */,
-			);
-			currentVersion = 9A786F4F2A546C1600C14196 /* Kitchen_SyncMacOS.xcdatamodel */;
-			path = Kitchen_SyncMacOS.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
