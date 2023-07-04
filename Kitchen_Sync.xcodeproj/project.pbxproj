@@ -16,7 +16,7 @@
 		9A786F652A546C1600C14196 /* Kitchen_SyncMacOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A786F642A546C1600C14196 /* Kitchen_SyncMacOSUITests.swift */; };
 		9A786F672A546C1600C14196 /* Kitchen_SyncMacOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A786F662A546C1600C14196 /* Kitchen_SyncMacOSUITestsLaunchTests.swift */; };
 		9A786F772A546FD600C14196 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE052A50F64500C2BBCA /* Persistence.swift */; };
-		9A786F782A546FD700C14196 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE052A50F64500C2BBCA /* Persistence.swift */; };
+		9A786F7A2A5471A800C14196 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A786F792A5471A800C14196 /* Persistence.swift */; };
 		9A91BE042A50F64500C2BBCA /* Kitchen_SyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE032A50F64500C2BBCA /* Kitchen_SyncApp.swift */; };
 		9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE052A50F64500C2BBCA /* Persistence.swift */; };
 		9A91BE0B2A50F64500C2BBCA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE0A2A50F64500C2BBCA /* ContentView.swift */; };
@@ -119,6 +119,7 @@
 		9A786F602A546C1600C14196 /* Kitchen_SyncMacOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kitchen_SyncMacOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A786F642A546C1600C14196 /* Kitchen_SyncMacOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncMacOSUITests.swift; sourceTree = "<group>"; };
 		9A786F662A546C1600C14196 /* Kitchen_SyncMacOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncMacOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9A786F792A5471A800C14196 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		9A91BE002A50F64500C2BBCA /* Kitchen_Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kitchen_Sync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A91BE032A50F64500C2BBCA /* Kitchen_SyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncApp.swift; sourceTree = "<group>"; };
 		9A91BE052A50F64500C2BBCA /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -218,6 +219,7 @@
 		9A786F422A546C1500C14196 /* Kitchen_SyncMacOS */ = {
 			isa = PBXGroup;
 			children = (
+				9A786F792A5471A800C14196 /* Persistence.swift */,
 				9A786F742A546D9100C14196 /* Views */,
 				9A786F432A546C1500C14196 /* Kitchen_SyncMacOSApp.swift */,
 				9A786F472A546C1600C14196 /* Assets.xcassets */,
@@ -267,8 +269,6 @@
 				9A786F422A546C1500C14196 /* Kitchen_SyncMacOS */,
 				9AA721752A510EF40014BF46 /* Shared */,
 				9AA722202A520EAC0014BF46 /* Tests */,
-				9A786F592A546C1600C14196 /* Kitchen_SyncMacOSTests */,
-				9A786F632A546C1600C14196 /* Kitchen_SyncMacOSUITests */,
 				9A91BE012A50F64500C2BBCA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -400,6 +400,8 @@
 				9A91BE232A50F64600C2BBCA /* Kitchen_SyncUITests */,
 				9AA721FE2A5202BA0014BF46 /* Kitchen_SyncCompanion Watch AppTests */,
 				9AA722082A5202BA0014BF46 /* Kitchen_SyncCompanion Watch AppUITests */,
+				9A786F592A546C1600C14196 /* Kitchen_SyncMacOSTests */,
+				9A786F632A546C1600C14196 /* Kitchen_SyncMacOSUITests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -717,9 +719,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A786F462A546C1500C14196 /* ContentView.swift in Sources */,
-				9A786F782A546FD700C14196 /* Persistence.swift in Sources */,
 				9A786F442A546C1500C14196 /* Kitchen_SyncMacOSApp.swift in Sources */,
 				9A786F502A546C1600C14196 /* Kitchen_SyncMacOS.xcdatamodeld in Sources */,
+				9A786F7A2A5471A800C14196 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
