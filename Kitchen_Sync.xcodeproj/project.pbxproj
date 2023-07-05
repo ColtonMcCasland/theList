@@ -30,7 +30,7 @@
 		9AA721792A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */; };
 		9AA7217F2A5129270014BF46 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7217E2A5129270014BF46 /* ListView.swift */; };
 		9AA721812A512E760014BF46 /* ICloudLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721802A512E760014BF46 /* ICloudLoginView.swift */; };
-		9AA721EF2A5202B90014BF46 /* Kitchen_SyncWatchOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOSApp.swift */; };
+		9AA721EF2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift */; };
 		9AA721F12A5202B90014BF46 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721F02A5202B90014BF46 /* ContentView.swift */; };
 		9AA721F32A5202BA0014BF46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AA721F22A5202BA0014BF46 /* Assets.xcassets */; };
 		9AA721F62A5202BA0014BF46 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AA721F52A5202BA0014BF46 /* Preview Assets.xcassets */; };
@@ -38,6 +38,8 @@
 		9AA7220A2A5202BA0014BF46 /* Kitchen_SyncCompanion_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA722092A5202BA0014BF46 /* Kitchen_SyncCompanion_Watch_AppUITests.swift */; };
 		9AA7220C2A5202BA0014BF46 /* Kitchen_SyncCompanion_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7220B2A5202BA0014BF46 /* Kitchen_SyncCompanion_Watch_AppUITestsLaunchTests.swift */; };
 		9AA7220F2A5202BA0014BF46 /* Kitchen_SyncCompanion Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9AA721EC2A5202B90014BF46 /* Kitchen_SyncCompanion Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9AF43A532A55F17A00ED548A /* WatchConnectivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF43A522A55F17A00ED548A /* WatchConnectivityHandler.swift */; };
+		9AF43A572A55FE0A00ED548A /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF43A562A55FE0A00ED548A /* Record.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,7 +138,7 @@
 		9AA7217E2A5129270014BF46 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		9AA721802A512E760014BF46 /* ICloudLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudLoginView.swift; sourceTree = "<group>"; };
 		9AA721EC2A5202B90014BF46 /* Kitchen_SyncCompanion Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kitchen_SyncCompanion Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncWatchOSApp.swift; sourceTree = "<group>"; };
+		9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncWatchOS.swift; sourceTree = "<group>"; };
 		9AA721F02A5202B90014BF46 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9AA721F22A5202BA0014BF46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9AA721F52A5202BA0014BF46 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -146,6 +148,8 @@
 		9AA722092A5202BA0014BF46 /* Kitchen_SyncCompanion_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncCompanion_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		9AA7220B2A5202BA0014BF46 /* Kitchen_SyncCompanion_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncCompanion_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9AF43A512A55DF5300ED548A /* Kitchen_SyncCompanion Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Kitchen_SyncCompanion Watch App.entitlements"; sourceTree = "<group>"; };
+		9AF43A522A55F17A00ED548A /* WatchConnectivityHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityHandler.swift; sourceTree = "<group>"; };
+		9AF43A562A55FE0A00ED548A /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,11 +352,13 @@
 		9AA721ED2A5202B90014BF46 /* Kitchen_SyncWatchOS */ = {
 			isa = PBXGroup;
 			children = (
+				9AF43A522A55F17A00ED548A /* WatchConnectivityHandler.swift */,
 				9AF43A512A55DF5300ED548A /* Kitchen_SyncCompanion Watch App.entitlements */,
 				9AA7221D2A520ACD0014BF46 /* Views */,
-				9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOSApp.swift */,
+				9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift */,
 				9AA721F22A5202BA0014BF46 /* Assets.xcassets */,
 				9AA721F42A5202BA0014BF46 /* Preview Content */,
+				9AF43A562A55FE0A00ED548A /* Record.swift */,
 			);
 			path = Kitchen_SyncWatchOS;
 			sourceTree = "<group>";
@@ -777,8 +783,10 @@
 				9AA721F12A5202B90014BF46 /* ContentView.swift in Sources */,
 				9A786F882A54854700C14196 /* ListView.swift in Sources */,
 				9A786F772A546FD600C14196 /* Persistence.swift in Sources */,
+				9AF43A532A55F17A00ED548A /* WatchConnectivityHandler.swift in Sources */,
+				9AF43A572A55FE0A00ED548A /* Record.swift in Sources */,
 				9A786F852A547F4400C14196 /* Kitchen_Sync.xcdatamodeld in Sources */,
-				9AA721EF2A5202B90014BF46 /* Kitchen_SyncWatchOSApp.swift in Sources */,
+				9AA721EF2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
