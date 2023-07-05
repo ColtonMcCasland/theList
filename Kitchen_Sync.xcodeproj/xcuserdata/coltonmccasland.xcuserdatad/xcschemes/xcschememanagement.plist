@@ -4,10 +4,34 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Kitchen_Sync.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Kitchen_SyncCompanion Watch App.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>Kitchen_SyncMacOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
+		</dict>
+		<key>Kitchen_SyncTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Kitchen_SyncUITests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>0</integer>
 		</dict>
 		<key>Kitchen_SyncWatchOS.xcscheme_^#shared#^_</key>
 		<dict>
@@ -22,7 +46,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>9A786F402A546C1500C14196</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9A786F552A546C1600C14196</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9A786F5F2A546C1600C14196</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9A91BDFF2A50F64500C2BBCA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9A91BE152A50F64600C2BBCA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9A91BE1F2A50F64600C2BBCA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
