@@ -26,11 +26,11 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate, ObservableObject {
         }
     }
 
-    // For receiving records
+    /// For receiving records
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String: Any]) {
-        print("Entered session")
+        // ...
+
         if let data = userInfo["sharedRecords"] as? Data {
-            print("Received sharedRecords data")
             do {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
@@ -38,20 +38,21 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate, ObservableObject {
                 DispatchQueue.main.async {
                     self.sharedRecords = receivedRecords
                     self.error = nil
+
+                    // Save received records locally
+                    self.saveRecordsLocally(receivedRecords)
                 }
             } catch {
-                DispatchQueue.main.async {
-                    self.error = CustomError(message: "Error decoding shared records")
-                }
-            }
-        } else if let error = userInfo["error"] as? String {
-            print("Received error message: \(error)")
-            DispatchQueue.main.async {
-                self.error = CustomError(message: error)
+                // Handle error
             }
         }
     }
 
+    private func saveRecordsLocally(_ records: [KitchenSyncRecord]) {
+        // Save records locally (e.g., in UserDefaults or a simple file)
+        // ...
+    }
+    
     // For sending records to watch
     func sendRecordsToWatch(_ records: [KitchenSyncRecord]) {
         guard let session = session, session.isReachable else {
