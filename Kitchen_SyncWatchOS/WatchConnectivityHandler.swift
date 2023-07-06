@@ -1,4 +1,5 @@
 import WatchConnectivity
+import CoreData
 
 class WatchConnectivityHandler: NSObject, WCSessionDelegate, ObservableObject {
     static let shared = WatchConnectivityHandler()
@@ -39,39 +40,28 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate, ObservableObject {
                     self.sharedRecords = receivedRecords
                     self.error = nil
 
-                    // Save received records locally
-                    self.saveRecordsLocally(receivedRecords)
                 }
             } catch {
                 // Handle error
             }
         }
     }
-
-    private func saveRecordsLocally(_ records: [KitchenSyncRecord]) {
-        // Save records locally (e.g., in UserDefaults or a simple file)
-        // ...
-    }
     
-    // For sending records to watch
-    func sendRecordsToWatch(_ records: [KitchenSyncRecord]) {
-        guard let session = session, session.isReachable else {
-            print("Watch is not reachable")
-            return
-        }
-
-        let encoder = JSONEncoder()
-        encoder.dateEncodingStrategy = .iso8601
+    func fetchAndPrintRecords() {
+        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
 
         do {
-            let sharedRecordsData = try encoder.encode(records)
+            // Fetch the records from the persistent store.
+            let records = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
 
-            session.transferUserInfo(["sharedRecords": sharedRecordsData])
-            print("Sent records to watch")
+            print("Fetched \(records.count) records")
 
+            // Print out the records.
+            for record in records {
+                print(record)
+            }
         } catch {
-            print("Error encoding records: \(error.localizedDescription)")
-            // Handle error
+            print("Failed to fetch records: \(error)")
         }
     }
 }
