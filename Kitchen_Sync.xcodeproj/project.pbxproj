@@ -109,6 +109,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9A35F6682A566FCC0051DF02 /* Kitchen-SyncCompanion-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kitchen-SyncCompanion-Watch-App-Info.plist"; sourceTree = "<group>"; };
 		9A7216E62A564F24008E19ED /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		9A786F412A546C1500C14196 /* Kitchen_SyncMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kitchen_SyncMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A786F432A546C1500C14196 /* Kitchen_SyncMacOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncMacOSApp.swift; sourceTree = "<group>"; };
@@ -267,6 +268,7 @@
 		9A91BDF72A50F64500C2BBCA = {
 			isa = PBXGroup;
 			children = (
+				9A35F6682A566FCC0051DF02 /* Kitchen-SyncCompanion-Watch-App-Info.plist */,
 				9A91BE022A50F64500C2BBCA /* Kitchen_SynciOS */,
 				9AA721ED2A5202B90014BF46 /* Kitchen_SyncWatchOS */,
 				9A786F422A546C1500C14196 /* Kitchen_SyncMacOS */,
@@ -1277,6 +1279,7 @@
 				DEVELOPMENT_TEAM = EYMBCDF9AD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Kitchen-SyncCompanion-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Kitchen_SyncCompanion;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.coltonmccasland.Kitchen-Sync";
@@ -1308,6 +1311,7 @@
 				DEVELOPMENT_TEAM = EYMBCDF9AD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Kitchen-SyncCompanion-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Kitchen_SyncCompanion;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.coltonmccasland.Kitchen-Sync";
