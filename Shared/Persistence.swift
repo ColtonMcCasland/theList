@@ -1,10 +1,3 @@
-//
-//  Persistence.swift
-//  Kitchen_Sync
-//
-//  Created by Colton McCasland on 7/1/23.
-//
-
 import CoreData
 
 struct PersistenceController {

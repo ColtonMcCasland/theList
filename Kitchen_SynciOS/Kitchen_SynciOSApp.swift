@@ -1,10 +1,3 @@
-//
-//  Kitchen_SyncApp.swift
-//  Kitchen_Sync
-//
-//  Created by Colton McCasland on 7/1/23.
-//
-
 import SwiftUI
 
 
