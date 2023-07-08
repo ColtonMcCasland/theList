@@ -30,7 +30,6 @@
 		9AA7217F2A5129270014BF46 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7217E2A5129270014BF46 /* ListView.swift */; };
 		9AA721812A512E760014BF46 /* ICloudLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721802A512E760014BF46 /* ICloudLoginView.swift */; };
 		9AA721EF2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift */; };
-		9AA721F12A5202B90014BF46 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721F02A5202B90014BF46 /* ContentView.swift */; };
 		9AA721F32A5202BA0014BF46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AA721F22A5202BA0014BF46 /* Assets.xcassets */; };
 		9AA721F62A5202BA0014BF46 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AA721F52A5202BA0014BF46 /* Preview Assets.xcassets */; };
 		9AA722002A5202BA0014BF46 /* Kitchen_SyncCompanion_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721FF2A5202BA0014BF46 /* Kitchen_SyncCompanion_Watch_AppTests.swift */; };
@@ -136,7 +135,6 @@
 		9AA721802A512E760014BF46 /* ICloudLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudLoginView.swift; sourceTree = "<group>"; };
 		9AA721EC2A5202B90014BF46 /* Kitchen_SyncCompanion Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kitchen_SyncCompanion Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncWatchOS.swift; sourceTree = "<group>"; };
-		9AA721F02A5202B90014BF46 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9AA721F22A5202BA0014BF46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9AA721F52A5202BA0014BF46 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9AA721FB2A5202BA0014BF46 /* Kitchen_SyncCompanion Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kitchen_SyncCompanion Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -349,7 +347,6 @@
 			isa = PBXGroup;
 			children = (
 				9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift */,
-				9AA7221D2A520ACD0014BF46 /* Views */,
 				9AA721F22A5202BA0014BF46 /* Assets.xcassets */,
 				9AF43A512A55DF5300ED548A /* Kitchen_SyncCompanion Watch App.entitlements */,
 				9AA721F42A5202BA0014BF46 /* Preview Content */,
@@ -380,14 +377,6 @@
 				9AA7220B2A5202BA0014BF46 /* Kitchen_SyncCompanion_Watch_AppUITestsLaunchTests.swift */,
 			);
 			path = "Kitchen_SyncCompanion Watch AppUITests";
-			sourceTree = "<group>";
-		};
-		9AA7221D2A520ACD0014BF46 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9AA721F02A5202B90014BF46 /* ContentView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		9AA722202A520EAC0014BF46 /* Tests */ = {
@@ -773,7 +762,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AA721F12A5202B90014BF46 /* ContentView.swift in Sources */,
 				9A786F772A546FD600C14196 /* Persistence.swift in Sources */,
 				9A786F852A547F4400C14196 /* Kitchen_Sync.xcdatamodeld in Sources */,
 				9AA721EF2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift in Sources */,
