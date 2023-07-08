@@ -46,7 +46,7 @@ struct PersistenceController {
     }
     
     private func processCloudKitChanges(_ notification: Notification) {
-//        guard let userInfo = notification.userInfo else { return }
+        guard let userInfo = notification.userInfo else { return }
         
         let context = container.viewContext
         context.perform {

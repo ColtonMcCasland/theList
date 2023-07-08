@@ -9,6 +9,6 @@ struct Kitchen_SyncApp: App {
             WindowGroup {
                 ContentView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            }
         }
+    }
 }
