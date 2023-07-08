@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 @main
 struct Kitchen_SyncApp: App {
     let persistenceController = PersistenceController.shared

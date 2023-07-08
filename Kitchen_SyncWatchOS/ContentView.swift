@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var dataFetcher: DataFetcher
 
     var body: some View {
         Text("Hello, World!")
-            .onAppear {
-                print("Container: \(dataFetcher.container)")
-                print("Database: \(dataFetcher.database)")
-            }
+
     }
 }
 
