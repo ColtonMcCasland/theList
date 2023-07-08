@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A7216E72A564F24008E19ED /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7216E62A564F24008E19ED /* ListView.swift */; };
 		9A786F442A546C1500C14196 /* Kitchen_SyncMacOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A786F432A546C1500C14196 /* Kitchen_SyncMacOSApp.swift */; };
 		9A786F462A546C1500C14196 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A786F452A546C1500C14196 /* ContentView.swift */; };
 		9A786F482A546C1600C14196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A786F472A546C1600C14196 /* Assets.xcassets */; };
@@ -110,7 +109,6 @@
 
 /* Begin PBXFileReference section */
 		9A35F6682A566FCC0051DF02 /* Kitchen-SyncCompanion-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kitchen-SyncCompanion-Watch-App-Info.plist"; sourceTree = "<group>"; };
-		9A7216E62A564F24008E19ED /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		9A786F412A546C1500C14196 /* Kitchen_SyncMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kitchen_SyncMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A786F432A546C1500C14196 /* Kitchen_SyncMacOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncMacOSApp.swift; sourceTree = "<group>"; };
 		9A786F452A546C1500C14196 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -394,7 +392,6 @@
 			isa = PBXGroup;
 			children = (
 				9AA721F02A5202B90014BF46 /* ContentView.swift */,
-				9A7216E62A564F24008E19ED /* ListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -785,7 +782,6 @@
 				9AA721F12A5202B90014BF46 /* ContentView.swift in Sources */,
 				9A786F772A546FD600C14196 /* Persistence.swift in Sources */,
 				9AF43A532A55F17A00ED548A /* WatchConnectivityHandler.swift in Sources */,
-				9A7216E72A564F24008E19ED /* ListView.swift in Sources */,
 				9AF43A572A55FE0A00ED548A /* Record.swift in Sources */,
 				9A786F852A547F4400C14196 /* Kitchen_Sync.xcdatamodeld in Sources */,
 				9AA721EF2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift in Sources */,
@@ -1127,7 +1123,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.coltonmccasland.Kitchen-Sync";
+				PRODUCT_BUNDLE_IDENTIFIER = "-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -1167,7 +1163,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.coltonmccasland.Kitchen-Sync";
+				PRODUCT_BUNDLE_IDENTIFIER = "-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
