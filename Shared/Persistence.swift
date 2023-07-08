@@ -25,29 +25,36 @@ struct PersistenceController {
 
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "Kitchen_Sync")
-        
+
         let description = container.persistentStoreDescriptions.first
         description?.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
         description?.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
 
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
-        } else {
-            let storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.Kitchen-SyncGroup")!.appendingPathComponent("Kitchen_Sync.sqlite")
-            description?.url = storeURL
         }
 
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores { [self] (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
-        })
+
+            // Fetch items from Core Data
+            let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+            do {
+                let items = try container.viewContext.fetch(fetchRequest)
+                print("Items in Core Data:")
+                for item in items {
+                    print(item)
+                }
+            } catch {
+                print("Error fetching items: \(error)")
+            }
+        }
 
         container.viewContext.automaticallyMergesChangesFromParent = true
-        
         container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
     }
-
     
     private func processCloudKitChanges(_ notification: Notification) {
         guard notification.userInfo != nil else { return }
