@@ -352,13 +352,13 @@
 		9AA721ED2A5202B90014BF46 /* Kitchen_SyncWatchOS */ = {
 			isa = PBXGroup;
 			children = (
+				9AF43A562A55FE0A00ED548A /* Record.swift */,
+				9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift */,
 				9AF43A522A55F17A00ED548A /* WatchConnectivityHandler.swift */,
 				9AF43A512A55DF5300ED548A /* Kitchen_SyncCompanion Watch App.entitlements */,
 				9AA7221D2A520ACD0014BF46 /* Views */,
-				9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift */,
 				9AA721F22A5202BA0014BF46 /* Assets.xcassets */,
 				9AA721F42A5202BA0014BF46 /* Preview Content */,
-				9AF43A562A55FE0A00ED548A /* Record.swift */,
 			);
 			path = Kitchen_SyncWatchOS;
 			sourceTree = "<group>";
