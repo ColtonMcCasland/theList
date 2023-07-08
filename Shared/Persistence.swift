@@ -32,6 +32,9 @@ struct PersistenceController {
 
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+        } else {
+            let storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.Kitchen-SyncGroup")!.appendingPathComponent("Kitchen_Sync.sqlite")
+            description?.url = storeURL
         }
 
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -44,6 +47,7 @@ struct PersistenceController {
         
         container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
     }
+
     
     private func processCloudKitChanges(_ notification: Notification) {
         guard notification.userInfo != nil else { return }
@@ -63,3 +67,5 @@ struct PersistenceController {
     }
 
 }
+
+
