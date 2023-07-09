@@ -1,7 +1,9 @@
 import SwiftUI
+import WatchConnectivity
 
 @main
-struct Kitchen_SyncCompanion_Watch_App: App {
+struct Kitchen_SyncWatchOS: App {
+    @WKExtensionDelegateAdaptor(ExtensionDelegate.self) var extensionDelegate
 
     var body: some Scene {
         WindowGroup {

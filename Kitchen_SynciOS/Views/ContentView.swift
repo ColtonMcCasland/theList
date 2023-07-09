@@ -4,15 +4,25 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @AppStorage("isLoggedIn") private var isLoggedIn = false
+    @EnvironmentObject var appDelegate: AppDelegate
+
 
     var body: some View {
         Group {
+            
+            // Skip the login flow if you are not testing it. Signing in doesnt work for simulators.
             #if targetEnvironment(simulator)
             // Skip login logic if running on simulator
             NavigationView {
                 ListView()
                     .environment(\.managedObjectContext, viewContext)
+                
+               
             }
+            Spacer()
+            Button("Send Message") {
+                        appDelegate.sendMessage()
+                }
             #else
             if isLoggedIn {
                 NavigationView {
