@@ -336,9 +336,10 @@
 			isa = PBXGroup;
 			children = (
 				9AB80E192A5BAA4600459447 /* WatchItem.swift */,
+				9A91BE052A50F64500C2BBCA /* Persistence.swift */,
 				9AA721762A510EF40014BF46 /* Kitchen_Sync.entitlements */,
 				9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */,
-				9A91BE052A50F64500C2BBCA /* Persistence.swift */,
+				9AF43A512A55DF5300ED548A /* Kitchen_SyncWatchOS.entitlements */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -359,7 +360,6 @@
 				9A5E8E952A5935E900894DDA /* ContentView.swift */,
 				9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift */,
 				9A5E8E9E2A5B310C00894DDA /* ExtensionDelegate.swift */,
-				9AF43A512A55DF5300ED548A /* Kitchen_SyncWatchOS.entitlements */,
 				9AA721F22A5202BA0014BF46 /* Assets.xcassets */,
 				9AA721F42A5202BA0014BF46 /* Preview Content */,
 			);
@@ -1268,7 +1268,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Kitchen_SyncWatchOS/Kitchen_SyncWatchOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Shared/Kitchen_SyncWatchOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Kitchen_SyncWatchOS/Preview Content\"";
@@ -1300,7 +1300,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Kitchen_SyncWatchOS/Kitchen_SyncWatchOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Shared/Kitchen_SyncWatchOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Kitchen_SyncWatchOS/Preview Content\"";
