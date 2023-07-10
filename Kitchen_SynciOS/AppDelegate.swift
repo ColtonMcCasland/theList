@@ -5,6 +5,7 @@
 //  Created by Colton McCasland on 7/9/23.
 //
 
+
 import Foundation
 import SwiftUI
 import WatchConnectivity
@@ -35,7 +36,12 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
         // Code to manage a deactivated session
         WCSession.default.activate()
     }
-
+    
+    // function to send records to watch
+    //...
+    
+    
+    // for example logic
     func sendMessage() {
         let session = WCSession.default
         if session.activationState == .activated {

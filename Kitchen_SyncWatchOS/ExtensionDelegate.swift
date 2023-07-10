@@ -32,5 +32,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate, Obser
             isMessageReceived = true
         }
     }
+    
+    // Function to retreive records from ios app
 }
 
