@@ -20,9 +20,6 @@ struct ContentView: View {
                
             }
             Spacer()
-            Button("Send Message") {
-                        appDelegate.sendMessage()
-                }
             #else
             if isLoggedIn {
                 NavigationView {
