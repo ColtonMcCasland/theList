@@ -31,7 +31,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate, Obser
         // Handle activation completion if needed
     }
     
-  
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
           if let records = message["records"] as? [[String: Any]] {

@@ -20,14 +20,19 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
         // Handle activation completion if needed
     }
 
+    //...
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         if let recordsDict = message["records"] as? [[String: Any]] {
-            self.records = recordsDict.compactMap { dict in
-                if let timestamp = dict["timestamp"] as? Date {
-                    return Record(timestamp: timestamp)
+            DispatchQueue.main.async {
+                self.records = recordsDict.compactMap { dict in
+                    if let timestamp = dict["timestamp"] as? Date {
+                        return Record(timestamp: timestamp)
+                    }
+                    return nil
                 }
-                return nil
             }
         }
     }
+    //...
+
 }
