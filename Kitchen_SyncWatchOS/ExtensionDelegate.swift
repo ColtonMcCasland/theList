@@ -11,6 +11,8 @@ import WatchConnectivity
 
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate, ObservableObject {
+    let watchManager = WatchManager()
+
     @Published var receivedMessage: String?
     @Published var isMessageReceived = false
     

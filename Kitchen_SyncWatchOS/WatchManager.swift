@@ -1,10 +1,20 @@
-// WatchSessionDelegate.swift
+// WatchManager.swift
 
 import WatchConnectivity
 import Combine
 
-class WatchSessionDelegate: NSObject, WCSessionDelegate, ObservableObject {
+class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
     @Published var records = [Record]()
+
+    override init() {
+        super.init()
+
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
+    }
 
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         // Handle activation completion if needed

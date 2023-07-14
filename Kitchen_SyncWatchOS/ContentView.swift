@@ -6,36 +6,17 @@
 //
 
 import SwiftUI
+import WatchConnectivity
 
 struct ContentView: View {
-    @EnvironmentObject var extensionDelegate: ExtensionDelegate
+    @EnvironmentObject var watchManager: WatchManager
 
     var body: some View {
-        NavigationView {
-            VStack {
-                NavigationLink(destination: MessageView(message: extensionDelegate.receivedMessage), isActive: $extensionDelegate.isMessageReceived) {
-                    Text("Check for Messages")
-                }
-            }
+        List(watchManager.records, id: \.self) { record in
+            Text("\(record.timestamp)")
         }
     }
 }
-
-struct MessageView: View {
-    var message: String?
-
-    var body: some View {
-        VStack {
-            Text("Received Message:")
-            if let message = message {
-                Text(message)
-            } else {
-                Text("No message received.")
-            }
-        }
-    }
-}
-
 
 
 struct ContentView_Previews: PreviewProvider {

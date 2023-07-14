@@ -41,6 +41,7 @@
 		9AB80E6D2A60F7D200459447 /* WatchSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB80E6C2A60F7D200459447 /* WatchSessionDelegate.swift */; };
 		9AB80E6E2A60F7DF00459447 /* WatchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB80E192A5BAA4600459447 /* WatchDataModel.swift */; };
 		9AB80E702A60F83400459447 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB80E6F2A60F83400459447 /* Record.swift */; };
+		9AB80E722A60FED000459447 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB80E712A60FED000459447 /* WatchManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +153,7 @@
 		9AB80E192A5BAA4600459447 /* WatchDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchDataModel.swift; sourceTree = "<group>"; };
 		9AB80E6C2A60F7D200459447 /* WatchSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionDelegate.swift; sourceTree = "<group>"; };
 		9AB80E6F2A60F83400459447 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		9AB80E712A60FED000459447 /* WatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
 		9AF43A512A55DF5300ED548A /* Kitchen_SyncWatchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kitchen_SyncWatchOS.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -365,6 +367,7 @@
 				9AA721F22A5202BA0014BF46 /* Assets.xcassets */,
 				9AA721F42A5202BA0014BF46 /* Preview Content */,
 				9AB80E6C2A60F7D200459447 /* WatchSessionDelegate.swift */,
+				9AB80E712A60FED000459447 /* WatchManager.swift */,
 			);
 			path = Kitchen_SyncWatchOS;
 			sourceTree = "<group>";
@@ -785,6 +788,7 @@
 				9AB80E702A60F83400459447 /* Record.swift in Sources */,
 				9AA721EF2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift in Sources */,
 				9AB80E6D2A60F7D200459447 /* WatchSessionDelegate.swift in Sources */,
+				9AB80E722A60FED000459447 /* WatchManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

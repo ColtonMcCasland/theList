@@ -3,11 +3,12 @@ import WatchConnectivity
 
 @main
 struct Kitchen_SyncWatchOS: App {
-    @WKExtensionDelegateAdaptor(ExtensionDelegate.self) var extensionDelegate
+    @StateObject var watchManager = WatchManager()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(watchManager)
         }
     }
 }
