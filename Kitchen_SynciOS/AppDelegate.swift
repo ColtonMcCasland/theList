@@ -9,8 +9,11 @@
 import Foundation
 import SwiftUI
 import WatchConnectivity
+import CoreData
 
 class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, ObservableObject {
+    let persistenceController = PersistenceController.shared
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         if WCSession.isSupported() {
             let session = WCSession.default
@@ -48,4 +51,26 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
             session.sendMessage(["message": "Hello, Apple Watch!"], replyHandler: nil, errorHandler: nil)
         }
     }
+    
+    func sendRecordsToWatch() {
+            let context = persistenceController.container.viewContext
+            let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+
+            do {
+                let items = try context.fetch(fetchRequest)
+                var records = [[String: Any]]()
+
+                for item in items {
+                    let record = ["timestamp": item.timestamp as Any]
+                    records.append(record)
+                }
+
+                let session = WCSession.default
+                if session.activationState == .activated {
+                    session.sendMessage(["records": records], replyHandler: nil, errorHandler: nil)
+                }
+            } catch {
+                print("Error fetching items: \(error)")
+            }
+        }
 }
