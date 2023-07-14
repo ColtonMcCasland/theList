@@ -13,6 +13,16 @@ import CoreData
 
 class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, ObservableObject {
     let persistenceController = PersistenceController.shared
+    
+    override init() {
+            super.init()
+
+            NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
+        }
+    
+    @objc private func managedObjectContextObjectsDidChange(_ notification: Notification) {
+           sendRecordsToWatch()
+       }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         if WCSession.isSupported() {
