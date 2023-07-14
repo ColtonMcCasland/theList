@@ -21,8 +21,10 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
         }
     
     @objc private func managedObjectContextObjectsDidChange(_ notification: Notification) {
-           sendRecordsToWatch()
-       }
+        DispatchQueue.main.async {
+            self.sendRecordsToWatch()
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         if WCSession.isSupported() {
