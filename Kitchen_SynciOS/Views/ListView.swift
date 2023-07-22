@@ -1,39 +1,58 @@
+// ListView.swift
+
 import SwiftUI
 import CoreData
 
 struct ListView: View {
     @Environment(\.managedObjectContext) private var viewContext // Access the managedObjectContext
 
-    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
-    
     private var items: FetchedResults<Item>
 
+    @State private var showingAddItemView = false
+    @State private var newItemTitle = ""
+
     var body: some View {
-        List {
-            ForEach(items) { item in
-                NavigationLink(
-                    destination: Text("Item at \(item.timestamp!, formatter: itemFormatter)"),
-                    label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
-                )
-            }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            #if os(iOS)
-            ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
-            }
-            #endif
-            
-            ToolbarItem {
-                Button(action: addItem) {
-                    Label("Add Item", systemImage: "plus")
+        ZStack {
+            List {
+                ForEach(items) { item in
+                    NavigationLink(
+                        destination: VStack(alignment: .leading) {
+                            Text("Title: \(item.title ?? "No Title")") // Use "No Title" if title is nil
+                            Text("Tapped: \(item.isTapped ? "Yes" : "No")")
+                            Text("Timestamp: \(item.timestamp!, formatter: itemFormatter)")
+                        },
+                        label: {
+                            VStack(alignment: .leading) {
+                                Text(item.title ?? "No Title") // Use "No Title" if title is nil
+                                Text(item.isTapped ? "Tapped" : "Not Tapped")
+                                Text(item.timestamp!, formatter: itemFormatter)
+                            }
+                        }
+                    )
                 }
+                .onDelete(perform: deleteItems)
+            }
+            .toolbar {
+                #if os(iOS)
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+                #endif
+
+                ToolbarItem {
+                    Button(action: { showingAddItemView = true }) {
+                        Label("Add Item", systemImage: "plus")
+                    }
+                }
+            }
+
+            if showingAddItemView {
+                AddItemView(isShowing: $showingAddItemView, title: $newItemTitle, addItemAction: addItem)
+                    .transition(.move(edge: .bottom))
+                    .animation(.default)
             }
         }
     }
@@ -42,9 +61,12 @@ struct ListView: View {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
+            newItem.title = newItemTitle
+            newItem.isTapped = false
 
             do {
                 try viewContext.save()
+                newItemTitle = "" // Reset the title for the next item
             } catch {
                 // Handle error
             }
@@ -62,50 +84,36 @@ struct ListView: View {
             }
         }
     }
-    
-    #if DEBUG
-        struct MockItem {
-            let timestamp: Date
-        }
-
-        static var previewItems: [MockItem] {
-            Array(repeating: MockItem(timestamp: Date()), count: 5)
-        }
-        #endif
 }
 
-#if DEBUG
-struct ListView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            List {
-                ForEach(ListView.previewItems, id: \.timestamp) { item in
-                    NavigationLink(
-                        destination: Text("Item at \(item.timestamp, formatter: itemFormatter)"),
-                        label: {
-                            Text(item.timestamp, formatter: itemFormatter)
-                        }
-                    )
-                }
+struct AddItemView: View {
+    @Binding var isShowing: Bool
+    @Binding var title: String
+    let addItemAction: () -> Void
+
+    var body: some View {
+        VStack {
+            Text("Add a new item")
+                .font(.headline)
+
+            TextField("Title", text: $title)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+
+            Button(action: {
+                addItemAction()
+                isShowing = false
+            }) {
+                Text("Add Item")
             }
-            .toolbar {
-                #if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                #endif
-                
-                ToolbarItem {
-                    Button(action: {}) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
+            .padding()
         }
+        .frame(width: 300, height: 200)
+        .background(Color.white)
+        .cornerRadius(20)
+        .shadow(radius: 20)
     }
 }
-#endif
-
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()

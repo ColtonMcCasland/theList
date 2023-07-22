@@ -12,11 +12,19 @@ struct ContentView: View {
     @EnvironmentObject var watchManager: WatchManager
 
     var body: some View {
-        List(watchManager.records, id: \.self) { record in
-            Text("\(record.timestamp)")
+        List(watchManager.records.indices, id: \.self) { index in
+            VStack(alignment: .leading) {
+                Text(watchManager.records[index].title)
+                Text("\(watchManager.records[index].isTapped ? "Tapped" : "Not Tapped")")
+                Text("\(watchManager.records[index].timestamp)")
+            }
+            .onTapGesture {
+                watchManager.toggleIsTapped(for: index)
+            }
         }
     }
 }
+
 
 
 struct ContentView_Previews: PreviewProvider {
