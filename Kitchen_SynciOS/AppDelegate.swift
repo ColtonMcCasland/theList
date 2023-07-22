@@ -37,8 +37,9 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
         return true
     }
 
+    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        // Handle activation completion if needed
+        sendRecordsToWatch()
     }
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
@@ -67,24 +68,24 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
     }
     
     func sendRecordsToWatch() {
-            let context = persistenceController.container.viewContext
-            let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+        let context = persistenceController.container.viewContext
+        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
 
-            do {
-                let items = try context.fetch(fetchRequest)
-                var records = [[String: Any]]()
+        do {
+            let items = try context.fetch(fetchRequest)
+            var records = [[String: Any]]()
 
-                for item in items {
-                    let record = ["timestamp": item.timestamp as Any]
-                    records.append(record)
-                }
-
-                let session = WCSession.default
-                if session.activationState == .activated {
-                    session.sendMessage(["records": records], replyHandler: nil, errorHandler: nil)
-                }
-            } catch {
-                print("Error fetching items: \(error)")
+            for item in items {
+                let record = ["timestamp": item.timestamp as Any, "title": item.title as Any, "isTapped": item.isTapped]
+                records.append(record)
             }
+
+            let session = WCSession.default
+            if session.activationState == .activated {
+                session.sendMessage(["records": records], replyHandler: nil, errorHandler: nil)
+            }
+        } catch {
+            print("Error fetching items: \(error)")
         }
+    }
 }

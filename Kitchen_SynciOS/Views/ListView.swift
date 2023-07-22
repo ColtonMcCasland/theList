@@ -18,20 +18,22 @@ struct ListView: View {
         ZStack {
             List {
                 ForEach(items) { item in
-                    NavigationLink(
-                        destination: VStack(alignment: .leading) {
-                            Text("Title: \(item.title ?? "No Title")") // Use "No Title" if title is nil
-                            Text("Tapped: \(item.isTapped ? "Yes" : "No")")
-                            Text("Timestamp: \(item.timestamp!, formatter: itemFormatter)")
-                        },
-                        label: {
-                            VStack(alignment: .leading) {
-                                Text(item.title ?? "No Title") // Use "No Title" if title is nil
-                                Text(item.isTapped ? "Tapped" : "Not Tapped")
-                                Text(item.timestamp!, formatter: itemFormatter)
-                            }
+                    HStack {
+                        // Circle that is filled if the item is tapped
+                        Circle()
+                            .fill(item.isTapped ? Color.green : Color.red)
+                            .frame(width: 20, height: 20)
+                        
+                        VStack(alignment: .leading) {
+                            Text(item.title ?? "No Title") // Use "No Title" if title is nil
+                            Text(item.isTapped ? "Tapped" : "Not Tapped")
                         }
-                    )
+                    }
+                    .onTapGesture {
+                        withAnimation {
+                            item.isTapped.toggle()
+                        }
+                    }
                 }
                 .onDelete(perform: deleteItems)
             }
@@ -84,6 +86,7 @@ struct ListView: View {
             }
         }
     }
+    
 }
 
 struct AddItemView: View {
