@@ -38,8 +38,18 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
     }
     
     func toggleIsTapped(for recordIndex: Int) {
-        records[recordIndex].isTapped.toggle()
-    }
+            records[recordIndex].isTapped.toggle()
+            
+            // Send a message to the iOS app to update the corresponding item's isTapped property
+            if WCSession.default.isReachable {
+                let tappedItem = records[recordIndex]
+                let message: [String: Any] = ["updateIsTapped": true, "timestamp": tappedItem.timestamp]
+                WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                    // Handle error
+                    print("Error sending message to iOS app: \(error.localizedDescription)")
+                })
+            }
+        }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         // Handle activation completion if needed
