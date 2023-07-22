@@ -17,7 +17,7 @@ class WatchSessionDelegate: NSObject, WCSessionDelegate, ObservableObject {
                    let title = dict["title"] as? String,
                    let isTapped = dict["isTapped"] as? Bool,
                    let order = dict["order"] as? Int16 { // Extract order from dictionary
-                    return Record(timestamp: timestamp, title: title, isTapped: isTapped, order: order) // Provide order as argument
+                    return Record(timestamp: timestamp, title: title, isTapped: isTapped) // Provide order as argument
                 }
                 return nil
             }

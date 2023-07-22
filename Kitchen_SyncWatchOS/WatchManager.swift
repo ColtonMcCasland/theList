@@ -28,9 +28,8 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
                 self.records = recordsDict.compactMap { dict in
                     if let timestamp = dict["timestamp"] as? Date,
                        let title = dict["title"] as? String,
-                       let isTapped = dict["isTapped"] as? Bool,
-                       let order = dict["order"] as? Int16 { // Extract order from dictionary
-                        return Record(timestamp: timestamp, title: title, isTapped: isTapped, order: order) // Provide order as argument
+                       let isTapped = dict["isTapped"] as? Bool {
+                        return Record(timestamp: timestamp, title: title, isTapped: isTapped)
                     }
                     return nil
                 }
@@ -52,9 +51,8 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
                 self.records = recordsDict.compactMap { dict in
                     if let timestamp = dict["timestamp"] as? Date,
                        let title = dict["title"] as? String,
-                       let isTapped = dict["isTapped"] as? Bool,
-                       let order = dict["order"] as? Int16 { // Extract order from dictionary
-                        return Record(timestamp: timestamp, title: title, isTapped: isTapped, order: order) // Provide order as argument
+                       let isTapped = dict["isTapped"] as? Bool { // Extract order from dictionary
+                        return Record(timestamp: timestamp, title: title, isTapped: isTapped) // Provide order as argument
                     }
                     return nil
                 }
