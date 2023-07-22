@@ -5,6 +5,7 @@
 //  Created by Colton McCasland on 7/9/23.
 //
 
+
 import Foundation
 import SwiftUI
 import WatchConnectivity
@@ -14,18 +15,22 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
     let persistenceController = PersistenceController.shared
     
     override init() {
-        super.init()
+            super.init()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
-    }
+            NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
+        }
     
+    //...
     @objc private func managedObjectContextObjectsDidChange(_ notification: Notification) {
         DispatchQueue.main.async {
             self.sendRecordsToWatch()
         }
     }
+    //...
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // ...
+
         // Set up WatchConnectivity session
         if WCSession.isSupported() {
             let session = WCSession.default
@@ -36,11 +41,15 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
         return true
     }
 
+
+    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        if activationState == .activated {
-            sendRecordsToWatch()
-        }
+        sendRecordsToWatch()
     }
+
+    // AppDelegate.swift
+
+    // ...
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         // Check if the message contains the "updateIsTapped" key
@@ -66,6 +75,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
         }
     }
 
+
     func sessionDidBecomeInactive(_ session: WCSession) {
         // Code to manage an inactive session
     }
@@ -73,6 +83,18 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
     func sessionDidDeactivate(_ session: WCSession) {
         // Code to manage a deactivated session
         WCSession.default.activate()
+    }
+    
+    // function to send records to watch
+    //...
+    
+    
+    // for example logic
+    func sendMessage() {
+        let session = WCSession.default
+        if session.activationState == .activated {
+            session.sendMessage(["message": "Hello, Apple Watch!"], replyHandler: nil, errorHandler: nil)
+        }
     }
     
     func sendRecordsToWatch() {
@@ -90,9 +112,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
 
             let session = WCSession.default
             if session.activationState == .activated {
-                session.sendMessage(["records": records], replyHandler: nil, errorHandler: { error in
-                    print("Error sending records to Watch: \(error)")
-                })
+                session.sendMessage(["records": records], replyHandler: nil, errorHandler: nil)
             }
         } catch {
             print("Error fetching items: \(error)")
