@@ -7,7 +7,7 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
+            let newItem = ListItem(context: viewContext)
             newItem.timestamp = Date()
         }
         do {
@@ -40,7 +40,7 @@ struct PersistenceController {
             }
 
             // Fetch items from Core Data
-            let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+            let fetchRequest: NSFetchRequest<ListItem> = ListItem.fetchRequest()
             do {
                 let items = try container.viewContext.fetch(fetchRequest)
                 print("Items in Core Data:")

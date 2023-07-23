@@ -54,7 +54,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
                     // Find the corresponding item in Core Data and update its isTapped property
                     let context = persistenceController.container.newBackgroundContext() // Use a background context
                     context.perform { // Perform operations on the background context
-                        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+                        let fetchRequest: NSFetchRequest<ListItem> = ListItem.fetchRequest()
                         fetchRequest.predicate = NSPredicate(format: "timestamp == %@", timestamp as NSDate)
                         
                         do {
@@ -91,7 +91,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
     
     func sendRecordsToWatch() {
         let context = persistenceController.container.viewContext
-        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+        let fetchRequest: NSFetchRequest<ListItem> = ListItem.fetchRequest()
 
         do {
             let items = try context.fetch(fetchRequest)

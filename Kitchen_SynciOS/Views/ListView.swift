@@ -7,9 +7,9 @@ struct ListView: View {
     @Environment(\.managedObjectContext) private var viewContext // Access the managedObjectContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \ListItem.timestamp, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var items: FetchedResults<ListItem>
 
     @State private var showingAddItemView = false
     @State private var newItemTitle = ""
@@ -66,7 +66,7 @@ struct ListView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
+            let newItem = ListItem(context: viewContext)
             newItem.timestamp = Date()
             newItem.title = newItemTitle
             newItem.isTapped = false
