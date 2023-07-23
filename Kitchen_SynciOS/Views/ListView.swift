@@ -32,6 +32,11 @@ struct ListView: View {
                     .onTapGesture {
                         withAnimation {
                             item.isTapped.toggle()
+                            do {
+                                try viewContext.save()
+                            } catch {
+                                // Handle the error
+                            }
                         }
                     }
                 }
