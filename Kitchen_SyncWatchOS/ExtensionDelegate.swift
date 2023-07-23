@@ -17,6 +17,13 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate, Obser
     @Published var isMessageReceived = false
     
     var records = [[String: Any]]()
+    
+    func willActivate() {
+           // This method is called when watch view controller is about to be visible to user
+           WKExtension.shared().isFrontmostTimeoutExtended = true
+           WatchManager.shared.sendRecordsToiOSApp()
+           WatchManager.shared.requestRecordsFromiOSApp() // Add this line
+       }
 
 
     func applicationDidFinishLaunching() {

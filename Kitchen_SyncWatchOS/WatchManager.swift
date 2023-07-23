@@ -4,6 +4,10 @@ import WatchConnectivity
 import Combine
 
 class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
+    static let shared = WatchManager() // Add this line
+
+    
+    
     @Published var records = [Record]() {
            didSet {
                saveRecords()
@@ -20,7 +24,12 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
             }
 
             loadRecords()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // Add this line
+                self.requestRecordsFromiOSApp()
+            }
         }
+    
+    
     
     private func saveRecords() {
            let encoder = JSONEncoder()
@@ -38,14 +47,50 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
        }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        // Handle activation completion if needed
-    }
+            if activationState == .activated {
+                requestRecordsFromiOSApp() // Add this line
+            }
+        }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        DispatchQueue.global().async { [weak self] in
-            self?.updateRecords(from: message)
+        DispatchQueue.main.async {
+            if let recordsDict = message["records"] as? [[String: Any]] {
+                for dict in recordsDict {
+                    if let timestamp = dict["timestamp"] as? Date,
+                       let title = dict["title"] as? String,
+                       let isTapped = dict["isTapped"] as? Bool {
+                        if let index = self.records.firstIndex(where: { $0.timestamp == timestamp }) {
+                            self.records[index].isTapped = isTapped
+                        } else {
+                            self.records.append(Record(timestamp: timestamp, title: title, isTapped: isTapped))
+                        }
+                    }
+                }
+            }
         }
     }
+
+    
+    func requestRecordsFromiOSApp() {
+           if WCSession.default.isReachable {
+               let message: [String: Any] = ["requestRecords": true]
+               WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                   // Handle error
+                   print("Error requesting records from iOS app: \(error.localizedDescription)")
+               })
+           }
+       }
+    
+    func sendRecordsToiOSApp() {
+           if WCSession.default.isReachable {
+               let recordsDict = records.map { ["timestamp": $0.timestamp, "title": $0.title, "isTapped": $0.isTapped] }
+               let message: [String: Any] = ["records": recordsDict]
+               WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                   // Handle error
+                   print("Error sending records to iOS app: \(error.localizedDescription)")
+               })
+           }
+       }
     
     private func updateRecords(from dictionary: [String: Any]) {
         if let recordsDict = dictionary["records"] as? [[String: Any]] {
@@ -63,12 +108,12 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
     }
     
     func toggleIsTapped(for recordIndex: Int) {
-        records[recordIndex].isTapped.toggle()
-        
+        records[recordIndex].isTapped.toggle() // Update the state immediately
+
         // Send a message to the iOS app to update the corresponding item's isTapped property
         if WCSession.default.isReachable {
             let tappedItem = records[recordIndex]
-            let message: [String: Any] = ["updateIsTapped": tappedItem.isTapped, "timestamp": tappedItem.timestamp] // Send the current state of isTapped
+            let message: [String: Any] = ["updateIsTapped": tappedItem.isTapped, "timestamp": tappedItem.timestamp]
             WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
                 // Handle error
                 print("Error sending message to iOS app: \(error.localizedDescription)")
