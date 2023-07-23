@@ -55,17 +55,15 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         DispatchQueue.main.async {
             if let recordsDict = message["records"] as? [[String: Any]] {
+                var newRecords = [Record]()
                 for dict in recordsDict {
                     if let timestamp = dict["timestamp"] as? Date,
                        let title = dict["title"] as? String,
                        let isTapped = dict["isTapped"] as? Bool {
-                        if let index = self.records.firstIndex(where: { $0.timestamp == timestamp }) {
-                            self.records[index].isTapped = isTapped
-                        } else {
-                            self.records.append(Record(timestamp: timestamp, title: title, isTapped: isTapped))
-                        }
+                        newRecords.append(Record(timestamp: timestamp, title: title, isTapped: isTapped))
                     }
                 }
+                self.records = newRecords
             }
         }
     }
