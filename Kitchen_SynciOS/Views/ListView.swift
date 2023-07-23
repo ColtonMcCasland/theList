@@ -1,5 +1,3 @@
-// ListView.swift
-
 import SwiftUI
 import CoreData
 
@@ -7,9 +5,9 @@ struct ListView: View {
     @Environment(\.managedObjectContext) private var viewContext // Access the managedObjectContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \ListItem.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \User.email, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<ListItem>
+    private var users: FetchedResults<User>
 
     @State private var showingAddItemView = false
     @State private var newItemTitle = ""
@@ -17,30 +15,36 @@ struct ListView: View {
     var body: some View {
         ZStack {
             List {
-                ForEach(items) { item in
-                    HStack {
-                        // Circle that is filled if the item is tapped
-                        Circle()
-                            .fill(item.isTapped ? Color.green : Color.red)
-                            .frame(width: 20, height: 20)
-                        
-                        VStack(alignment: .leading) {
-                            Text(item.title ?? "No Title") // Use "No Title" if title is nil
-                            Text(item.isTapped ? "Tapped" : "Not Tapped")
-                        }
-                    }
-                    .onTapGesture {
-                        withAnimation {
-                            item.isTapped.toggle()
-                            do {
-                                try viewContext.save()
-                            } catch {
-                                // Handle the error
+                ForEach(users) { user in
+                    Section(header: Text(user.email ?? "Unknown User")) {
+                        ForEach(Array(user.listItems ?? []), id: \.self) { item in
+                            HStack {
+                                // Circle that is filled if the item is tapped
+                                Circle()
+                                    .fill(item.isTapped ? Color.green : Color.red)
+                                    .frame(width: 20, height: 20)
+                                
+                                VStack(alignment: .leading) {
+                                    Text(item.title ?? "No Title") // Use "No Title" if title is nil
+                                    Text(item.isTapped ? "Tapped" : "Not Tapped")
+                                }
+                            }
+                            .onTapGesture {
+                                withAnimation {
+                                    item.isTapped.toggle()
+                                    do {
+                                        try viewContext.save()
+                                    } catch {
+                                        // Handle the error
+                                    }
+                                }
                             }
                         }
+                        .onDelete(perform: { offsets in
+                            deleteItems(offsets: offsets, from: user)
+                        })
                     }
                 }
-                .onDelete(perform: deleteItems)
             }
             .toolbar {
                 #if os(iOS)
@@ -71,6 +75,11 @@ struct ListView: View {
             newItem.title = newItemTitle
             newItem.isTapped = false
 
+            // Assuming there's only one user for now
+            if let user = users.first {
+                user.addToItems(newItem)
+            }
+
             do {
                 try viewContext.save()
                 newItemTitle = "" // Reset the title for the next item
@@ -80,9 +89,9 @@ struct ListView: View {
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteItems(offsets: IndexSet, from user: User) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { Array(user.listItems ?? [])[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -91,7 +100,6 @@ struct ListView: View {
             }
         }
     }
-    
 }
 
 struct AddItemView: View {

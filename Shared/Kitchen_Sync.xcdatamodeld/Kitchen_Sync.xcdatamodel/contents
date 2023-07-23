@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="ListBoard" representedClassName="ListBoard" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="items" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListItem" inverseName="relationship" inverseEntity="ListItem"/>
+        <attribute name="timstamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="createdBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"/>
+        <relationship name="items" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListItem" inverseName="listBoards" inverseEntity="ListItem"/>
     </entity>
     <entity name="ListItem" representedClassName="ListItem" syncable="YES" codeGenerationType="class">
         <attribute name="isTapped" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListBoard" inverseName="items" inverseEntity="ListBoard"/>
+        <relationship name="createdBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"/>
+        <relationship name="listBoards" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListBoard" inverseName="items" inverseEntity="ListBoard"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="lists" optional="YES" attributeType="Transformable"/>
+        <relationship name="listBoards" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="listBoards" inverseEntity="User"/>
+        <relationship name="listItems" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="listItems" inverseEntity="User"/>
     </entity>
 </model>

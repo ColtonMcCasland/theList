@@ -69,6 +69,16 @@ struct ICloudLoginView: View {
                 print("User is logged in")
                 isLoggedIn = true
                 UserDefaults.standard.set(true, forKey: "isLoggedIn")
+
+                // Create a new User entity with the user's iCloud email
+                let context = PersistenceController.shared.container.viewContext
+                let user = User(context: context)
+                user.email = credential.email ?? "test@icloud.com" // Use a fake iCloud account for the simulator
+                do {
+                    try context.save()
+                } catch {
+                    print("Error saving user: \(error)")
+                }
             } else {
                 // User is not logged in or iCloud is not available
                 print("User is not logged in or iCloud is not available")
