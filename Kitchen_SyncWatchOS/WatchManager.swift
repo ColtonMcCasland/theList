@@ -4,17 +4,38 @@ import WatchConnectivity
 import Combine
 
 class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
-    @Published var records = [Record]()
+    @Published var records = [Record]() {
+           didSet {
+               saveRecords()
+           }
+       }
 
     override init() {
-        super.init()
+            super.init()
 
-        if WCSession.isSupported() {
-            let session = WCSession.default
-            session.delegate = self
-            session.activate()
+            if WCSession.isSupported() {
+                let session = WCSession.default
+                session.delegate = self
+                session.activate()
+            }
+
+            loadRecords()
         }
-    }
+    
+    private func saveRecords() {
+           let encoder = JSONEncoder()
+           if let encodedRecords = try? encoder.encode(records) {
+               UserDefaults.standard.set(encodedRecords, forKey: "records")
+           }
+       }
+
+       private func loadRecords() {
+           let decoder = JSONDecoder()
+           if let savedRecords = UserDefaults.standard.object(forKey: "records") as? Data,
+              let decodedRecords = try? decoder.decode([Record].self, from: savedRecords) {
+               records = decodedRecords
+           }
+       }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         // Handle activation completion if needed

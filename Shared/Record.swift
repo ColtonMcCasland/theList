@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct Record: Hashable {
+struct Record: Codable {
     let timestamp: Date
     var title: String
     var isTapped: Bool
