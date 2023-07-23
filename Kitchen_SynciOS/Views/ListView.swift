@@ -59,7 +59,7 @@ struct ListView: View {
             if showingAddItemView {
                 AddItemView(isShowing: $showingAddItemView, title: $newItemTitle, addItemAction: addItem)
                     .transition(.move(edge: .bottom))
-                    .animation(.default)
+//                    .animation(.default)
             }
         }
     }

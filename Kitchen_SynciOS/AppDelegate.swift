@@ -44,27 +44,30 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         // Check if the message contains the "updateIsTapped" key
-        if let updateIsTapped = message["updateIsTapped"] as? Bool, updateIsTapped {
+        if let isTapped = message["updateIsTapped"] as? Bool { // Get the current state of isTapped
             // Check if the message contains the "timestamp" key
             if let timestamp = message["timestamp"] as? Date {
                 // Find the corresponding item in Core Data and update its isTapped property
-                let context = persistenceController.container.viewContext
-                let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
-                fetchRequest.predicate = NSPredicate(format: "timestamp == %@", timestamp as NSDate)
-                
-                do {
-                    let items = try context.fetch(fetchRequest)
-                    if let tappedItem = items.first {
-                        tappedItem.isTapped = true // Update the isTapped property
-                        try context.save() // Save the changes to Core Data
+                let context = persistenceController.container.newBackgroundContext() // Use a background context
+                context.perform { // Perform operations on the background context
+                    let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+                    fetchRequest.predicate = NSPredicate(format: "timestamp == %@", timestamp as NSDate)
+                    
+                    do {
+                        let items = try context.fetch(fetchRequest)
+                        if let tappedItem = items.first {
+                            tappedItem.isTapped = isTapped // Update the isTapped property to the received state
+                            try context.save() // Save the changes to Core Data
+                        }
+                    } catch {
+                        // Handle error
+                        print("Error updating isTapped property: \(error.localizedDescription)")
                     }
-                } catch {
-                    // Handle error
-                    print("Error updating isTapped property: \(error.localizedDescription)")
                 }
             }
         }
     }
+
 
     func sessionDidBecomeInactive(_ session: WCSession) {
         // Code to manage an inactive session
