@@ -81,7 +81,7 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
     
     func sendRecordsToiOSApp() {
            if WCSession.default.isReachable {
-               let recordsDict = records.map { ["timestamp": $0.timestamp, "title": $0.title, "isTapped": $0.isTapped] }
+               let recordsDict = records.map { ["timestamp": $0.timestamp, "title": $0.title, "isTapped": $0.isTapped] as [String : Any] }
                let message: [String: Any] = ["records": recordsDict]
                WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
                    // Handle error
