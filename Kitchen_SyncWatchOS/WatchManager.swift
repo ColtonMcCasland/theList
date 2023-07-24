@@ -8,7 +8,7 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
 
     
     
-    @Published var records = [Record]() {
+    @Published var records = [NodeItem]() {
            didSet {
                saveRecords()
            }
@@ -40,8 +40,8 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
 
        private func loadRecords() {
            let decoder = JSONDecoder()
-           if let savedRecords = UserDefaults.standard.object(forKey: "records") as? Data,
-              let decodedRecords = try? decoder.decode([Record].self, from: savedRecords) {
+           if let savedRecords = UserDefaults.standard.object(forKey: "node_items") as? Data,
+              let decodedRecords = try? decoder.decode([NodeItem].self, from: savedRecords) {
                records = decodedRecords
            }
        }
@@ -54,13 +54,13 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         DispatchQueue.main.async {
-            if let recordsDict = message["records"] as? [[String: Any]] {
-                var newRecords = [Record]()
+            if let recordsDict = message["node_items"] as? [[String: Any]] {
+                var newRecords = [NodeItem]()
                 for dict in recordsDict {
                     if let timestamp = dict["timestamp"] as? Date,
                        let title = dict["title"] as? String,
                        let isTapped = dict["isTapped"] as? Bool {
-                        newRecords.append(Record(timestamp: timestamp, title: title, isTapped: isTapped))
+                        newRecords.append(NodeItem(timestamp: timestamp, title: title, isTapped: isTapped))
                     }
                 }
                 self.records = newRecords
@@ -91,13 +91,13 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
        }
     
     private func updateRecords(from dictionary: [String: Any]) {
-        if let recordsDict = dictionary["records"] as? [[String: Any]] {
+        if let recordsDict = dictionary["node_items"] as? [[String: Any]] {
             DispatchQueue.main.async {
                 self.records = recordsDict.compactMap { dict in
                     if let timestamp = dict["timestamp"] as? Date,
                        let title = dict["title"] as? String,
                        let isTapped = dict["isTapped"] as? Bool {
-                        return Record(timestamp: timestamp, title: title, isTapped: isTapped)
+                        return NodeItem(timestamp: timestamp, title: title, isTapped: isTapped)
                     }
                     return nil
                 }
