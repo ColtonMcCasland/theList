@@ -1,19 +1,20 @@
 //
-//  AddListView.swift
+//  AddItemView.swift
 //  Kitchen_Sync
 //
 //  Created by Colton McCasland on 7/24/23.
 //
+
 import SwiftUI
 
-struct AddListView: View {
+struct AddItemView: View {
     @Binding var isShowing: Bool
     @Binding var title: String
-    let addListAction: () -> Void
+    let addItemAction: () -> Void
 
     var body: some View {
         VStack {
-            Text("Add a new list")
+            Text("Add a new item")
                 .font(.headline)
 
             TextField("Title", text: $title)
@@ -21,10 +22,10 @@ struct AddListView: View {
                 .padding()
 
             Button(action: {
-                addListAction()
+                addItemAction()
                 isShowing = false
             }) {
-                Text("Add List")
+                Text("Add Item")
             }
             .padding()
         }
@@ -34,5 +35,4 @@ struct AddListView: View {
         .shadow(radius: 20)
     }
 }
-
 

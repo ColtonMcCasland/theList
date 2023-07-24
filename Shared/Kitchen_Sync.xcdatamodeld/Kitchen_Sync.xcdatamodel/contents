@@ -10,7 +10,7 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
-        <relationship name="items" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListItem" inverseName="listNode" inverseEntity="ListItem"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ListItem" inverseName="listNode" inverseEntity="ListItem"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>

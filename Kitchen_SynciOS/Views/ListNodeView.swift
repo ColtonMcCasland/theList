@@ -1,14 +1,20 @@
+//
+//  ListNodeView.swift
+//  Kitchen_Sync
+//
+//  Created by Colton McCasland on 7/24/23.
+//
 import SwiftUI
 import CoreData
 
-struct ListView: View {
+struct ListNodeView: View {
     @Environment(\.managedObjectContext) private var viewContext // Access the managedObjectContext
     var listNode: ListNode
 
     @State private var showingAddItemView = false
     @State private var newItemTitle = ""
 
-    // Define fetchRequest as a property of ListView
+    // Define fetchRequest as a property of ListNodeView
     private var fetchRequest: FetchRequest<ListItem>
 
     init(listNode: ListNode) {
@@ -29,7 +35,7 @@ struct ListView: View {
                         Circle()
                             .fill(item.isTapped ? Color.green : Color.red)
                             .frame(width: 20, height: 20)
-                        
+
                         VStack(alignment: .leading) {
                             Text(item.title ?? "No Title") // Use "No Title" if title is nil
                             Text(item.isTapped ? "Tapped" : "Not Tapped")
@@ -48,6 +54,7 @@ struct ListView: View {
                 }
                 .onDelete(perform: deleteItems)
             }
+
             .toolbar {
                 #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -81,7 +88,7 @@ struct ListView: View {
                 try viewContext.save()
                 newItemTitle = "" // Reset the title for the next item
             } catch {
-                print("Failed to save new item: \(error)")
+                // Handle error
             }
         }
     }
@@ -98,10 +105,3 @@ struct ListView: View {
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()

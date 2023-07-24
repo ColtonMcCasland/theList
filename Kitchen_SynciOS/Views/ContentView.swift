@@ -12,6 +12,9 @@ struct ContentView: View {
         animation: .default)
     private var listNodes: FetchedResults<ListNode>
 
+    @State private var showingAddNodeView = false
+    @State private var newNodeTitle = ""
+
     var body: some View {
         NavigationView {
             if isLoggedIn {
@@ -24,11 +27,37 @@ struct ContentView: View {
                     }
                 }
                 .listStyle(SidebarListStyle())
+                .toolbar {
+                    ToolbarItem {
+                        Button(action: { showingAddNodeView = true }) {
+                            Label("Add Node", systemImage: "plus")
+                        }
+                    }
+                }
             } else {
                 ICloudLoginView()
                     .frame(minWidth: 200, idealWidth: 300, maxWidth: .infinity, minHeight: 200, idealHeight: 300, maxHeight: .infinity)
                     .navigationTitle("Items")
                     .environment(\.managedObjectContext, viewContext)
+            }
+        }
+        if showingAddNodeView {
+            AddNodeView(isShowing: $showingAddNodeView, title: $newNodeTitle, addNodeAction: addNode)
+                .transition(.move(edge: .bottom))
+        }
+    }
+
+    private func addNode() {
+        withAnimation {
+            let newNode = ListNode(context: viewContext)
+            newNode.timestamp = Date()
+            newNode.title = newNodeTitle
+
+            do {
+                try viewContext.save()
+                newNodeTitle = "" // Reset the title for the next node
+            } catch {
+                // Handle the error
             }
         }
     }
