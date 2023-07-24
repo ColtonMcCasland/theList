@@ -22,7 +22,10 @@ struct ListView: View {
 
     var body: some View {
         ZStack {
+
             List {
+                Text("ListView")
+
                 ForEach(fetchRequest.wrappedValue, id: \.self) { item in
                     HStack {
                         // Circle that is filled if the item is tapped
