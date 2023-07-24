@@ -39,10 +39,30 @@ struct ListView: View {
                             }
                         }
                     }
+                    .contextMenu { // Add this
+                        Button(action: {
+                            // Perform some action
+                        }) {
+                            Label("Option", systemImage: "gear")
+                        }
+                    }
                 }
                 .onDelete(perform: deleteItems)
             }
+            
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                      withAnimation {
+//                          isSidebarVisible.toggle()
+                      }
+                  }) {
+                      Image(systemName: "sidebar.left")
+                          .imageScale(.large)
+                  }
+                }
+                
+                
                 #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -59,7 +79,6 @@ struct ListView: View {
             if showingAddItemView {
                 AddItemView(isShowing: $showingAddItemView, title: $newItemTitle, addItemAction: addItem)
                     .transition(.move(edge: .bottom))
-//                    .animation(.default)
             }
         }
     }
