@@ -9,10 +9,8 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="type" optional="YES" attributeType="String"/>
-        <relationship name="listItems" optional="YES" maxCount="1" deletionRule="Nullify"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>
-        <relationship name="listNodes" optional="YES" maxCount="1" deletionRule="Nullify"/>
     </entity>
 </model>

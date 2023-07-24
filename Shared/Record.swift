@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct Record: Codable, Equatable {
+struct NodeItem: Codable, Equatable {
     let timestamp: Date
     var title: String
     var isTapped: Bool

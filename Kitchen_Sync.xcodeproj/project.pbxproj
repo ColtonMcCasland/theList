@@ -338,12 +338,12 @@
 		9AA721752A510EF40014BF46 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				9AB80E192A5BAA4600459447 /* WatchDataModel.swift */,
 				9AB80E6F2A60F83400459447 /* Record.swift */,
+				9AB80E192A5BAA4600459447 /* WatchDataModel.swift */,
 				9A91BE052A50F64500C2BBCA /* Persistence.swift */,
+				9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */,
 				9AA721762A510EF40014BF46 /* Kitchen_Sync.entitlements */,
 				9AF43A512A55DF5300ED548A /* Kitchen_SyncWatchOS.entitlements */,
-				9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
