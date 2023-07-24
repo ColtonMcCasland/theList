@@ -10,4 +10,7 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListBoard" inverseName="items" inverseEntity="ListBoard"/>
     </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="icloudEmail" optional="YES" attributeType="String"/>
+    </entity>
 </model>
