@@ -1,15 +1,22 @@
 import SwiftUI
 import AuthenticationServices
 import CloudKit
+import CoreData
 
 struct ICloudLoginView: View {
     @AppStorage("isLoggedIn") private var isLoggedIn = false
     @State private var appleIDCredential: ASAuthorizationAppleIDCredential?
-    
+    @Environment(\.managedObjectContext) private var viewContext // Access the managedObjectContext
+    @State private var listNode: ListNode? // Add this line
+
     var body: some View {
         Group {
             if isLoggedIn {
-                ListView()
+                if let listNode = listNode {
+                    ListView(listNode: listNode)
+                } else {
+                    Text("No list node available")
+                }
             } else {
                 VStack {
                     // Your UI code for the iCloud login view
@@ -32,8 +39,19 @@ struct ICloudLoginView: View {
     
     private func checkLoginStatus() {
         isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
+        if isLoggedIn {
+            // Fetch the first ListNode from CoreData
+            let fetchRequest: NSFetchRequest<ListNode> = ListNode.fetchRequest()
+            fetchRequest.fetchLimit = 1
+            do {
+                let fetchedListNodes = try viewContext.fetch(fetchRequest)
+                listNode = fetchedListNodes.first
+            } catch {
+                // Handle the error
+            }
+        }
     }
-    
+
     private func handleSignInWithApple(result: Result<ASAuthorization, Error>) {
         switch result {
         case .success(let authorization):
@@ -50,11 +68,7 @@ struct ICloudLoginView: View {
     private func handleSignInWithApple() {
         guard let credential = appleIDCredential else { return }
         
-        // Use the credential to authenticate the user and perform necessary actions
-        print("Sign in with Apple successful")
-        print("User Identifier: \(credential.user)")
-        print("Email: \(credential.email ?? "N/A")")
-        print("Full Name: \(credential.fullName?.description ?? "N/A")")
+        // Rest of your code...
         
         let container = CKContainer.default()
         container.accountStatus { accountStatus, error in
