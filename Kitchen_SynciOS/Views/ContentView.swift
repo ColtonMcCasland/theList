@@ -1,3 +1,4 @@
+// ContentView.swift
 import SwiftUI
 import CoreData
 
@@ -6,42 +7,58 @@ struct ContentView: View {
     @AppStorage("isLoggedIn") private var isLoggedIn = false
     @EnvironmentObject var appDelegate: AppDelegate
 
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \ListNode.timestamp, ascending: true)],
+        animation: .default)
+    private var listNodes: FetchedResults<ListNode>
+
+    @State private var showingAddNodeView = false
+    @State private var newNodeTitle = ""
 
     var body: some View {
-        Group {
-            
-            // Skip the login flow if you are not testing it. Signing in doesnt work for simulators.
-            #if targetEnvironment(simulator)
-            // Skip login logic if running on simulator
-            NavigationView {
-                ListView()
-                    .environment(\.managedObjectContext, viewContext)
-                
-               
-            }
-            Spacer()
-            #else
+        NavigationView {
             if isLoggedIn {
-                NavigationView {
-                    ListView()
-                        .environment(\.managedObjectContext, viewContext)
+                List {
+                    ForEach(listNodes) { listNode in
+                        NavigationLink(destination: ListView(listNode: listNode)
+                                        .environment(\.managedObjectContext, viewContext)) {
+                            Text(listNode.title ?? "")
+                        }
+                    }
+                }
+                .listStyle(SidebarListStyle())
+                .toolbar {
+                    ToolbarItem {
+                        Button(action: { showingAddNodeView = true }) {
+                            Label("Add Node", systemImage: "plus")
+                        }
+                    }
                 }
             } else {
-                NavigationView {
-                    ICloudLoginView()
-                        .frame(minWidth: 200, idealWidth: 300, maxWidth: .infinity, minHeight: 200, idealHeight: 300, maxHeight: .infinity)
-                        .navigationTitle("Items")
-                        .environment(\.managedObjectContext, viewContext)
-                }
+                ICloudLoginView()
+                    .frame(minWidth: 200, idealWidth: 300, maxWidth: .infinity, minHeight: 200, idealHeight: 300, maxHeight: .infinity)
+                    .navigationTitle("Items")
+                    .environment(\.managedObjectContext, viewContext)
             }
-            #endif
+        }
+        if showingAddNodeView {
+            AddNodeView(isShowing: $showingAddNodeView, title: $newNodeTitle, addNodeAction: addNode)
+                .transition(.move(edge: .bottom))
         }
     }
-}
 
+    private func addNode() {
+        withAnimation {
+            let newNode = ListNode(context: viewContext)
+            newNode.timestamp = Date()
+            newNode.title = newNodeTitle
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ICloudLoginView()
+            do {
+                try viewContext.save()
+                newNodeTitle = "" // Reset the title for the next node
+            } catch {
+                // Handle the error
+            }
+        }
     }
 }
