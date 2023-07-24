@@ -8,9 +8,9 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
 
     
     
-    @Published var node_items = [NodeItem]() {
+    @Published var records = [Record]() {
            didSet {
-               saveNodeItems()
+               saveRecords()
            }
        }
 
@@ -23,53 +23,53 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
                 session.activate()
             }
 
-            loadNodeItems()
+            loadRecords()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // Add this line
-                self.requestNodeItemsFromiOSApp()
+                self.requestRecordsFromiOSApp()
             }
         }
     
     
     
-    private func saveNodeItems() {
+    private func saveRecords() {
            let encoder = JSONEncoder()
-           if let encodedRecords = try? encoder.encode(node_items) {
+           if let encodedRecords = try? encoder.encode(records) {
                UserDefaults.standard.set(encodedRecords, forKey: "records")
            }
        }
 
-       private func loadNodeItems() {
+       private func loadRecords() {
            let decoder = JSONDecoder()
            if let savedRecords = UserDefaults.standard.object(forKey: "records") as? Data,
-              let decodedRecords = try? decoder.decode([NodeItem].self, from: savedRecords) {
-               node_items = decodedRecords
+              let decodedRecords = try? decoder.decode([Record].self, from: savedRecords) {
+               records = decodedRecords
            }
        }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
             if activationState == .activated {
-                requestNodeItemsFromiOSApp() // Add this line
+                requestRecordsFromiOSApp() // Add this line
             }
         }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         DispatchQueue.main.async {
             if let recordsDict = message["records"] as? [[String: Any]] {
-                var newRecords = [NodeItem]()
+                var newRecords = [Record]()
                 for dict in recordsDict {
                     if let timestamp = dict["timestamp"] as? Date,
                        let title = dict["title"] as? String,
                        let isTapped = dict["isTapped"] as? Bool {
-                        newRecords.append(NodeItem(timestamp: timestamp, title: title, isTapped: isTapped))
+                        newRecords.append(Record(timestamp: timestamp, title: title, isTapped: isTapped))
                     }
                 }
-                self.node_items = newRecords
+                self.records = newRecords
             }
         }
     }
 
     
-    func requestNodeItemsFromiOSApp() {
+    func requestRecordsFromiOSApp() {
            if WCSession.default.isReachable {
                let message: [String: Any] = ["requestRecords": true]
                WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
@@ -79,7 +79,7 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
            }
        }
     
-    func sendNodeItemsToiOSApp() {
+    func sendRecordsToiOSApp() {
            if WCSession.default.isReachable {
                let recordsDict = records.map { ["timestamp": $0.timestamp, "title": $0.title, "isTapped": $0.isTapped] as [String : Any] }
                let message: [String: Any] = ["records": recordsDict]
@@ -90,14 +90,14 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
            }
        }
     
-    private func updateNodeItems(from dictionary: [String: Any]) {
-        if let recordsDict = dictionary["NodeItems"] as? [[String: Any]] {
+    private func updateRecords(from dictionary: [String: Any]) {
+        if let recordsDict = dictionary["records"] as? [[String: Any]] {
             DispatchQueue.main.async {
-                self.node_items = recordsDict.compactMap { dict in
+                self.records = recordsDict.compactMap { dict in
                     if let timestamp = dict["timestamp"] as? Date,
                        let title = dict["title"] as? String,
                        let isTapped = dict["isTapped"] as? Bool {
-                        return NodeItem(timestamp: timestamp, title: title, isTapped: isTapped)
+                        return Record(timestamp: timestamp, title: title, isTapped: isTapped)
                     }
                     return nil
                 }
@@ -106,11 +106,11 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
     }
     
     func toggleIsTapped(for recordIndex: Int) {
-        node_items[recordIndex].isTapped.toggle() // Update the state immediately
+        records[recordIndex].isTapped.toggle() // Update the state immediately
 
         // Send a message to the iOS app to update the corresponding item's isTapped property
         if WCSession.default.isReachable {
-            let tappedItem = node_items[recordIndex]
+            let tappedItem = records[recordIndex]
             let message: [String: Any] = ["updateIsTapped": tappedItem.isTapped, "timestamp": tappedItem.timestamp]
             WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
                 // Handle error

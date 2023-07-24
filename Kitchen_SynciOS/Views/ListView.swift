@@ -12,18 +12,6 @@ struct ListView: View {
     @State private var showingAddItemView = false
     @State private var newItemTitle = ""
 
-    // Define fetchRequest as a property of ListView
-    private var fetchRequest: FetchRequest<ListItem>
-
-    init(listNode: ListNode) {
-        self.listNode = listNode
-        self.fetchRequest = FetchRequest<ListItem>(
-            entity: ListItem.entity(),
-            sortDescriptors: [NSSortDescriptor(keyPath: \ListItem.timestamp, ascending: true)],
-            predicate: NSPredicate(format: "listNode == %@", listNode),
-            animation: .default)
-    }
-
     var body: some View {
         ZStack {
             List {
@@ -58,7 +46,6 @@ struct ListView: View {
                     }
                 }
             }
-            
             .toolbar {
                 #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -76,6 +63,7 @@ struct ListView: View {
             if showingAddItemView {
                 AddItemView(isShowing: $showingAddItemView, title: $newItemTitle, addItemAction: addItem)
                     .transition(.move(edge: .bottom))
+//                    .animation(.default)
             }
         }
     }
@@ -86,7 +74,6 @@ struct ListView: View {
             newItem.timestamp = Date()
             newItem.title = newItemTitle
             newItem.isTapped = false
-            newItem.listNode = listNode
 
             // Assuming there's only one user for now
             if let user = users.first {
@@ -114,9 +101,6 @@ struct ListView: View {
         }
     }
 }
-
-
-
 
 struct AddItemView: View {
     @Binding var isShowing: Bool

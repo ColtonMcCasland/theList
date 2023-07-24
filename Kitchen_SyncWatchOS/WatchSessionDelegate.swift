@@ -4,7 +4,7 @@ import WatchConnectivity
 import Combine
 
 class WatchSessionDelegate: NSObject, WCSessionDelegate, ObservableObject {
-    @Published var records = [NodeItem]()
+    @Published var records = [Record]()
 
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         // Handle activation completion if needed
@@ -16,7 +16,7 @@ class WatchSessionDelegate: NSObject, WCSessionDelegate, ObservableObject {
                 if let timestamp = dict["timestamp"] as? Date,
                    let title = dict["title"] as? String,
                    let isTapped = dict["isTapped"] as? Bool { // Extract order from dictionary
-                    return NodeItem(timestamp: timestamp, title: title, isTapped: isTapped) // Provide order as argument
+                    return Record(timestamp: timestamp, title: title, isTapped: isTapped) // Provide order as argument
                 }
                 return nil
             }

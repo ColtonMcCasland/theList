@@ -21,7 +21,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
     
     @objc private func managedObjectContextObjectsDidChange(_ notification: Notification) {
         DispatchQueue.main.async {
-            self.sendNodeItemsToWatch()
+            self.sendRecordsToWatch()
         }
     }
 
@@ -38,14 +38,14 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
 
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if activationState == .activated {
-            sendNodeItemsToWatch()
+            sendRecordsToWatch()
         }
     }
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         // Check if the message contains the "requestRecords" key
         if let requestRecords = message["requestRecords"] as? Bool, requestRecords {
-            sendNodeItemsToWatch()
+            sendRecordsToWatch()
         } else {
             // Check if the message contains the "updateIsTapped" key
             if let isTapped = message["updateIsTapped"] as? Bool { // Get the current state of isTapped
@@ -76,7 +76,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
     
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-          sendNodeItemsToWatch()
+          sendRecordsToWatch()
       }
 
 
@@ -89,7 +89,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
         WCSession.default.activate()
     }
     
-    func sendNodeItemsToWatch() {
+    func sendRecordsToWatch() {
         let context = persistenceController.container.viewContext
         let fetchRequest: NSFetchRequest<ListItem> = ListItem.fetchRequest()
 

@@ -13,7 +13,7 @@ struct Kitchen_SyncApp: App {
                 .environment(\.managedObjectContext, appDelegate.persistenceController.container.viewContext)
                 .environmentObject(appDelegate)
                 .onAppear {
-                    appDelegate.sendNodeItemsToWatch()
+                    appDelegate.sendRecordsToWatch()
                 }
         }
     }

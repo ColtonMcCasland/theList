@@ -4,5 +4,5 @@ import SwiftUI
 import Combine
 
 class WatchDataModel: ObservableObject {
-    @Published var records = [NodeItem]()
+    @Published var records = [Record]()
 }
