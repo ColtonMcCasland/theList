@@ -1,23 +1,29 @@
-// ListView.swift
-
 import SwiftUI
 import CoreData
 
 struct ListView: View {
     @Environment(\.managedObjectContext) private var viewContext // Access the managedObjectContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \ListItem.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<ListItem>
+    var listNode: ListNode
 
     @State private var showingAddItemView = false
     @State private var newItemTitle = ""
 
+    // Define fetchRequest as a property of ListView
+    private var fetchRequest: FetchRequest<ListItem>
+
+    init(listNode: ListNode) {
+        self.listNode = listNode
+        self.fetchRequest = FetchRequest<ListItem>(
+            entity: ListItem.entity(),
+            sortDescriptors: [NSSortDescriptor(keyPath: \ListItem.timestamp, ascending: true)],
+            predicate: NSPredicate(format: "listNode == %@", listNode),
+            animation: .default)
+    }
+
     var body: some View {
         ZStack {
             List {
-                ForEach(items) { item in
+                ForEach(fetchRequest.wrappedValue, id: \.self) { item in
                     HStack {
                         // Circle that is filled if the item is tapped
                         Circle()
@@ -39,30 +45,11 @@ struct ListView: View {
                             }
                         }
                     }
-                    .contextMenu { // Add this
-                        Button(action: {
-                            // Perform some action
-                        }) {
-                            Label("Option", systemImage: "gear")
-                        }
-                    }
                 }
                 .onDelete(perform: deleteItems)
             }
             
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                      withAnimation {
-//                          isSidebarVisible.toggle()
-                      }
-                  }) {
-                      Image(systemName: "sidebar.left")
-                          .imageScale(.large)
-                  }
-                }
-                
-                
                 #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -89,6 +76,7 @@ struct ListView: View {
             newItem.timestamp = Date()
             newItem.title = newItemTitle
             newItem.isTapped = false
+            newItem.listNode = listNode
 
             do {
                 try viewContext.save()
@@ -101,7 +89,7 @@ struct ListView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { fetchRequest.wrappedValue[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -110,8 +98,10 @@ struct ListView: View {
             }
         }
     }
-    
 }
+
+
+
 
 struct AddItemView: View {
     @Binding var isShowing: Bool

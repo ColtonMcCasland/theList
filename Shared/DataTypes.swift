@@ -7,3 +7,4 @@ struct NodeItem: Codable, Equatable {
     var title: String
     var isTapped: Bool
 }
+
