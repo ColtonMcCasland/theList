@@ -18,22 +18,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             if isLoggedIn {
-                List {
-                    ForEach(listNodes) { listNode in
-                        NavigationLink(destination: ListView(listNode: listNode)
-                                        .environment(\.managedObjectContext, viewContext)) {
-                            Text(listNode.title ?? "")
-                        }
-                    }
-                }
-                .listStyle(SidebarListStyle())
-                .toolbar {
-                    ToolbarItem {
-                        Button(action: { showingAddNodeView = true }) {
-                            Label("Add Node", systemImage: "plus")
-                        }
-                    }
-                }
+                ListNodeView(showingAddNodeView: $showingAddNodeView)
             } else {
                 ICloudLoginView()
                     .frame(minWidth: 200, idealWidth: 300, maxWidth: .infinity, minHeight: 200, idealHeight: 300, maxHeight: .infinity)
