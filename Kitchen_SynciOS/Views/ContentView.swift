@@ -18,7 +18,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             if isLoggedIn {
-                ListNodeView(showingAddNodeView: $showingAddNodeView)
+                ListView()
             } else {
                 ICloudLoginView()
                     .frame(minWidth: 200, idealWidth: 300, maxWidth: .infinity, minHeight: 200, idealHeight: 300, maxHeight: .infinity)
@@ -27,7 +27,7 @@ struct ContentView: View {
             }
         }
         if showingAddNodeView {
-            AddNodeView(isShowing: $showingAddNodeView, title: $newNodeTitle, addNodeAction: addNode)
+            AddNodeView(isShowing: $showingAddNodeView, newNodeTitle: $newNodeTitle, addNodeAction: addNode)
                 .transition(.move(edge: .bottom))
         }
     }

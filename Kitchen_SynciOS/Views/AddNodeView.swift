@@ -9,29 +9,33 @@ import SwiftUI
 
 struct AddNodeView: View {
     @Binding var isShowing: Bool
-    @Binding var title: String
+    @Binding var newNodeTitle: String
     let addNodeAction: () -> Void
 
     var body: some View {
-        VStack {
-            Text("Add a new node")
-                .font(.headline)
-
-            TextField("Title", text: $title)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-
-            Button(action: {
-                addNodeAction()
-                isShowing = false
-            }) {
+        ZStack {
+            Color.clear
+                .onTapGesture {
+                    isShowing = false
+                }
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack {
                 Text("Add Node")
+                    .font(.headline)
+                TextField("Node Title", text: $newNodeTitle)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                Button("Add") {
+                    addNodeAction()
+                    isShowing = false
+                }
+                .padding()
             }
             .padding()
+            .background(Color.white)
+            .cornerRadius(10)
+            .shadow(radius: 5)
         }
-        .frame(width: 300, height: 200)
-        .background(Color.white)
-        .cornerRadius(20)
-        .shadow(radius: 20)
     }
 }

@@ -7,16 +7,11 @@ struct ICloudLoginView: View {
     @AppStorage("isLoggedIn") private var isLoggedIn = false
     @State private var appleIDCredential: ASAuthorizationAppleIDCredential?
     @Environment(\.managedObjectContext) private var viewContext // Access the managedObjectContext
-    @State private var listNode: ListNode? // Add this line
 
     var body: some View {
         Group {
             if isLoggedIn {
-                if let listNode = listNode {
-                    ListView(listNode: listNode)
-                } else {
-                    Text("No list node available")
-                }
+                ListView()
             } else {
                 VStack {
                     // Your UI code for the iCloud login view
@@ -39,17 +34,6 @@ struct ICloudLoginView: View {
     
     private func checkLoginStatus() {
         isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
-        if isLoggedIn {
-            // Fetch the first ListNode from CoreData
-            let fetchRequest: NSFetchRequest<ListNode> = ListNode.fetchRequest()
-            fetchRequest.fetchLimit = 1
-            do {
-                let fetchedListNodes = try viewContext.fetch(fetchRequest)
-                listNode = fetchedListNodes.first
-            } catch {
-                // Handle the error
-            }
-        }
     }
 
     private func handleSignInWithApple(result: Result<ASAuthorization, Error>) {
@@ -83,17 +67,6 @@ struct ICloudLoginView: View {
                 print("User is logged in")
                 isLoggedIn = true
                 UserDefaults.standard.set(true, forKey: "isLoggedIn")
-                
-                // Create a new ListNode when the user logs in
-                let newNode = ListNode(context: viewContext)
-                newNode.title = "New List"
-                newNode.timestamp = Date()
-                do {
-                    try viewContext.save()
-                    listNode = newNode
-                } catch {
-                    // Handle the error
-                }
             } else {
                 // User is not logged in or iCloud is not available
                 print("User is not logged in or iCloud is not available")
