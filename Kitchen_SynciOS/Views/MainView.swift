@@ -1,7 +1,7 @@
 import SwiftUI
 import CoreData
 
-struct ListView: View {
+struct MainView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \ListNode.timestamp, ascending: true)],
@@ -16,6 +16,9 @@ struct ListView: View {
     @State private var nodeToAddItem: ListNode? = nil
     @State private var editedNodeTitle = ""
     @State private var newItemTitle = ""
+    
+    @State private var groceryStores: [MKMapItem] = []
+
 
     var body: some View {
         ScrollView {
@@ -97,6 +100,9 @@ struct ListView: View {
                 }
             }
         }
+        .sheet(isPresented: $showingAddNodeModal) {
+                  AddNodeView(isShowing: $showingAddNodeModal, newNodeTitle: $newNodeTitle, addNodeAction: addNode)
+              }
     }
     
     private func addNode() {
@@ -159,5 +165,185 @@ struct ListView: View {
                 // Handle error
             }
         }
+    }
+}
+
+
+struct AddItemView: View {
+    @Binding var isShowing: Bool
+    @Binding var title: String
+    let addItemAction: () -> Void
+
+    var body: some View {
+        VStack {
+            Text("Add a new item")
+                .font(.headline)
+
+            TextField("Title", text: $title)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+
+            Button(action: {
+                addItemAction()
+                isShowing = false
+            }) {
+                Text("Add Item")
+            }
+            .padding()
+        }
+        .frame(width: 300, height: 200)
+        .background(Color.white)
+        .cornerRadius(20)
+        .shadow(radius: 20)
+    }
+}
+
+struct AddNodeView: View {
+    @Binding var isShowing: Bool
+    @Binding var newNodeTitle: String
+    let addNodeAction: () -> Void
+    @State var selectedGroceryStore = ""
+    @State var groceryStores: [String] = [] // This will hold the names of the grocery stores
+
+    var body: some View {
+            ZStack {
+                Color.clear
+                    .onTapGesture {
+                        isShowing = false
+                    }
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    Text("Add Node")
+                        .font(.headline)
+                    Picker(selection: $newNodeTitle, label: Text("Select Grocery Store").font(.headline).foregroundColor(.blue)) {
+                        ForEach(groceryStores, id: \.self) { store in
+                            Text(store).tag(store)
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    .padding()
+                    Button("Add") {
+                        addNodeAction()
+                        isShowing = false
+                    }
+                    .padding()
+                }
+                .padding()
+                .background(Color.white)
+                .cornerRadius(10)
+                .shadow(radius: 5)
+            }
+            .onAppear {
+                findGroceryStores()
+            }
+        }
+
+    func findGroceryStores() {
+        // Create a search request
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = "Grocery Stores"
+
+        // Initialize the search
+        let search = MKLocalSearch(request: request)
+
+        // Start the search
+        search.start { (response, error) in
+            guard let response = response else {
+                print("Error: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+
+            // Update the groceryStores array with the names of the grocery stores
+            self.groceryStores = response.mapItems.map { $0.name ?? "" }
+        }
+    }
+}
+
+
+struct ListItemView: View {
+    @ObservedObject var item: ListItem
+    @Environment(\.managedObjectContext) private var viewContext
+
+    var body: some View {
+        HStack {
+            // Circle that is filled if the item is tapped
+            Circle()
+                .fill(item.isTapped ? Color.green : Color.red)
+                .frame(width: 20, height: 20)
+                .onTapGesture {
+                    withAnimation {
+                        item.isTapped.toggle()
+                        do {
+                            try viewContext.save()
+                            print("Successfully saved context after updating isTapped.")
+                        } catch {
+                            print("Failed to save context after updating isTapped. Error: \(error)")
+                        }
+                    }
+                }
+
+            Text(item.title ?? "No Title") // Use "No Title" if title is nil
+        }
+        .padding()
+        .contextMenu {
+            Button(action: {
+                viewContext.delete(item)
+                do {
+                    try viewContext.save()
+                } catch {
+                    print("Failed to save context after deleting item. Error: \(error)")
+                }
+            }) {
+                Text("Delete")
+                Image(systemName: "trash")
+            }
+        }
+    }
+}
+
+import SwiftUI
+import MapKit
+
+struct MapView: UIViewRepresentable {
+    @Binding var groceryStores: [MKMapItem]
+
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        mapView.delegate = context.coordinator
+        return mapView
+    }
+
+    func updateUIView(_ uiView: MKMapView, context: Context) {
+        updateAnnotations(from: uiView)
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    private func updateAnnotations(from mapView: MKMapView) {
+        mapView.removeAnnotations(mapView.annotations)
+        let annotations = self.groceryStores.map(GroceryStoreAnnotation.init)
+        mapView.addAnnotations(annotations)
+    }
+
+    class Coordinator: NSObject, MKMapViewDelegate {
+        var map: MapView
+
+        init(_ map: MapView) {
+            self.map = map
+        }
+    }
+}
+
+final class GroceryStoreAnnotation: NSObject, MKAnnotation {
+    let title: String?
+    let coordinate: CLLocationCoordinate2D
+
+    init(groceryStore: MKMapItem) {
+        self.title = groceryStore.name
+        self.coordinate = groceryStore.placemark.coordinate
+        super.init()
     }
 }

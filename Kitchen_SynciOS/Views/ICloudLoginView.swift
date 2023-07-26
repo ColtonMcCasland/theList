@@ -11,7 +11,7 @@ struct ICloudLoginView: View {
     var body: some View {
         Group {
             if isLoggedIn {
-                ListView()
+                MainView()
             } else {
                 VStack {
                     // Your UI code for the iCloud login view
