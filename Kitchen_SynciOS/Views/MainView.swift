@@ -45,6 +45,12 @@ struct MainView: View {
                 }
                 
                 VStack {
+                    Button(action: {
+                        addItemAndStore()
+                    }) {
+                        Text("Add")
+                    }.disabled(newItemName.isEmpty && newStoreName.isEmpty) // Disable the button when both fields are empty
+              
                     HStack {
                         Image(systemName: "cart.fill") // Icon for item
                         TextField("Enter item name", text: $newItemName)
@@ -53,15 +59,8 @@ struct MainView: View {
                         Image(systemName: "building.columns.fill") // Icon for store
                         TextField("Enter store name", text: $newStoreName)
                     }
-                    Button(action: {
-                        addItemAndStore()
-                    }) {
-                        Text("Add")
-                    }.disabled(newItemName.isEmpty && newStoreName.isEmpty) // Disable the button when both fields are empty
-                }
+                  }
                 .padding()
-                .background(Color.yellow)
-
             }
         }
         .navigationBarTitle("Grocery List", displayMode: .inline)
