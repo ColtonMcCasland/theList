@@ -16,17 +16,31 @@ struct MainView: View {
             VStack {
                 List {
                     ForEach(stores, id: \.self) { store in
-                        Section(header: HStack {
-                            Text(store.name ?? "Unspecified")
-                        }) {
-                            ForEach(store.itemsArray, id: \.self) { item in
-                                Text(item.name ?? "Unnamed")
-                                // Implement drag and drop functionality here
-                            }
-                            .onDelete(perform: { indexSet in
-                                deleteItem(at: indexSet, from: store)
-                            })
+                        Text(store.name ?? "Unspecified")
+                            .font(.headline) // Make the font larger
+                            .foregroundColor(.blue) // Change the text color to blue
+                            .padding(.vertical) // Add some vertical padding
+                            .contextMenu { // Add a context menu
+                                  Button(action: {
+                                      // Implement rename title functionality here
+                                  }) {
+                                      Text("Rename Title")
+                                      Image(systemName: "pencil")
+                                  }
+                                  Button(action: {
+                                      deleteStore(store: store)
+                                  }) {
+                                      Text("Delete Title")
+                                      Image(systemName: "trash")
+                                  }
+                              }
+                        ForEach(store.itemsArray, id: \.self) { item in
+                            Text(item.name ?? "Unnamed")
+                            // Implement drag and drop functionality here
                         }
+                        .onDelete(perform: { indexSet in
+                            deleteItem(at: indexSet, from: store)
+                        })
                     }
                 }
                 
@@ -43,8 +57,9 @@ struct MainView: View {
                         addItemAndStore()
                     }) {
                         Text("Add")
-                    }
+                    }.disabled(newItemName.isEmpty && newStoreName.isEmpty) // Disable the button when both fields are empty
                 }
+                .padding()
                 .background(Color.yellow)
 
             }
