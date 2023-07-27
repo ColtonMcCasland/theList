@@ -6,6 +6,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @AppStorage("isLoggedIn") private var isLoggedIn = false
     @EnvironmentObject var appDelegate: AppDelegate
+    
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \ListNode.timestamp, ascending: true)],
