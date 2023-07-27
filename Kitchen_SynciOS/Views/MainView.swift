@@ -7,6 +7,8 @@ struct MainView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Store.name, ascending: true)],
         animation: .default)
     private var stores: FetchedResults<Store>
+    @AppStorage("isLoggedIn") private var isLoggedIn = true
+    @State private var showingActionSheet = false
 
     @State private var newItemName = ""
     @State private var newStoreName = ""
@@ -62,10 +64,33 @@ struct MainView: View {
                   }
                 .padding()
             }
-        }
+            .navigationBarItems(trailing:
+                    Button(action: {
+                        showingActionSheet = true
+                    }) {
+                        Image(systemName: "ellipsis.circle")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                    }
+                    .actionSheet(isPresented: $showingActionSheet) {
+                        ActionSheet(title: Text("Options"), buttons: [
+                            .default(Text("Log Out"), action: logOut),
+                            .cancel()
+                        ])
+                    }
+                )
+            }
         .navigationBarTitle("Grocery List", displayMode: .inline)
 
     }
+    
+    private func logOut() {
+            // Perform any necessary log out actions here...
+
+            // Then set isLoggedIn to false to return to the ICloudLoginView
+            isLoggedIn = false
+            UserDefaults.standard.set(false, forKey: "isLoggedIn")
+        }
 
     func addItemAndStore() {
         let store: Store
