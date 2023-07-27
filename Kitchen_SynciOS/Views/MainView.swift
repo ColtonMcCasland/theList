@@ -12,17 +12,19 @@ struct MainView: View {
     var body: some View {
         if isLoggedIn {
             NavigationView {
-                List {
-                    ForEach(groceryItems) { item in
-                        CardView(item: item)
-                            .onTapGesture {
-                                if let index = groceryItems.firstIndex(where: { $0.id == item.id }) {
-                                    groceryItems[index].isDone.toggle()
+                VStack {
+                    
+                    List {
+                        ForEach(groceryItems) { item in
+                            CardView(item: item)
+                                .onTapGesture {
+                                    if let index = groceryItems.firstIndex(where: { $0.id == item.id }) {
+                                        groceryItems[index].isDone.toggle()
+                                    }
                                 }
-                            }
+                        }
                     }
                 }
-                .navigationBarTitle("Grocery List", displayMode: .inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Menu {
@@ -51,6 +53,8 @@ struct MainView: View {
                     AddStoreView(newStoreName: $newStoreName, stores: $stores)
                 }
             }
+            .navigationBarTitle("Grocery List", displayMode: .inline)
+
         } else {
             ICloudLoginView()
         }
