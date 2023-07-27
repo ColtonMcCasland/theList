@@ -14,16 +14,21 @@ struct MainView: View {
             ZStack {
                 NavigationView {
                     List {
-                        ForEach(groceryItems) { item in
-                            CardView(item: item)
-                                .onTapGesture {
-                                    if let index = groceryItems.firstIndex(where: { $0.id == item.id }) {
-                                        groceryItems[index].isDone.toggle()
-                                    }
+                        ForEach(Array(Dictionary(grouping: groceryItems, by: { $0.store }).keys), id: \.self) { store in
+                            Section(header: Text(store)) {
+                                ForEach(Dictionary(grouping: groceryItems, by: { $0.store })[store]!) { item in
+                                    CardView(item: item)
+                                        .onTapGesture {
+                                            if let index = groceryItems.firstIndex(where: { $0.id == item.id }) {
+                                                groceryItems[index].isDone.toggle()
+                                            }
+                                        }
                                 }
+                            }
                         }
                     }
-                    .navigationBarTitle("Grocery List", displayMode: .inline)
+                    .listStyle(GroupedListStyle())
+                    .navigationBarTitle("Kitchen_Sync", displayMode: .inline)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
                             Menu {
@@ -59,9 +64,10 @@ struct MainView: View {
                         Button(action: {
                             showingAddItemView = true
                         }) {
-                            Image(systemName: "plus")
+                            Image(systemName: "plus.app")
+                                .font(.system(size: 30)) // Adjust the size as needed
                                 .padding()
-                                .background(Color.blue)
+                                .background(Color.yellow)
                                 .foregroundColor(.white)
                                 .clipShape(Circle())
                         }
@@ -78,6 +84,7 @@ struct MainView: View {
 
 
 
+
 struct CardView: View {
     let item: GroceryItem
 
@@ -85,15 +92,12 @@ struct CardView: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(item.name)
-                    .font(.headline)
-                Text(item.store)
-                    .font(.subheadline)
+                    .font(.body)
             }
             Spacer()
             Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
         }
-        .padding()
-        .background(Color(.systemGray6))
+//        .background(Color(.systemGray6))
         .cornerRadius(10)
         .shadow(radius: 5)
     }
@@ -115,15 +119,17 @@ struct AddItemView: View {
             }
             .navigationTitle("Add Item")
             .navigationBarItems(trailing: Button("Save") {
-                let newItem = GroceryItem(name: newItemName, store: newStoreName)
-                groceryItems.append(newItem)
-                newItemName = ""
-                newStoreName = ""
-                presentationMode.wrappedValue.dismiss()
-            })
+                    let newItem = GroceryItem(name: newItemName, store: newStoreName)
+                    groceryItems.append(newItem)
+                    newItemName = ""
+                    newStoreName = ""
+                    presentationMode.wrappedValue.dismiss()
+            }
+            .disabled(newItemName.isEmpty || newStoreName.isEmpty))
         }
     }
 }
+
 
 
 struct AddStoreView: View {
