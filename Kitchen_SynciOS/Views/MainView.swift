@@ -1,5 +1,6 @@
 import SwiftUI
 import CoreData
+import UniformTypeIdentifiers
 
 struct MainView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -14,37 +15,21 @@ struct MainView: View {
     @State private var newStoreName = ""
 
     var body: some View {
-        NavigationView {
-            VStack {
-                List {
-                    ForEach(stores, id: \.self) { store in
-                        Text(store.name ?? "Unspecified")
-                            .font(.headline) // Make the font larger
-                            .foregroundColor(.blue) // Change the text color to blue
-                            .padding(.vertical) // Add some vertical padding
-                            .contextMenu { // Add a context menu
-                                  Button(action: {
-                                      // Implement rename title functionality here
-                                  }) {
-                                      Text("Rename Title")
-                                      Image(systemName: "pencil")
-                                  }
-                                  Button(action: {
-                                      deleteStore(store: store)
-                                  }) {
-                                      Text("Delete Title")
-                                      Image(systemName: "trash")
-                                  }
-                              }
-                        ForEach(store.itemsArray, id: \.self) { item in
-                            Text(item.name ?? "Unnamed")
-                            // Implement drag and drop functionality here
+            NavigationView {
+                VStack {
+                    List {
+                        ForEach(stores, id: \.self) { store in
+                            Section(header: Text(store.name ?? "Unspecified")) {
+                                ForEach(store.itemsArray, id: \.self) { item in
+                                    DraggableCellView(item: item)
+                                        .onDrop(of: [UTType.data.identifier], delegate: DropDelegate(viewContext: viewContext, store: store))
+                                }
+                                .onDelete(perform: { indexSet in
+                                    deleteItem(at: indexSet, from: store)
+                                })
+                            }
                         }
-                        .onDelete(perform: { indexSet in
-                            deleteItem(at: indexSet, from: store)
-                        })
                     }
-                }
                 
                 VStack {
                     Button(action: {
@@ -83,6 +68,32 @@ struct MainView: View {
         .navigationBarTitle("Grocery List", displayMode: .inline)
 
     }
+    
+    struct DropDelegate: SwiftUI.DropDelegate {
+            var viewContext: NSManagedObjectContext
+            var store: Store
+
+            func performDrop(info: DropInfo) -> Bool {
+                guard let itemProvider = info.itemProviders(for: [UTType.data.identifier]).first else { return false }
+                itemProvider.loadDataRepresentation(forTypeIdentifier: UTType.data.identifier) { (data, error) in
+                    guard let data = data, let itemData = try? JSONDecoder().decode(ItemData.self, from: data) else { return }
+                    DispatchQueue.main.async {
+                        let newItem = GroceryItem(context: viewContext)
+                        newItem.name = itemData.name
+                        newItem.store = store
+                        do {
+                            try viewContext.save()
+                        } catch {
+                            let nserror = error as NSError
+                            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                        }
+                    }
+                }
+                return true
+            }
+        }
+
+
     
     private func logOut() {
             // Perform any necessary log out actions here...
@@ -161,6 +172,40 @@ struct MainView: View {
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
+    
+    struct DraggableCellView: View {
+        var item: GroceryItem
+        @State private var isDragOver = false
+
+        var body: some View {
+            ZStack {
+                if isDragOver {
+                    // This is the appearance of the cell when a drag operation is over it.
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.gray.opacity(0.5))
+                } else {
+                    // This is the normal appearance of the cell.
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.white)
+                }
+                Text(item.name ?? "Unnamed")
+            }
+            .frame(height: 50)
+            .onDrag {
+                let itemData = ItemData(name: item.name ?? "", storeName: item.store?.name ?? "")
+                let encoder = JSONEncoder()
+                if let data = try? encoder.encode(itemData) {
+                    return NSItemProvider(item: data as NSData, typeIdentifier: UTType.data.identifier)
+                } else {
+                    return NSItemProvider()
+                }
+            }
+            .onDrop(of: [UTType.data.identifier], isTargeted: $isDragOver) { providers, location in
+                // You might want to handle the drop here, or you might handle it in the onDrop of the parent view.
+                false
+            }
+        }
+    }
 }
 
 extension Store {
@@ -171,4 +216,9 @@ extension Store {
             $0.name ?? "" < $1.name ?? ""
         }
     }
+}
+
+struct ItemData: Codable {
+    var name: String
+    var storeName: String
 }
