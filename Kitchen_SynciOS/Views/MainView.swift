@@ -6,113 +6,56 @@ struct MainView: View {
     @State private var newStoreName = ""
     @State private var showingAddItemView = false
     @State private var showingAddStoreView = false
-    @State private var showingFloatingMenu = false
+    @State private var stores = [String]()
     @AppStorage("isLoggedIn") var isLoggedIn = true
 
     var body: some View {
-        if isLoggedIn { // Add this line
-            ZStack {
-                NavigationView {
-                    List {
-                        ForEach(groceryItems) { item in
-                            CardView(item: item)
-                                .onTapGesture {
-                                    if let index = groceryItems.firstIndex(where: { $0.id == item.id }) {
-                                        groceryItems[index].isDone.toggle()
-                                    }
+        if isLoggedIn {
+            NavigationView {
+                List {
+                    ForEach(groceryItems) { item in
+                        CardView(item: item)
+                            .onTapGesture {
+                                if let index = groceryItems.firstIndex(where: { $0.id == item.id }) {
+                                    groceryItems[index].isDone.toggle()
                                 }
-                        }
-                    }
-                    .navigationBarTitle("Grocery List", displayMode: .inline)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Menu {
-                                Button(action: {
-                                    // Add your action for Account Settings here
-                                    print("User logged out")
-                                    isLoggedIn = false // Add this line
-                                }) {
-                                    Label("Log out", systemImage: "arrow.backward.square")
-                                }
-                            } label: {
-                                Image(systemName: "ellipsis.circle")
                             }
+                    }
+                }
+                .navigationBarTitle("Grocery List", displayMode: .inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Menu {
+                            Button(action: {
+                                print("User logged out")
+                                isLoggedIn = false
+                            }) {
+                                Label("Log out", systemImage: "arrow.backward.square")
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis.circle")
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            showingAddItemView = true
+                        }) {
+                            Image(systemName: "plus")
                         }
                     }
                 }
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        FloatingMenu(isOpen: $showingFloatingMenu, addStoreAction: {
-                            showingAddStoreView = true
-                        }, addItemAction: {
-                            showingAddItemView = true
-                        })
-                    }
-                }
-                .padding()
                 .sheet(isPresented: $showingAddItemView) {
                     AddItemView(newItemName: $newItemName, groceryItems: $groceryItems)
                 }
                 .sheet(isPresented: $showingAddStoreView) {
-                    AddStoreView(newStoreName: $newStoreName)
+                    AddStoreView(newStoreName: $newStoreName, stores: $stores)
                 }
             }
-        } else { // Add this line
-            // Add your LoginView here
+        } else {
             ICloudLoginView()
-        } // Add this line
-    }
-}
-
-// ... rest of your code ...
-
-
-// ... rest of your code ...
-
-
-struct FloatingMenu: View {
-    @Binding var isOpen: Bool
-    let addStoreAction: () -> Void
-    let addItemAction: () -> Void
-
-    var body: some View {
-        VStack {
-            if isOpen {
-                Button(action: addItemAction) {
-                    Image(systemName: "cart.fill")
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .clipShape(Circle())
-                }
-                Button(action: addStoreAction) {
-                    Image(systemName: "building.fill")
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .clipShape(Circle())
-                }
-            }
-            Button(action: {
-                withAnimation {
-                    isOpen.toggle()
-                }
-            }) {
-                Image(systemName: "plus.circle.fill")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .clipShape(Circle())
-                    .rotationEffect(.degrees(isOpen ? 45 : 0))
-            }
         }
-        .transition(.move(edge: .trailing))
     }
 }
-
-// ... rest of your code ...
 
 
 struct CardView: View {
@@ -139,26 +82,33 @@ struct CardView: View {
 struct AddItemView: View {
     @Binding var newItemName: String
     @Binding var groceryItems: [GroceryItem]
+    @State private var newStoreName = ""
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         NavigationView {
             Form {
                 TextField("Item Name", text: $newItemName)
+                TextField("Store", text: $newStoreName)
+                    .autocapitalization(.words)
+                    .disableAutocorrection(false)
             }
             .navigationTitle("Add Item")
             .navigationBarItems(trailing: Button("Save") {
-                let newItem = GroceryItem(name: newItemName, store: "Default Store")
+                let newItem = GroceryItem(name: newItemName, store: newStoreName)
                 groceryItems.append(newItem)
                 newItemName = ""
+                newStoreName = ""
                 presentationMode.wrappedValue.dismiss()
             })
         }
     }
 }
 
+
 struct AddStoreView: View {
     @Binding var newStoreName: String
+    @Binding var stores: [String]
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -168,13 +118,14 @@ struct AddStoreView: View {
             }
             .navigationTitle("Add Store")
             .navigationBarItems(trailing: Button("Save") {
-                // Add your action for adding a new store here
+                stores.append(newStoreName)
                 newStoreName = ""
                 presentationMode.wrappedValue.dismiss()
             })
         }
     }
 }
+
 
 struct GroceryItem: Identifiable {
     let id = UUID()
