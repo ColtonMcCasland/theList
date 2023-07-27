@@ -1,161 +1,80 @@
 import SwiftUI
+import MobileCoreServices
 
 struct MainView: View {
-    @State private var groceryItems = [GroceryItem]()
+    @State private var groceryItems = [GroceryItem(name: "Milk", store: "Store 1"), GroceryItem(name: "Bread", store: "Store 1"), GroceryItem(name: "Eggs", store: "Store 2")]
     @State private var newItemName = ""
     @State private var newStoreName = ""
-    @State private var showingAddItemView = false
-    @State private var showingAddStoreView = false
-    @State private var stores = [String]()
-    @AppStorage("isLoggedIn") var isLoggedIn = true
+    @State private var stores = ["Store 1", "Store 2", "Store 3"]
 
     var body: some View {
-        if isLoggedIn {
-            ZStack {
-                NavigationView {
-                    List {
-                        ForEach(Array(Dictionary(grouping: groceryItems, by: { $0.store }).keys), id: \.self) { store in
-                            Section(header: Text(store)) {
-                                ForEach(Dictionary(grouping: groceryItems, by: { $0.store })[store]!) { item in
-                                    CardView(item: item)
-                                        .onTapGesture {
-                                            if let index = groceryItems.firstIndex(where: { $0.id == item.id }) {
-                                                groceryItems[index].isDone.toggle()
-                                            }
-                                        }
+        VStack {
+            List {
+                ForEach(stores, id: \.self) { store in
+                    Section(header: Text(store).onDrop(of: [kUTTypePlainText as String], delegate: DropViewDelegate(store: store, items: $groceryItems))) {
+                        ForEach(groceryItems.filter { $0.store == store }) { item in
+                            Text(item.name)
+                                .onDrag {
+                                    let data = item.id.uuidString.data(using: .utf8)!
+                                    let itemProvider = NSItemProvider(item: data as NSSecureCoding, typeIdentifier: kUTTypePlainText as String)
+                                    return itemProvider
                                 }
-                            }
                         }
-                    }
-                    .listStyle(GroupedListStyle())
-                    .navigationBarTitle("Kitchen_Sync", displayMode: .inline)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Menu {
-                                Button(action: {
-                                    print("User logged out")
-                                    isLoggedIn = false
-                                }) {
-                                    Label("Log out", systemImage: "arrow.backward.square")
-                                }
-                            } label: {
-                                Image(systemName: "ellipsis.circle")
-                            }
-                        }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(action: {
-                                showingAddItemView = true
-                            }) {
-                                Image(systemName: "square.and.arrow.up")
-                            }
-                        }
-                    }
-                    .sheet(isPresented: $showingAddItemView) {
-                        AddItemView(newItemName: $newItemName, groceryItems: $groceryItems)
-                    }
-                    .sheet(isPresented: $showingAddStoreView) {
-                        AddStoreView(newStoreName: $newStoreName, stores: $stores)
-                    }
-                }
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            showingAddItemView = true
-                        }) {
-                            Image(systemName: "plus.app")
-                                .font(.system(size: 30)) // Adjust the size as needed
-                                .padding()
-                                .background(Color.yellow)
-                                .foregroundColor(.white)
-                                .clipShape(Circle())
-                        }
-                        .padding(.bottom, 20)
-                        .padding(.trailing, 20)
                     }
                 }
             }
-        } else {
-            ICloudLoginView()
+            
+            VStack {
+                TextField("Enter item name", text: $newItemName)
+                TextField("Enter store name", text: $newStoreName)
+                Button(action: {
+                    addItemAndStore()
+                }) {
+                    Text("Add")
+                }
+            }
+            .padding()
+        }
+    }
+
+    func addItemAndStore() {
+        if !newItemName.isEmpty {
+            let newItem = GroceryItem(name: newItemName, store: newStoreName.isEmpty ? "Unspecified" : newStoreName)
+            groceryItems.append(newItem)
+            newItemName = ""
+        }
+
+        if !newStoreName.isEmpty && !stores.contains(newStoreName) {
+            stores.append(newStoreName)
+            newStoreName = ""
         }
     }
 }
-
-
-
-
-struct CardView: View {
-    let item: GroceryItem
-
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(item.name)
-                    .font(.body)
-            }
-            Spacer()
-            Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
-        }
-//        .background(Color(.systemGray6))
-        .cornerRadius(10)
-        .shadow(radius: 5)
-    }
-}
-
-struct AddItemView: View {
-    @Binding var newItemName: String
-    @Binding var groceryItems: [GroceryItem]
-    @State private var newStoreName = ""
-    @Environment(\.presentationMode) var presentationMode
-
-    var body: some View {
-        NavigationView {
-            Form {
-                TextField("Item Name", text: $newItemName)
-                TextField("Store", text: $newStoreName)
-                    .autocapitalization(.words)
-                    .disableAutocorrection(false)
-            }
-            .navigationTitle("Add Item")
-            .navigationBarItems(trailing: Button("Save") {
-                    let newItem = GroceryItem(name: newItemName, store: newStoreName)
-                    groceryItems.append(newItem)
-                    newItemName = ""
-                    newStoreName = ""
-                    presentationMode.wrappedValue.dismiss()
-            }
-            .disabled(newItemName.isEmpty || newStoreName.isEmpty))
-        }
-    }
-}
-
-
-
-struct AddStoreView: View {
-    @Binding var newStoreName: String
-    @Binding var stores: [String]
-    @Environment(\.presentationMode) var presentationMode
-
-    var body: some View {
-        NavigationView {
-            Form {
-                TextField("Store Name", text: $newStoreName)
-            }
-            .navigationTitle("Add Store")
-            .navigationBarItems(trailing: Button("Save") {
-                stores.append(newStoreName)
-                newStoreName = ""
-                presentationMode.wrappedValue.dismiss()
-            })
-        }
-    }
-}
-
 
 struct GroceryItem: Identifiable {
     let id = UUID()
     var name: String
     var store: String
-    var isDone = false
+}
+
+struct DropViewDelegate: DropDelegate {
+    let store: String
+    @Binding var items: [GroceryItem]
+
+    func performDrop(info: DropInfo) -> Bool {
+        if let itemProvider = info.itemProviders(for: [kUTTypePlainText as String]).first {
+            itemProvider.loadItem(forTypeIdentifier: kUTTypePlainText as String, options: nil) { (item, error) in
+                DispatchQueue.main.async {
+                    if let itemId = item as? Data, let idString = String(data: itemId, encoding: .utf8), let uuid = UUID(uuidString: idString) {
+                        if let index = self.items.firstIndex(where: { $0.id == uuid }) {
+                            self.items[index].store = self.store
+                        }
+                    }
+                }
+            }
+            return true
+        } else {
+            return false
+        }
+    }
 }
