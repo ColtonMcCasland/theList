@@ -1,27 +1,31 @@
 import SwiftUI
-import MobileCoreServices
+import CoreData
 
 struct MainView: View {
-    @State private var groceryItems = [GroceryItem(name: "Milk", store: "Store 1"), GroceryItem(name: "Bread", store: "Store 1"), GroceryItem(name: "Eggs", store: "Store 2")]
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \GroceryItem.name, ascending: true)],
+        animation: .default)
+    private var items: FetchedResults<GroceryItem>
+
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Store.name, ascending: true)],
+        animation: .default)
+    private var stores: FetchedResults<Store>
+
     @State private var newItemName = ""
     @State private var newStoreName = ""
-    @State private var stores = ["Store 1", "Store 2", "Store 3"]
 
     var body: some View {
         VStack {
-            List {
-                ForEach(stores, id: \.self) { store in
-                    Section(header: Text(store).onDrop(of: [kUTTypePlainText as String], delegate: DropViewDelegate(store: store, items: $groceryItems))) {
-                        ForEach(groceryItems.filter { $0.store == store }) { item in
-                            Text(item.name)
-                                .onDrag {
-                                    let data = item.id.uuidString.data(using: .utf8)!
-                                    let itemProvider = NSItemProvider(item: data as NSSecureCoding, typeIdentifier: kUTTypePlainText as String)
-                                    return itemProvider
-                                }
-                        }
+            ForEach(stores, id: \.self) { store in
+                DraggableList(store: store, items: Binding(get: {
+                    Array(self.items.filter { $0.store == store })
+                }, set: { (newItems) in
+                    for item in newItems {
+                        item.store = store
                     }
-                }
+                }))
             }
             
             VStack {
@@ -38,43 +42,110 @@ struct MainView: View {
     }
 
     func addItemAndStore() {
-        if !newItemName.isEmpty {
-            let newItem = GroceryItem(name: newItemName, store: newStoreName.isEmpty ? "Unspecified" : newStoreName)
-            groceryItems.append(newItem)
-            newItemName = ""
+        let newStore: Store
+        if !newStoreName.isEmpty {
+            newStore = Store(context: viewContext)
+            newStore.name = newStoreName
+        } else {
+            newStore = Store(context: viewContext)
+            newStore.name = "Unspecified"
         }
 
-        if !newStoreName.isEmpty && !stores.contains(newStoreName) {
-            stores.append(newStoreName)
-            newStoreName = ""
+        if !newItemName.isEmpty {
+            let newItem = GroceryItem(context: viewContext)
+            newItem.name = newItemName
+            newItem.store = newStore
         }
+
+        do {
+            try viewContext.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+
+        newItemName = ""
+        newStoreName = ""
     }
 }
 
-struct GroceryItem: Identifiable {
-    let id = UUID()
-    var name: String
-    var store: String
-}
-
-struct DropViewDelegate: DropDelegate {
-    let store: String
+struct DraggableList: UIViewRepresentable {
+    var store: Store
     @Binding var items: [GroceryItem]
 
-    func performDrop(info: DropInfo) -> Bool {
-        if let itemProvider = info.itemProviders(for: [kUTTypePlainText as String]).first {
-            itemProvider.loadItem(forTypeIdentifier: kUTTypePlainText as String, options: nil) { (item, error) in
-                DispatchQueue.main.async {
-                    if let itemId = item as? Data, let idString = String(data: itemId, encoding: .utf8), let uuid = UUID(uuidString: idString) {
-                        if let index = self.items.firstIndex(where: { $0.id == uuid }) {
-                            self.items[index].store = self.store
+    func makeUIView(context: Context) -> UITableView {
+        let tableView = UITableView()
+        tableView.dataSource = context.coordinator
+        tableView.delegate = context.coordinator
+        tableView.dragDelegate = context.coordinator
+        tableView.dropDelegate = context.coordinator
+        tableView.dragInteractionEnabled = true
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        return tableView
+    }
+
+    func updateUIView(_ uiView: UITableView, context: Context) {
+        uiView.reloadData()
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate, UITableViewDragDelegate, UITableViewDropDelegate {
+        var parent: DraggableList
+
+        init(_ parent: DraggableList) {
+            self.parent = parent
+        }
+
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return parent.items.count
+        }
+
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            cell.textLabel?.text = parent.items[indexPath.row].name
+            return cell
+        }
+
+        func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+            let item = parent.items[indexPath.row]
+            let itemProvider = NSItemProvider(object: item.id.uuidString as NSString)
+            let dragItem = UIDragItem(itemProvider: itemProvider)
+            dragItem.localObject = item
+            return [dragItem]
+        }
+
+        func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+            let destinationIndexPath: IndexPath
+            if let indexPath = coordinator.destinationIndexPath {
+                destinationIndexPath = indexPath
+            } else {
+                let row = tableView.numberOfRows(inSection: 0)
+                destinationIndexPath = IndexPath(row: row, section: 0)
+            }
+
+            coordinator.session.loadObjects(ofClass: NSString.self) { items in
+                if let idString = items.first as? String, let uuid = UUID(uuidString: idString) {
+                    DispatchQueue.main.async {
+                        let sourceIndex = self.parent.items.firstIndex(where: { $0.id == uuid })!
+                        let item = self.parent.items.remove(at: sourceIndex)
+                        self.parent.items.insert(item, at: destinationIndexPath.row)
+                        item.store = self.parent.store
+                        do {
+                            try self.parent.viewContext.save()
+                        } catch {
+                            let nserror = error as NSError
+                            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
                         }
                     }
                 }
             }
-            return true
-        } else {
-            return false
+        }
+
+        func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+            return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
         }
     }
 }

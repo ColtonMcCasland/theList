@@ -9,9 +9,9 @@ struct ContentView: View {
     
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \ListNode.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Store.timestamp, ascending: true)],
         animation: .default)
-    private var listNodes: FetchedResults<ListNode>
+    private var listNodes: FetchedResults<Store>
 
     @State private var showingAddNodeView = false
     @State private var newNodeTitle = ""
