@@ -11,9 +11,8 @@ struct MainView: View {
 
     var body: some View {
         if isLoggedIn {
-            NavigationView {
-                VStack {
-                    
+            ZStack {
+                NavigationView {
                     List {
                         ForEach(groceryItems) { item in
                             CardView(item: item)
@@ -24,42 +23,59 @@ struct MainView: View {
                                 }
                         }
                     }
-                }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Menu {
-                            Button(action: {
-                                print("User logged out")
-                                isLoggedIn = false
-                            }) {
-                                Label("Log out", systemImage: "arrow.backward.square")
+                    .navigationBarTitle("Grocery List", displayMode: .inline)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Menu {
+                                Button(action: {
+                                    print("User logged out")
+                                    isLoggedIn = false
+                                }) {
+                                    Label("Log out", systemImage: "arrow.backward.square")
+                                }
+                            } label: {
+                                Image(systemName: "ellipsis.circle")
                             }
-                        } label: {
-                            Image(systemName: "ellipsis.circle")
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                showingAddItemView = true
+                            }) {
+                                Image(systemName: "square.and.arrow.up")
+                            }
                         }
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                    .sheet(isPresented: $showingAddItemView) {
+                        AddItemView(newItemName: $newItemName, groceryItems: $groceryItems)
+                    }
+                    .sheet(isPresented: $showingAddStoreView) {
+                        AddStoreView(newStoreName: $newStoreName, stores: $stores)
+                    }
+                }
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
                         Button(action: {
                             showingAddItemView = true
                         }) {
                             Image(systemName: "plus")
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .clipShape(Circle())
                         }
+                        .padding(.bottom, 20)
+                        .padding(.trailing, 20)
                     }
                 }
-                .sheet(isPresented: $showingAddItemView) {
-                    AddItemView(newItemName: $newItemName, groceryItems: $groceryItems)
-                }
-                .sheet(isPresented: $showingAddStoreView) {
-                    AddStoreView(newStoreName: $newStoreName, stores: $stores)
-                }
             }
-            .navigationBarTitle("Grocery List", displayMode: .inline)
-
         } else {
             ICloudLoginView()
         }
     }
 }
+
 
 
 struct CardView: View {
