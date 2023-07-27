@@ -45,8 +45,8 @@ struct MainView: View {
                         Text("Add")
                     }
                 }
-                .padding()
                 .background(Color.yellow)
+
             }
         }
         .navigationBarTitle("Grocery List", displayMode: .inline)
