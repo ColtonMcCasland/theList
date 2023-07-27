@@ -15,29 +15,30 @@ struct MainView: View {
     @State private var newStoreName = ""
 
     var body: some View {
-            NavigationView {
-                VStack {
-                    List {
-                        ForEach(stores, id: \.self) { store in
-                            Section(header: Text(store.name ?? "Unspecified")) {
-                                ForEach(store.itemsArray, id: \.self) { item in
-                                    DraggableCellView(item: item)
-                                        .onDrop(of: [UTType.data.identifier], delegate: DropDelegate(viewContext: viewContext, store: store))
-                                }
-                                .onDelete(perform: { indexSet in
-                                    deleteItem(at: indexSet, from: store)
-                                })
+        NavigationView {
+            VStack {
+                List {
+                    ForEach(stores, id: \.self) { store in
+                        Section(header: Text(store.name ?? "Unspecified")) {
+                            ForEach(store.itemsArray, id: \.self) { item in
+                                DraggableCellView(item: item)
+                                    .onDrop(of: [UTType.data.identifier], delegate: DropDelegate(viewContext: viewContext, store: store))
                             }
+
+                            .onDelete(perform: { indexSet in
+                                deleteItem(at: indexSet, from: store)
+                            })
                         }
                     }
-                
+                }
+            
                 VStack {
                     Button(action: {
                         addItemAndStore()
                     }) {
                         Text("Add")
                     }.disabled(newItemName.isEmpty && newStoreName.isEmpty) // Disable the button when both fields are empty
-              
+            
                     HStack {
                         Image(systemName: "cart.fill") // Icon for item
                         TextField("Enter item name", text: $newItemName)
@@ -46,41 +47,41 @@ struct MainView: View {
                         Image(systemName: "building.columns.fill") // Icon for store
                         TextField("Enter store name", text: $newStoreName)
                     }
-                  }
+                }
                 .padding()
             }
             .navigationBarItems(trailing:
-                    Button(action: {
-                        showingActionSheet = true
-                    }) {
-                        Image(systemName: "ellipsis.circle")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                    }
-                    .actionSheet(isPresented: $showingActionSheet) {
-                        ActionSheet(title: Text("Options"), buttons: [
-                            .default(Text("Log Out"), action: logOut),
-                            .cancel()
-                        ])
-                    }
-                )
-            }
+                Button(action: {
+                    showingActionSheet = true
+                }) {
+                    Image(systemName: "ellipsis.circle")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                }
+                .actionSheet(isPresented: $showingActionSheet) {
+                    ActionSheet(title: Text("Options"), buttons: [
+                        .default(Text("Log Out"), action: logOut),
+                        .cancel()
+                    ])
+                }
+            )
+        }
         .navigationBarTitle("Grocery List", displayMode: .inline)
-
     }
     
     struct DropDelegate: SwiftUI.DropDelegate {
-            var viewContext: NSManagedObjectContext
-            var store: Store
+        var viewContext: NSManagedObjectContext
+        var store: Store
 
-            func performDrop(info: DropInfo) -> Bool {
-                guard let itemProvider = info.itemProviders(for: [UTType.data.identifier]).first else { return false }
-                itemProvider.loadDataRepresentation(forTypeIdentifier: UTType.data.identifier) { (data, error) in
-                    guard let data = data, let itemData = try? JSONDecoder().decode(ItemData.self, from: data) else { return }
-                    DispatchQueue.main.async {
-                        let newItem = GroceryItem(context: viewContext)
-                        newItem.name = itemData.name
-                        newItem.store = store
+        func performDrop(info: DropInfo) -> Bool {
+            guard let itemProvider = info.itemProviders(for: [UTType.data.identifier]).first else { return false }
+            itemProvider.loadDataRepresentation(forTypeIdentifier: UTType.data.identifier) { (data, error) in
+                guard let data = data, let itemData = try? JSONDecoder().decode(ItemData.self, from: data) else { return }
+                DispatchQueue.main.async {
+                    let fetchRequest: NSFetchRequest<GroceryItem> = GroceryItem.fetchRequest()
+                    fetchRequest.predicate = NSPredicate(format: "id == %@", itemData.id as CVarArg)
+                    if let items = try? viewContext.fetch(fetchRequest), let item = items.first {
+                        item.store = store
                         do {
                             try viewContext.save()
                         } catch {
@@ -89,19 +90,22 @@ struct MainView: View {
                         }
                     }
                 }
-                return true
             }
+            return true
         }
+    }
 
 
-    
+
+
+
     private func logOut() {
-            // Perform any necessary log out actions here...
+        // Perform any necessary log out actions here...
 
-            // Then set isLoggedIn to false to return to the ICloudLoginView
-            isLoggedIn = false
-            UserDefaults.standard.set(false, forKey: "isLoggedIn")
-        }
+        // Then set isLoggedIn to false to return to the ICloudLoginView
+        isLoggedIn = false
+        UserDefaults.standard.set(false, forKey: "isLoggedIn")
+    }
 
     func addItemAndStore() {
         let store: Store
@@ -192,7 +196,7 @@ struct MainView: View {
             }
             .frame(height: 50)
             .onDrag {
-                let itemData = ItemData(name: item.name ?? "", storeName: item.store?.name ?? "")
+                let itemData = ItemData(id: item.id ?? UUID(), name: item.name ?? "", storeName: item.store?.name ?? "")
                 let encoder = JSONEncoder()
                 if let data = try? encoder.encode(itemData) {
                     return NSItemProvider(item: data as NSData, typeIdentifier: UTType.data.identifier)
@@ -200,12 +204,16 @@ struct MainView: View {
                     return NSItemProvider()
                 }
             }
+
             .onDrop(of: [UTType.data.identifier], isTargeted: $isDragOver) { providers, location in
                 // You might want to handle the drop here, or you might handle it in the onDrop of the parent view.
                 false
             }
         }
     }
+
+    
+    
 }
 
 extension Store {
@@ -219,6 +227,8 @@ extension Store {
 }
 
 struct ItemData: Codable {
+    var id: UUID
     var name: String
     var storeName: String
 }
+
