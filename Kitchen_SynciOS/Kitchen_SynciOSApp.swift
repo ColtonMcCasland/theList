@@ -15,6 +15,7 @@ struct Kitchen_SyncApp: App {
                 .onAppear {
                     appDelegate.sendRecordsToWatch()
                 }
+                .accentColor(Color.black)
         }
     }
 }
