@@ -2,7 +2,7 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct ViewController: View {
     @Environment(\.managedObjectContext) private var viewContext
     @AppStorage("isLoggedIn") private var isLoggedIn = false
     @EnvironmentObject var appDelegate: AppDelegate

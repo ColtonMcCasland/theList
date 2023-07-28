@@ -9,7 +9,7 @@ struct Kitchen_SyncApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ViewController()
                 .environment(\.managedObjectContext, appDelegate.persistenceController.container.viewContext)
                 .environmentObject(appDelegate)
                 .onAppear {
