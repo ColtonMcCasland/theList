@@ -2,7 +2,7 @@ import CoreData
 import SwiftUI
 
 
-func addItemAndStore(newItemName: String, newStoreName: String, stores: FetchedResults<Store>, viewContext: NSManagedObjectContext) {
+func addItemAndStore(newItemName: String, newStoreName: String, stores: FetchedResults<Store>, viewContext: NSManagedObjectContext, refresh: Binding<Bool>) {
     let formattedStoreName = newStoreName.lowercased().capitalized
     let formattedItemName = newItemName.lowercased().capitalized
 
@@ -31,6 +31,7 @@ func addItemAndStore(newItemName: String, newStoreName: String, stores: FetchedR
 
     do {
         try viewContext.save()
+        refresh.wrappedValue.toggle()  // Toggle the refresh state variable to refresh the view
     } catch {
         let nserror = error as NSError
         fatalError("Unresolved error \(nserror), \(nserror.userInfo)")

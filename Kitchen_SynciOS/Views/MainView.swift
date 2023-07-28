@@ -22,14 +22,14 @@ struct MainView: View {
             VStack {
                 List {
                     ForEach(stores, id: \.self) { store in
-                        StoreView(store: store, refresh: $refresh)
+                        StoreView(store: store)
                     }
                 }
                 VStack {
                       TextField("New item name", text: $newItemName)
                       TextField("New store name", text: $newStoreName)
                       Button("Add Item and Store") {
-                          addItemAndStore(newItemName: newItemName, newStoreName: newStoreName, stores: stores, viewContext: viewContext)
+                          addItemAndStore(newItemName: newItemName, newStoreName: newStoreName, stores: stores, viewContext: viewContext, refresh: $refresh)
                           newItemName = ""
                           newStoreName = ""
                       }.disabled(newItemName.isEmpty && newStoreName.isEmpty) // Disable the button when both fields are empty
