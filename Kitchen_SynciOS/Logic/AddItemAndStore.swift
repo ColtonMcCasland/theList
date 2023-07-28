@@ -1,7 +1,6 @@
 import CoreData
 import SwiftUI
 
-
 func addItemAndStore(newItemName: String, newStoreName: String, stores: FetchedResults<Store>, viewContext: NSManagedObjectContext, refresh: Binding<Bool>) {
     let formattedStoreName = newStoreName.lowercased().capitalized
     let formattedItemName = newItemName.lowercased().capitalized
