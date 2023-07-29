@@ -20,7 +20,7 @@ struct ContentView: View {
                 }
             }
             .onTapGesture {
-                watchManager.toggleIsTapped(for: index)
+                watchManager.toggleIsBought(for: index)
             }
         }
     }

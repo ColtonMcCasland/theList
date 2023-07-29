@@ -105,7 +105,7 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
         }
     }
     
-    func toggleIsTapped(for recordIndex: Int) {
+    func toggleIsBought(for recordIndex: Int) {
         records[recordIndex].isTapped.toggle() // Update the state immediately
 
         // Send a message to the iOS app to update the corresponding item's isTapped property

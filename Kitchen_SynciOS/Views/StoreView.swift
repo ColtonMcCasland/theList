@@ -14,6 +14,11 @@ struct StoreView: View {
                 }
                 .onTapGesture {
                     item.isBought.toggle()
+                    do {
+                        try viewContext.save()
+                    } catch {
+                        // handle the Core Data error
+                    }
                     checkAndDeleteStoreIfAllItemsBought(store: store)
                 }
             }
