@@ -16,6 +16,7 @@ struct MainView: View {
     
     @State private var refresh = false
 
+    @State private var isAddItemAndStoreVisible = false
 
     var body: some View {
         NavigationView {
@@ -25,18 +26,45 @@ struct MainView: View {
                         StoreView(store: store)
                     }
                 }
-                VStack {
-                      TextField("New item name", text: $newItemName)
-                      TextField("New store name", text: $newStoreName)
-                      Button("Add Item and Store") {
-                          addItemAndStore(newItemName: newItemName, newStoreName: newStoreName, stores: stores, viewContext: viewContext, refresh: $refresh)
-                          newItemName = ""
-                          newStoreName = ""
-                      }.disabled(newItemName.isEmpty && newStoreName.isEmpty) // Disable the button when both fields are empty
+
+                GeometryReader { geometry in
+                    ZStack(alignment: .top) {
+                        VStack {
+                            TextField("New item name", text: $newItemName)
+                                .padding()
+                                .opacity(isAddItemAndStoreVisible ? 1 : 0)
+                            TextField("New store name", text: $newStoreName)
+                                .padding()
+                                .opacity(isAddItemAndStoreVisible ? 1 : 0)
+                            Button("Add Item and Store") {
+                                addItemAndStore(newItemName: newItemName, newStoreName: newStoreName, stores: stores, viewContext: viewContext, refresh: $refresh)
+                                newItemName = ""
+                                newStoreName = ""
+                            }
+                            .disabled(newItemName.isEmpty && newStoreName.isEmpty)
+                            .padding()
+                        }
+                        .transition(.move(edge: .bottom))
+
+                        Button(action: {
+                            withAnimation {
+                                self.isAddItemAndStoreVisible.toggle()
+                            }
+                        }) {
+                            Image(systemName: isAddItemAndStoreVisible ? "chevron.down" : "chevron.up")
+                                .resizable()
+                                .frame(width: 16, height: 16)
+                        }
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(Circle())
+                        .offset(y: isAddItemAndStoreVisible ? geometry.size.height - 30 : 0)
+                    }
                 }
-                .padding()
+                .frame(height: isAddItemAndStoreVisible ? 200 : 50)
+                .animation(.spring(), value: isAddItemAndStoreVisible)
             }
-            .id(refresh)  // Here
+            .id(refresh)
 
             .navigationBarItems(trailing:
                 Button(action: {
@@ -48,7 +76,10 @@ struct MainView: View {
                 }
                 .actionSheet(isPresented: $showingActionSheet) {
                     ActionSheet(title: Text("Options"), buttons: [
-                        .default(Text("Log Out"), action: logOut),
+                        .default(Text("Log Out"), action: {
+                            logOut()
+                            showingActionSheet = false
+                        }),
                         .cancel()
                     ])
                 }
@@ -56,4 +87,10 @@ struct MainView: View {
         }
         .navigationBarTitle("Grocery List", displayMode: .inline)
     }
+}
+
+struct VisualEffectView: UIViewRepresentable {
+    var effect: UIVisualEffect?
+    func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView { UIVisualEffectView() }
+    func updateUIView(_ uiView: UIVisualEffectView, context: UIViewRepresentableContext<Self>) { uiView.effect = effect }
 }
