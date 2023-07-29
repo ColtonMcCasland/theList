@@ -14,8 +14,14 @@ struct ICloudLoginView: View {
                 MainView()
             } else {
                 VStack {
-                    // Your UI code for the iCloud login view
-                    
+                    Text("Welcome to Kitchen Sync")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 20)
+                    Text("Please sign in with your Apple ID to continue")
+                        .font(.headline)
+                        .foregroundColor(.gray)
+                        .padding(.bottom, 50)
                     SignInWithAppleButton { request in
                         request.requestedScopes = [.fullName, .email]
                     } onCompletion: { result in
@@ -23,6 +29,7 @@ struct ICloudLoginView: View {
                     }
                     .signInWithAppleButtonStyle(.white)
                     .frame(width: 200, height: 44)
+                    .padding(.top, 50)
                 }
                 .padding()
             }
