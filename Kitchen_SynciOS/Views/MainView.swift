@@ -90,7 +90,7 @@ struct MainView: View {
                 .padding()
                 .background(Color.white)
                 .clipShape(Circle())
-                .alignmentGuide(.top) { d in d[.bottom] - 70 }
+                .alignmentGuide(.top) { d in d[.bottom] - 50 }
             }
             .frame(height: isAddItemAndStoreVisible ? 300 : 50) // Increase the height of the sliding view
             .animation(.spring(), value: isAddItemAndStoreVisible)
