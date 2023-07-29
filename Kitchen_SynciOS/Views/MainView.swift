@@ -51,9 +51,12 @@ struct MainView: View {
                                 self.isAddItemAndStoreVisible.toggle()
                             }
                         }) {
-                            Image(systemName: isAddItemAndStoreVisible ? "chevron.down" : "chevron.up")
+                            Image(systemName: "chevron.down")
                                 .resizable()
-                                .frame(width: 16, height: 16)
+                                .frame(width: 80, height: 16)
+                                .rotation3DEffect(isAddItemAndStoreVisible ? Angle(degrees: 180) : Angle(degrees: 0), axis: (x: 1, y: 0, z: 0))
+
+
                         }
                         .padding()
                         .background(Color.white)
