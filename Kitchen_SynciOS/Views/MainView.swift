@@ -20,6 +20,8 @@ struct MainView: View {
     @State private var selectedStore: Store?
     @State private var isKeyboardShowing = false
 
+    @State private var slideOffset: CGFloat = 0.0
+
     var body: some View {
         VStack {
             if stores.isEmpty || stores.contains { ($0.items as? Set<GroceryItem>)?.isEmpty ?? true } {
@@ -60,7 +62,6 @@ struct MainView: View {
                     .disabled(newItemName.isEmpty || (newStoreName.isEmpty && selectedStore == nil))
                     .padding()
                 }
-                .transition(.move(edge: .bottom))
                 .frame(maxWidth: .infinity) // Ensure VStack takes the full width
                 .frame(height: isAddItemAndStoreVisible ? 300 : 100) // Increase the bottom height here
                 .padding(.bottom, isAddItemAndStoreVisible ? 100 : 15) // Additional padding to extend past the screen when visible
@@ -91,9 +92,52 @@ struct MainView: View {
                 .background(Color.white)
                 .clipShape(Circle())
                 .alignmentGuide(.top) { d in d[.bottom] - 50 }
+                .offset(y: slideOffset) // Apply the offset to the sliding view
+                .gesture(DragGesture() // Add DragGesture to the chevron
+                    .onChanged { gesture in
+                        // Calculate the offset based on the drag
+                        let offsetY = gesture.translation.height
+                        slideOffset = max(0, offsetY)
+                    }
+                    .onEnded { gesture in
+                        // Determine whether to close or open the sliding view based on the drag distance
+                        let offsetY = gesture.translation.height
+                        if offsetY > 100 {
+                            isAddItemAndStoreVisible = false
+                        } else {
+                            isAddItemAndStoreVisible = true
+                        }
+                        withAnimation(.spring()) {
+                            slideOffset = isAddItemAndStoreVisible ? 300 : 0
+                        }
+                    }
+                )
+                .gesture(TapGesture() // Add TapGesture to the chevron
+                    .onEnded {
+                        withAnimation(.spring()) {
+                            self.isAddItemAndStoreVisible.toggle()
+                            if !isAddItemAndStoreVisible {
+                                self.newItemName = ""
+                                self.newStoreName = ""
+                                self.selectedStore = nil
+                                if isKeyboardShowing {
+                                    dismissKeyboard()
+                                }
+                            }
+                        }
+                    }
+                )
             }
             .frame(height: isAddItemAndStoreVisible ? 300 : 50) // Increase the height of the sliding view
             .animation(.spring(), value: isAddItemAndStoreVisible)
+            .onAppear {
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { _ in
+                    isKeyboardShowing = true
+                }
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                    isKeyboardShowing = false
+                }
+            }
         }
         .id(refresh)
         .navigationBarTitle("Grocery List", displayMode: .inline)
@@ -115,14 +159,6 @@ struct MainView: View {
                 ])
             }
         )
-        .onAppear {
-            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { _ in
-                isKeyboardShowing = true
-            }
-            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
-                isKeyboardShowing = false
-            }
-        }
     }
 }
 
