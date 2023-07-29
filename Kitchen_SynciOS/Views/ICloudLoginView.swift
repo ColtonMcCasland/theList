@@ -57,7 +57,7 @@ struct ICloudLoginView: View {
     }
     
     private func handleSignInWithApple() {
-        guard let credential = appleIDCredential else { return }
+        guard appleIDCredential != nil else { return }
         
         // Rest of your code...
         

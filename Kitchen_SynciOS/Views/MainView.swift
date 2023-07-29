@@ -24,7 +24,7 @@ struct MainView: View {
 
     var body: some View {
         VStack {
-            if stores.isEmpty || stores.contains { ($0.items as? Set<GroceryItem>)?.isEmpty ?? true } {
+            if stores.isEmpty || stores.contains(where: { ($0.items as? Set<GroceryItem>)?.isEmpty ?? true }) {
                 VStack {
                     Text("The list is empty. Add stores and items.")
                         .foregroundColor(.gray)
@@ -150,7 +150,7 @@ struct MainView: View {
                     .frame(width: 24, height: 24)
             }
             .actionSheet(isPresented: $showingActionSheet) {
-                ActionSheet(title: Text("Options"), buttons: [
+                ActionSheet(title: Text("Settings"), buttons: [
                     .default(Text("Log Out"), action: {
                         isLoggedIn = false
                         showingActionSheet = false
