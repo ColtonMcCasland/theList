@@ -18,6 +18,7 @@ struct MainView: View {
 
     @State private var isAddItemAndStoreVisible = false
     @State private var selectedStore: Store?
+    @State private var isKeyboardShowing = false
 
     var body: some View {
         VStack {
@@ -62,6 +63,9 @@ struct MainView: View {
                             self.newItemName = ""
                             self.newStoreName = ""
                             self.selectedStore = nil
+                            if isKeyboardShowing {
+                                dismissKeyboard()
+                            }
                         }
                     }
                 }) {
@@ -70,12 +74,11 @@ struct MainView: View {
                         .frame(width: 80, height: 16)
                         .rotation3DEffect(isAddItemAndStoreVisible ? Angle(degrees: 180) : Angle(degrees: 0), axis: (x: 1, y: 0, z: 0))
                         .scaleEffect(isAddItemAndStoreVisible ? 1.3 : 1.0) // Adjusted scaleEffect value for increased bouncing
-                    
                 }
                 .padding()
                 .background(Color.white)
                 .clipShape(Circle())
-                .alignmentGuide(.top) { d in d[.bottom] - 70 } // Adjust the value (-70) to align the chevron as desired
+                .alignmentGuide(.top) { d in d[.bottom] - 70 }
             }
             .frame(height: isAddItemAndStoreVisible ? 300 : 50) // Increase the height of the sliding view
             .animation(.spring(), value: isAddItemAndStoreVisible)
@@ -100,5 +103,21 @@ struct MainView: View {
                 ])
             }
         )
+        .onAppear {
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { _ in
+                isKeyboardShowing = true
+            }
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                isKeyboardShowing = false
+            }
+        }
     }
 }
+
+#if canImport(UIKit)
+extension View {
+    func dismissKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
