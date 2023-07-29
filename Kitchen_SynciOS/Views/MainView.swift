@@ -41,7 +41,7 @@ struct MainView: View {
                                 newItemName = ""
                                 newStoreName = ""
                             }
-                            .disabled(newItemName.isEmpty && newStoreName.isEmpty)
+                            .disabled(newItemName.isEmpty || newStoreName.isEmpty) // Change the condition here
                             .padding()
                         }
                         .transition(.move(edge: .bottom))
