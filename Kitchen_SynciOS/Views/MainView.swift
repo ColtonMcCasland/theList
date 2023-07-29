@@ -37,7 +37,7 @@ struct MainView: View {
                                 .padding()
                                 .opacity(isAddItemAndStoreVisible ? 1 : 0)
                             Button("Add Item and Store") {
-                                addItemAndStore(newItemName: newItemName, newStoreName: newStoreName, stores: stores, viewContext: viewContext, refresh: $refresh)
+                                // Implement the logic to add the item and store to the CoreData context (if needed)
                                 newItemName = ""
                                 newStoreName = ""
                             }
@@ -67,27 +67,26 @@ struct MainView: View {
                 .animation(.spring(), value: isAddItemAndStoreVisible)
             }
             .id(refresh)
-
-            .navigationBarItems(trailing:
-                Button(action: {
-                    showingActionSheet = true
-                }) {
-                    Image(systemName: "ellipsis.circle")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                }
-                .actionSheet(isPresented: $showingActionSheet) {
-                    ActionSheet(title: Text("Options"), buttons: [
-                        .default(Text("Log Out"), action: {
-                            logOut()
-                            showingActionSheet = false
-                        }),
-                        .cancel()
-                    ])
-                }
-            )
         }
         .navigationBarTitle("Grocery List", displayMode: .inline)
+        .navigationBarItems(trailing:
+            Button(action: {
+                showingActionSheet = true
+            }) {
+                Image(systemName: "ellipsis.circle")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+            }
+            .actionSheet(isPresented: $showingActionSheet) {
+                ActionSheet(title: Text("Options"), buttons: [
+                    .default(Text("Log Out"), action: {
+                        // Implement the logic to log out the user (if needed)
+                        showingActionSheet = false
+                    }),
+                    .cancel()
+                ])
+            }
+        )
     }
 }
 
