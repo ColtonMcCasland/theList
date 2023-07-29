@@ -6,11 +6,11 @@ struct ItemView: View {
 
     var body: some View {
         Button(action: {
-            item.isTapped.toggle()
+            item.isBought.toggle()
             try? item.managedObjectContext?.save()
         }) {
             Text(item.name ?? "Unspecified")
-                .strikethrough(item.isTapped)
+                .strikethrough(item.isBought)
         }
         .buttonStyle(PlainButtonStyle())
     }

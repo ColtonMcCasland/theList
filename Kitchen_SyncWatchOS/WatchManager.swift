@@ -111,7 +111,7 @@ class WatchManager: NSObject, WCSessionDelegate, ObservableObject {
         // Send a message to the iOS app to update the corresponding item's isTapped property
         if WCSession.default.isReachable {
             let tappedItem = records[recordIndex]
-            let message: [String: Any] = ["updateIsTapped": tappedItem.isTapped, "timestamp": tappedItem.timestamp]
+            let message: [String: Any] = ["updateIsBought": tappedItem.isTapped, "timestamp": tappedItem.timestamp]
             WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
                 // Handle error
                 print("Error sending message to iOS app: \(error.localizedDescription)")

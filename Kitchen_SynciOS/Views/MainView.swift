@@ -83,7 +83,8 @@ struct MainView: View {
             .actionSheet(isPresented: $showingActionSheet) {
                 ActionSheet(title: Text("Options"), buttons: [
                     .default(Text("Log Out"), action: {
-                        // Implement the logic to log out the user (if needed)
+                        // Implement the logic to log out the user
+                        isLoggedIn = false
                         showingActionSheet = false
                     }),
                     .cancel()

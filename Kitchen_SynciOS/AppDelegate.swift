@@ -47,8 +47,8 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
         if let requestRecords = message["requestRecords"] as? Bool, requestRecords {
             sendRecordsToWatch()
         } else {
-            // Check if the message contains the "updateIsTapped" key
-            if let isTapped = message["updateIsTapped"] as? Bool { // Get the current state of isTapped
+            // Check if the message contains the "updateIsbought" key
+            if let isBought = message["updateIsbought"] as? Bool { // Get the current state of isTapped
                 // Check if the message contains the "timestamp" key
                 if let timestamp = message["timestamp"] as? Date {
                     // Find the corresponding item in Core Data and update its isTapped property
@@ -59,13 +59,13 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
                         
                         do {
                             let items = try context.fetch(fetchRequest)
-                            if let tappedItem = items.first {
-                                tappedItem.isTapped = isTapped // Update the isTapped property to the received state
+                            if let boughtItem = items.first {
+                                boughtItem.isBought = isBought // Update the isbought property to the received state
                                 try context.save() // Save the changes to Core Data
                             }
                         } catch {
                             // Handle error
-                            print("Error updating isTapped property: \(error.localizedDescription)")
+                            print("Error updating isbought property: \(error.localizedDescription)")
                         }
                     }
                 }
@@ -98,7 +98,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, WCSessionDelegate, Observabl
             var records = [[String: Any]]()
 
             for item in items {
-                let record = ["timestamp": item.timestamp as Any, "title": item.name as Any, "isTapped": item.isTapped]
+                let record = ["timestamp": item.timestamp as Any, "title": item.name as Any, "isbought": item.isBought]
                 records.append(record)
             }
 
