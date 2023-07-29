@@ -22,11 +22,23 @@ struct MainView: View {
 
     var body: some View {
         VStack {
-            List {
-                ForEach(stores, id: \.self) { store in
-                    StoreView(store: store, isAddItemAndStoreVisible: $isAddItemAndStoreVisible, selectedStore: $selectedStore)
+            if stores.isEmpty || stores.contains { ($0.items as? Set<GroceryItem>)?.isEmpty ?? true } {
+                VStack {
+                    Text("The list is empty. Add stores and items.")
+                        .foregroundColor(.gray)
+                        .padding()
                 }
+            } else {
+                List {
+                    ForEach(stores, id: \.self) { store in
+                        StoreView(store: store, isAddItemAndStoreVisible: $isAddItemAndStoreVisible, selectedStore: $selectedStore)
+                    }
+                }
+                .transition(.opacity) // Add a fade-in transition for the list of stores
             }
+
+            Spacer() // Add spacer to push the ZStack to the bottom
+
             ZStack(alignment: .top) {
                 VStack {
                     TextField("New item name", text: $newItemName)
