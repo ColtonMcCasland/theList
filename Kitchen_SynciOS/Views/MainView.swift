@@ -58,7 +58,11 @@ struct MainView: View {
                 Button(action: {
                     withAnimation(.spring()) {
                         self.isAddItemAndStoreVisible.toggle()
-                        self.selectedStore = nil
+                        if !isAddItemAndStoreVisible {
+                            self.newItemName = ""
+                            self.newStoreName = ""
+                            self.selectedStore = nil
+                        }
                     }
                 }) {
                     Image(systemName: "chevron.down")
@@ -66,6 +70,7 @@ struct MainView: View {
                         .frame(width: 80, height: 16)
                         .rotation3DEffect(isAddItemAndStoreVisible ? Angle(degrees: 180) : Angle(degrees: 0), axis: (x: 1, y: 0, z: 0))
                         .scaleEffect(isAddItemAndStoreVisible ? 1.3 : 1.0) // Adjusted scaleEffect value for increased bouncing
+                    
                 }
                 .padding()
                 .background(Color.white)
