@@ -21,6 +21,7 @@ struct MainView: View {
     @State private var isKeyboardShowing = false
 
     @State private var slideOffset: CGFloat = 0.0
+    @State private var dragOffset: CGFloat = 0.0
 
     var body: some View {
         VStack {
@@ -68,6 +69,7 @@ struct MainView: View {
                 .background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous)) // Add the corner radius here
                 .shadow(radius: 5) // Optionally, you can add a shadow for a visual effect
+                .offset(y: slideOffset) // Apply the offset to the sliding view
 
                 Button(action: {
                     withAnimation(.spring()) {
@@ -97,7 +99,9 @@ struct MainView: View {
                     .onChanged { gesture in
                         // Calculate the offset based on the drag
                         let offsetY = gesture.translation.height
-                        slideOffset = max(0, offsetY)
+                        if offsetY > 0 {
+                            slideOffset = offsetY
+                        }
                     }
                     .onEnded { gesture in
                         // Determine whether to close or open the sliding view based on the drag distance
@@ -108,7 +112,7 @@ struct MainView: View {
                             isAddItemAndStoreVisible = true
                         }
                         withAnimation(.spring()) {
-                            slideOffset = isAddItemAndStoreVisible ? 300 : 0
+                            slideOffset = 0
                         }
                     }
                 )
