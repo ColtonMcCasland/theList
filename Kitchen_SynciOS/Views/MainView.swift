@@ -27,66 +27,73 @@ struct MainView: View {
                     }
                 }
 
-                GeometryReader { geometry in
-                    ZStack(alignment: .top) {
-                        VStack {
-                            TextField("New item name", text: $newItemName)
-                                .padding()
-                                .opacity(isAddItemAndStoreVisible ? 1 : 0)
-                            TextField("New store name", text: $newStoreName)
-                                .padding()
-                                .opacity(isAddItemAndStoreVisible ? 1 : 0)
-                            Button("Add Item and Store") {
-                                // Implement the logic to add the item and store to the CoreData context (if needed)
-                                newItemName = ""
-                                newStoreName = ""
-                            }
-                            .disabled(newItemName.isEmpty || newStoreName.isEmpty) // Change the condition here
+                ZStack(alignment: .top) {
+                    VStack {
+                        TextField("New item name", text: $newItemName)
                             .padding()
+                            .opacity(isAddItemAndStoreVisible ? 1 : 0)
+                        TextField("New store name", text: $newStoreName)
+                            .padding()
+                            .opacity(isAddItemAndStoreVisible ? 1 : 0)
+                        Button("Add Item and Store") {
+                            // Invoke the function to add the item and store
+                            addItemAndStore(newItemName: newItemName, newStoreName: newStoreName, stores: stores, viewContext: viewContext, refresh: $refresh)
+                            newItemName = ""
+                            newStoreName = ""
                         }
-                        .transition(.move(edge: .bottom))
-
-                        Button(action: {
-                            withAnimation(.spring()) {
-                                self.isAddItemAndStoreVisible.toggle()
-                            }
-                        }) {
-                            Image(systemName: "chevron.down")
-                                .resizable()
-                                .frame(width: 80, height: 16)
-                                .rotation3DEffect(isAddItemAndStoreVisible ? Angle(degrees: 180) : Angle(degrees: 0), axis: (x: 1, y: 0, z: 0))
-                                .scaleEffect(isAddItemAndStoreVisible ? 1.3 : 1.0) // Adjusted scaleEffect value for increased bouncing
-                        }
+                        .opacity(isAddItemAndStoreVisible ? 1 : 0)
+                        .disabled(newItemName.isEmpty || newStoreName.isEmpty) // Change the condition here
                         .padding()
-                        .background(Color.white)
-                        .clipShape(Circle())
-                        .offset(y: isAddItemAndStoreVisible ? geometry.size.height - 30 : 0)
                     }
+                    .transition(.move(edge: .bottom))
+                    .frame(maxWidth: .infinity) // Ensure VStack takes the full width
+                    .frame(height: isAddItemAndStoreVisible ? 300 : 100) // Increase the bottom height here
+                    .padding(.bottom, isAddItemAndStoreVisible ? 100 : 15) // Additional padding to extend past the screen when visible
+                    .background(Color.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous)) // Add the corner radius here
+                    .shadow(radius: 5) // Optionally, you can add a shadow for a visual effect
+
+                    Button(action: {
+                        withAnimation(.spring()) {
+                            self.isAddItemAndStoreVisible.toggle()
+                        }
+                    }) {
+                        Image(systemName: "chevron.down")
+                            .resizable()
+                            .frame(width: 80, height: 16)
+                            .rotation3DEffect(isAddItemAndStoreVisible ? Angle(degrees: 180) : Angle(degrees: 0), axis: (x: 1, y: 0, z: 0))
+                            .scaleEffect(isAddItemAndStoreVisible ? 1.3 : 1.0) // Adjusted scaleEffect value for increased bouncing
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .clipShape(Circle())
+                    .alignmentGuide(.top) { d in d[.bottom] - 70 } // Adjust the value (-70) to align the chevron as desired
                 }
-                .frame(height: isAddItemAndStoreVisible ? 200 : 50)
+                .frame(height: isAddItemAndStoreVisible ? 300 : 50) // Increase the height of the sliding view
                 .animation(.spring(), value: isAddItemAndStoreVisible)
             }
             .id(refresh)
+            .navigationBarTitle("Grocery List", displayMode: .inline)
+            .navigationBarItems(trailing:
+                Button(action: {
+                    showingActionSheet = true
+                }) {
+                    Image(systemName: "ellipsis.circle")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                }
+                .actionSheet(isPresented: $showingActionSheet) {
+                    ActionSheet(title: Text("Options"), buttons: [
+                        .default(Text("Log Out"), action: {
+                            // Implement the logic to log out the user (if needed)
+                            showingActionSheet = false
+                        }),
+                        .cancel()
+                    ])
+                }
+            )
         }
-        .navigationBarTitle("Grocery List", displayMode: .inline)
-        .navigationBarItems(trailing:
-            Button(action: {
-                showingActionSheet = true
-            }) {
-                Image(systemName: "ellipsis.circle")
-                    .resizable()
-                    .frame(width: 24, height: 24)
-            }
-            .actionSheet(isPresented: $showingActionSheet) {
-                ActionSheet(title: Text("Options"), buttons: [
-                    .default(Text("Log Out"), action: {
-                        // Implement the logic to log out the user (if needed)
-                        showingActionSheet = false
-                    }),
-                    .cancel()
-                ])
-            }
-        )
+
     }
 }
 

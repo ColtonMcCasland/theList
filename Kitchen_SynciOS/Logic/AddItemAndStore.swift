@@ -1,14 +1,15 @@
 import CoreData
 import SwiftUI
 
+// Helper function to add an item and store to the CoreData context
 func addItemAndStore(newItemName: String, newStoreName: String, stores: FetchedResults<Store>, viewContext: NSManagedObjectContext, refresh: Binding<Bool>) {
-    let formattedStoreName = newStoreName.lowercased().capitalized
-    let formattedItemName = newItemName.lowercased().capitalized
+    let formattedStoreName = newStoreName.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
+    let formattedItemName = newItemName.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
 
     let store: Store
     if !formattedStoreName.isEmpty {
         // Check if a store with the given name already exists
-        if let existingStore = stores.first(where: { $0.name?.lowercased().capitalized == formattedStoreName }) {
+        if let existingStore = stores.first(where: { $0.name?.trimmingCharacters(in: .whitespacesAndNewlines).capitalized == formattedStoreName }) {
             // If it does, use that store
             store = existingStore
         } else {
@@ -30,6 +31,7 @@ func addItemAndStore(newItemName: String, newStoreName: String, stores: FetchedR
 
     do {
         try viewContext.save()
+        viewContext.refreshAllObjects() // Refresh the managed objects to trigger a fetch request update
         refresh.wrappedValue.toggle()  // Toggle the refresh state variable to refresh the view
     } catch {
         let nserror = error as NSError
