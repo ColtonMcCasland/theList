@@ -3,10 +3,16 @@ import SwiftUI
 struct StoreView: View {
     @Environment(\.managedObjectContext) private var viewContext
     let store: Store
+    @Binding var isAddItemAndStoreVisible: Bool
+    @Binding var selectedStore: Store?
 
     var body: some View {
         VStack {
             Text(store.name ?? "Unspecified")
+                .onTapGesture {
+                    selectedStore = store
+                    isAddItemAndStoreVisible = true
+                }
             ForEach(store.itemsArray, id: \.self) { item in
                 HStack {
                     ItemView(item: item)

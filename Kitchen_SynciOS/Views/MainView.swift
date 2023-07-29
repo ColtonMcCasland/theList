@@ -17,12 +17,13 @@ struct MainView: View {
     @State private var refresh = false
 
     @State private var isAddItemAndStoreVisible = false
+    @State private var selectedStore: Store?
 
     var body: some View {
         VStack {
             List {
                 ForEach(stores, id: \.self) { store in
-                    StoreView(store: store)
+                    StoreView(store: store, isAddItemAndStoreVisible: $isAddItemAndStoreVisible, selectedStore: $selectedStore)
                 }
             }
             ZStack(alignment: .top) {
@@ -30,17 +31,20 @@ struct MainView: View {
                     TextField("New item name", text: $newItemName)
                         .padding()
                         .opacity(isAddItemAndStoreVisible ? 1 : 0)
-                    TextField("New store name", text: $newStoreName)
-                        .padding()
-                        .opacity(isAddItemAndStoreVisible ? 1 : 0)
-                    Button("Add Item and Store") {
-                        // Invoke the function to add the item and store
-                        addItemAndStore(newItemName: newItemName, newStoreName: newStoreName, stores: stores, viewContext: viewContext, refresh: $refresh)
+                    if selectedStore == nil {
+                        TextField("New store name", text: $newStoreName)
+                            .padding()
+                            .opacity(isAddItemAndStoreVisible ? 1 : 0)
+                    }
+                    Button("Add Item") {
+                        addItemAndStore(newItemName: newItemName, newStoreName: selectedStore?.name ?? newStoreName, stores: stores, viewContext: viewContext, refresh: $refresh)
                         newItemName = ""
                         newStoreName = ""
+                        isAddItemAndStoreVisible = false
+                        selectedStore = nil
                     }
                     .opacity(isAddItemAndStoreVisible ? 1 : 0)
-                    .disabled(newItemName.isEmpty || newStoreName.isEmpty) // Change the condition here
+                    .disabled(newItemName.isEmpty || (newStoreName.isEmpty && selectedStore == nil))
                     .padding()
                 }
                 .transition(.move(edge: .bottom))
@@ -54,6 +58,7 @@ struct MainView: View {
                 Button(action: {
                     withAnimation(.spring()) {
                         self.isAddItemAndStoreVisible.toggle()
+                        self.selectedStore = nil
                     }
                 }) {
                     Image(systemName: "chevron.down")
@@ -83,7 +88,6 @@ struct MainView: View {
             .actionSheet(isPresented: $showingActionSheet) {
                 ActionSheet(title: Text("Options"), buttons: [
                     .default(Text("Log Out"), action: {
-                        // Implement the logic to log out the user
                         isLoggedIn = false
                         showingActionSheet = false
                     }),
@@ -92,10 +96,4 @@ struct MainView: View {
             }
         )
     }
-}
-
-struct VisualEffectView: UIViewRepresentable {
-    var effect: UIVisualEffect?
-    func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView { UIVisualEffectView() }
-    func updateUIView(_ uiView: UIVisualEffectView, context: UIViewRepresentableContext<Self>) { uiView.effect = effect }
 }
