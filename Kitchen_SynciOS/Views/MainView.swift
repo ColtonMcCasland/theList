@@ -70,6 +70,49 @@ struct MainView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous)) // Add the corner radius here
                 .shadow(radius: 5) // Optionally, you can add a shadow for a visual effect
                 .offset(y: slideOffset) // Apply the offset to the sliding view
+                .gesture(DragGesture() // Add DragGesture to the entire sliding view
+                    .onChanged { gesture in
+                        // Calculate the offset based on the drag
+                        let offsetY = gesture.translation.height
+                        if isAddItemAndStoreVisible {
+                            if offsetY < 0 {
+                                slideOffset = offsetY
+                            }
+                        } else {
+                            if offsetY > 0 {
+                                slideOffset = offsetY
+                            }
+                        }
+                    }
+                    .onEnded { gesture in
+                        // Determine whether to close or open the sliding view based on the drag distance
+                        let offsetY = gesture.translation.height
+                        if offsetY > 100 {
+                            isAddItemAndStoreVisible = false
+                        } else if offsetY < -100 {
+                            isAddItemAndStoreVisible = true
+                        }
+                        withAnimation(.spring()) {
+                            slideOffset = 0
+                        }
+                    }
+                )
+
+                .gesture(TapGesture() // Add TapGesture to the entire sliding view
+                   .onEnded {
+                       withAnimation(.spring()) {
+                           self.isAddItemAndStoreVisible.toggle()
+                           if !isAddItemAndStoreVisible {
+                               self.newItemName = ""
+                               self.newStoreName = ""
+                               self.selectedStore = nil
+                               if isKeyboardShowing {
+                                   dismissKeyboard()
+                               }
+                           }
+                       }
+                   }
+               )
 
                 Button(action: {
                     withAnimation(.spring()) {
@@ -95,42 +138,6 @@ struct MainView: View {
                 .clipShape(Circle())
                 .alignmentGuide(.top) { d in d[.bottom] - 50 }
                 .offset(y: slideOffset) // Apply the offset to the sliding view
-                .gesture(DragGesture() // Add DragGesture to the chevron
-                    .onChanged { gesture in
-                        // Calculate the offset based on the drag
-                        let offsetY = gesture.translation.height
-                        if offsetY > 0 {
-                            slideOffset = offsetY
-                        }
-                    }
-                    .onEnded { gesture in
-                        // Determine whether to close or open the sliding view based on the drag distance
-                        let offsetY = gesture.translation.height
-                        if offsetY > 100 {
-                            isAddItemAndStoreVisible = false
-                        } else {
-                            isAddItemAndStoreVisible = true
-                        }
-                        withAnimation(.spring()) {
-                            slideOffset = 0
-                        }
-                    }
-                )
-                .gesture(TapGesture() // Add TapGesture to the chevron
-                    .onEnded {
-                        withAnimation(.spring()) {
-                            self.isAddItemAndStoreVisible.toggle()
-                            if !isAddItemAndStoreVisible {
-                                self.newItemName = ""
-                                self.newStoreName = ""
-                                self.selectedStore = nil
-                                if isKeyboardShowing {
-                                    dismissKeyboard()
-                                }
-                            }
-                        }
-                    }
-                )
             }
             .frame(height: isAddItemAndStoreVisible ? 300 : 50) // Increase the height of the sliding view
             .animation(.spring(), value: isAddItemAndStoreVisible)
