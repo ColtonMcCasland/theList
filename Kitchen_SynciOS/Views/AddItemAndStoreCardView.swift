@@ -80,7 +80,7 @@ struct AddItemAndStoreCardView: View {
                     }
                 }
             }) {
-                Image(systemName: "chevron.down")
+                Image(systemName: "chevron.up")
                     .resizable()
                     .frame(width: 80, height: 16)
                     .rotation3DEffect(isAddItemAndStoreVisible ? Angle(degrees: 180) : Angle(degrees: 0), axis: (x: 1, y: 0, z: 0))
