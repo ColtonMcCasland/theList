@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A1A85692A760118005EAE55 /* AddItemAndStoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A85682A760118005EAE55 /* AddItemAndStoreCardView.swift */; };
+		9A1A85692A760118005EAE55 /* AddItemAndStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A85682A760118005EAE55 /* AddItemAndStoreView.swift */; };
 		9A1BAD242A6F28F8006B90CB /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1BAD232A6F28F8006B90CB /* DataTypes.swift */; };
 		9A1BAD252A6F2905006B90CB /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1BAD232A6F28F8006B90CB /* DataTypes.swift */; };
 		9A1BAD262A6F2906006B90CB /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1BAD232A6F28F8006B90CB /* DataTypes.swift */; };
@@ -48,6 +48,8 @@
 		9AB874B42A7423540067D2C0 /* DeleteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB874B32A7423540067D2C0 /* DeleteStore.swift */; };
 		9AB874B62A7423680067D2C0 /* LogOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB874B52A7423680067D2C0 /* LogOut.swift */; };
 		9AB874B82A74237C0067D2C0 /* StoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB874B72A74237C0067D2C0 /* StoreExtension.swift */; };
+		9ADDA6C12A77168800501029 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDA6C02A77168800501029 /* DismissKeyboard.swift */; };
+		9ADDA6C32A7716F600501029 /* CardHeightKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDA6C22A7716F600501029 /* CardHeightKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,7 +119,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9A1A85682A760118005EAE55 /* AddItemAndStoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemAndStoreCardView.swift; sourceTree = "<group>"; };
+		9A1A85682A760118005EAE55 /* AddItemAndStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemAndStoreView.swift; sourceTree = "<group>"; };
 		9A1BAD232A6F28F8006B90CB /* DataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
 		9A35F6682A566FCC0051DF02 /* Kitchen-SyncCompanion-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kitchen-SyncCompanion-Watch-App-Info.plist"; sourceTree = "<group>"; };
 		9A5E8E952A5935E900894DDA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,8 @@
 		9AB874B32A7423540067D2C0 /* DeleteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteStore.swift; sourceTree = "<group>"; };
 		9AB874B52A7423680067D2C0 /* LogOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOut.swift; sourceTree = "<group>"; };
 		9AB874B72A74237C0067D2C0 /* StoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreExtension.swift; sourceTree = "<group>"; };
+		9ADDA6C02A77168800501029 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
+		9ADDA6C22A7716F600501029 /* CardHeightKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHeightKey.swift; sourceTree = "<group>"; };
 		9AF43A512A55DF5300ED548A /* Kitchen_SyncWatchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kitchen_SyncWatchOS.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -334,11 +338,11 @@
 		9AA7217D2A5128D20014BF46 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9A1A85682A760118005EAE55 /* AddItemAndStoreView.swift */,
 				9AA721802A512E760014BF46 /* ICloudLoginView.swift */,
 				9AA7217E2A5129270014BF46 /* MainView.swift */,
 				9AB874AA2A7422E30067D2C0 /* StoreView.swift */,
 				9AB874AC2A7422F60067D2C0 /* ItemView.swift */,
-				9A1A85682A760118005EAE55 /* AddItemAndStoreCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -404,6 +408,8 @@
 				9AB874B32A7423540067D2C0 /* DeleteStore.swift */,
 				9AB874B72A74237C0067D2C0 /* StoreExtension.swift */,
 				9AB874B52A7423680067D2C0 /* LogOut.swift */,
+				9ADDA6C02A77168800501029 /* DismissKeyboard.swift */,
+				9ADDA6C22A7716F600501029 /* CardHeightKey.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -752,10 +758,12 @@
 				9A91BE0B2A50F64500C2BBCA /* ViewController.swift in Sources */,
 				9AB874B82A74237C0067D2C0 /* StoreExtension.swift in Sources */,
 				9AB874AD2A7422F60067D2C0 /* ItemView.swift in Sources */,
-				9A1A85692A760118005EAE55 /* AddItemAndStoreCardView.swift in Sources */,
+				9A1A85692A760118005EAE55 /* AddItemAndStoreView.swift in Sources */,
 				9AB874B22A7423450067D2C0 /* DeleteItem.swift in Sources */,
 				9AA721792A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld in Sources */,
+				9ADDA6C32A7716F600501029 /* CardHeightKey.swift in Sources */,
 				9A5E8E9D2A5B30CE00894DDA /* AppDelegate.swift in Sources */,
+				9ADDA6C12A77168800501029 /* DismissKeyboard.swift in Sources */,
 				9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */,
 				9AA7217F2A5129270014BF46 /* MainView.swift in Sources */,
 				9AB874AB2A7422E30067D2C0 /* StoreView.swift in Sources */,

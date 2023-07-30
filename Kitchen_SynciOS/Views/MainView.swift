@@ -40,9 +40,8 @@ struct MainView: View {
                 .listStyle(PlainListStyle()) // Set the list style to PlainListStyle
             }
 
-
             Spacer() // Add spacer to push the ZStack to the bottom
-            AddItemAndStoreCardView(newItemName: $newItemName, newStoreName: $newStoreName, isAddItemAndStoreVisible: $isAddItemAndStoreVisible, selectedStore: $selectedStore, refresh: $refresh, isKeyboardShowing: $isKeyboardShowing)
+            AddItemAndStoreView(newItemName: $newItemName, newStoreName: $newStoreName, isAddItemAndStoreVisible: $isAddItemAndStoreVisible, selectedStore: $selectedStore, refresh: $refresh, isKeyboardShowing: $isKeyboardShowing)
         }
         .id(refresh)
         .navigationBarTitle("Grocery List", displayMode: .inline)

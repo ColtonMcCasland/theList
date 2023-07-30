@@ -1,7 +1,7 @@
 import SwiftUI
 import CoreData
 
-struct AddItemAndStoreCardView: View {
+struct AddItemAndStoreView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Store.name, ascending: true)],
@@ -21,7 +21,6 @@ struct AddItemAndStoreCardView: View {
     private let maximumCardHeight: CGFloat = 250
     var body: some View {
         ZStack(alignment: .top) {
-
             VStack {
                 TextField("New item name", text: $newItemName)
                     .padding(.horizontal, 20) // Reduce horizontal padding
@@ -57,8 +56,6 @@ struct AddItemAndStoreCardView: View {
                 .padding()
                 .animation(.spring(), value: cardHeight) // Add animation modifier
             }
-
-
             .frame(maxWidth: .infinity)
             .frame(height: cardHeight) // Use the dynamic card height
             .padding()
@@ -70,7 +67,6 @@ struct AddItemAndStoreCardView: View {
                     cardHeight = newValue ? maximumCardHeight : 100
                 }
             }
-
             // New Rectangle for the draggable view (Grey bar)
             Rectangle()
                 .frame(width: 50, height: 5)
@@ -78,11 +74,9 @@ struct AddItemAndStoreCardView: View {
                 .cornerRadius(2.5)
                 .padding(.top, 10)
                 .offset(y: max(30, cardHeight - screenHeight + 100)) // Use the same offset as the VStack
-
         }
         .frame(maxWidth: .infinity) // Expand to full screen width
         .frame(height: cardHeight) // Use the dynamic card height
-
         .animation(.spring(), value: isAddItemAndStoreVisible)
         .onPreferenceChange(CardHeightKey.self) { cardHeight = $0 }
         .gesture(
@@ -117,7 +111,6 @@ struct AddItemAndStoreCardView: View {
                     }
                 }
         )
-
     }
 
     struct Blur: UIViewRepresentable {
