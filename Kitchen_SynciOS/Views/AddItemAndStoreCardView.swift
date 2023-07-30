@@ -14,7 +14,7 @@ struct AddItemAndStoreCardView: View {
     @Binding var selectedStore: Store?
     @Binding var refresh: Bool
     @Binding var isKeyboardShowing: Bool
-    @State private var slideOffset: CGFloat = 0.0
+    @GestureState private var dragOffset: CGFloat = 0.0 // Track the total drag offset
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -43,36 +43,29 @@ struct AddItemAndStoreCardView: View {
             }
             .frame(maxWidth: .infinity)
             .frame(height: isAddItemAndStoreVisible ? 300 : 100)
-            .padding(.bottom, isAddItemAndStoreVisible ? 100 : 15)
+            .padding(.bottom, isAddItemAndStoreVisible ? 70 : 15)
             .background(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             .shadow(radius: 5)
-            .offset(y: slideOffset)
+            .offset(y: dragOffset)
             .gesture(DragGesture()
-                .onChanged { gesture in
-                    let offsetY = gesture.translation.height
-                    slideOffset = offsetY
+                .updating($dragOffset) { value, state, _ in
+                    state = value.translation.height
                 }
                 .onEnded { gesture in
                     let offsetY = gesture.translation.height
                     if offsetY > 100 {
                         withAnimation(.spring()) {
                             isAddItemAndStoreVisible = false
-                            slideOffset = 0
                         }
+                        dismissKeyboard() // Close the keyboard when the menu is closed
                     } else if offsetY < -100 {
                         withAnimation(.spring()) {
                             isAddItemAndStoreVisible = true
-                            slideOffset = 0
-                        }
-                    } else {
-                        withAnimation(.spring()) {
-                            slideOffset = 0
                         }
                     }
                 }
             )
-
 
             Button(action: {
                 withAnimation(.spring()) {
@@ -97,10 +90,15 @@ struct AddItemAndStoreCardView: View {
             .background(Color.white)
             .clipShape(Circle())
             .alignmentGuide(.top) { d in d[.bottom] - 50 }
-            .offset(y: slideOffset)
+            .offset(y: dragOffset)
         }
         .frame(height: isAddItemAndStoreVisible ? 300 : 50)
         .animation(.spring(), value: isAddItemAndStoreVisible)
+        .onChange(of: isAddItemAndStoreVisible) { newValue in
+            if !newValue {
+                dismissKeyboard() // Close the keyboard when the menu is closed
+            }
+        }
     }
 
     func dismissKeyboard() {
