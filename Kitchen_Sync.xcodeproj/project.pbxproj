@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A1A85692A760118005EAE55 /* AddItemAndStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A85682A760118005EAE55 /* AddItemAndStoreView.swift */; };
+		9A1A85692A760118005EAE55 /* AddItemAndStoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A85682A760118005EAE55 /* AddItemAndStoreCardView.swift */; };
 		9A1BAD242A6F28F8006B90CB /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1BAD232A6F28F8006B90CB /* DataTypes.swift */; };
 		9A1BAD252A6F2905006B90CB /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1BAD232A6F28F8006B90CB /* DataTypes.swift */; };
 		9A1BAD262A6F2906006B90CB /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1BAD232A6F28F8006B90CB /* DataTypes.swift */; };
@@ -117,7 +117,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9A1A85682A760118005EAE55 /* AddItemAndStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemAndStoreView.swift; sourceTree = "<group>"; };
+		9A1A85682A760118005EAE55 /* AddItemAndStoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemAndStoreCardView.swift; sourceTree = "<group>"; };
 		9A1BAD232A6F28F8006B90CB /* DataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
 		9A35F6682A566FCC0051DF02 /* Kitchen-SyncCompanion-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kitchen-SyncCompanion-Watch-App-Info.plist"; sourceTree = "<group>"; };
 		9A5E8E952A5935E900894DDA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -338,7 +338,7 @@
 				9AA7217E2A5129270014BF46 /* MainView.swift */,
 				9AB874AA2A7422E30067D2C0 /* StoreView.swift */,
 				9AB874AC2A7422F60067D2C0 /* ItemView.swift */,
-				9A1A85682A760118005EAE55 /* AddItemAndStoreView.swift */,
+				9A1A85682A760118005EAE55 /* AddItemAndStoreCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -752,7 +752,7 @@
 				9A91BE0B2A50F64500C2BBCA /* ViewController.swift in Sources */,
 				9AB874B82A74237C0067D2C0 /* StoreExtension.swift in Sources */,
 				9AB874AD2A7422F60067D2C0 /* ItemView.swift in Sources */,
-				9A1A85692A760118005EAE55 /* AddItemAndStoreView.swift in Sources */,
+				9A1A85692A760118005EAE55 /* AddItemAndStoreCardView.swift in Sources */,
 				9AB874B22A7423450067D2C0 /* DeleteItem.swift in Sources */,
 				9AA721792A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld in Sources */,
 				9A5E8E9D2A5B30CE00894DDA /* AppDelegate.swift in Sources */,

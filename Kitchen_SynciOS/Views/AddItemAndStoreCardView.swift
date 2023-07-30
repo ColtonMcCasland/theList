@@ -1,7 +1,7 @@
 import SwiftUI
 import CoreData
 
-struct AddItemAndStoreView: View {
+struct AddItemAndStoreCardView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Store.name, ascending: true)],
