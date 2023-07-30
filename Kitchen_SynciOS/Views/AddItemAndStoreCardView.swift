@@ -23,13 +23,16 @@ struct AddItemAndStoreCardView: View {
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
-
                 TextField("New item name", text: $newItemName)
-                    .padding()
+                    .padding(.horizontal, 20) // Reduce horizontal padding
+                    .padding(.vertical, 10)   // Reduce vertical padding
+                    .font(.headline)          // Adjust font size
                     .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
                 if selectedStore == nil {
                     TextField("New store name", text: $newStoreName)
-                        .padding()
+                        .padding(.horizontal, 20) // Reduce horizontal padding
+                        .padding(.vertical, 10)   // Reduce vertical padding
+                        .font(.headline)          // Adjust font size
                         .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
                 }
                 Button("Add Item") {
@@ -42,6 +45,7 @@ struct AddItemAndStoreCardView: View {
                         dismissKeyboard()
                     }
                 }
+                .font(.headline)              // Adjust font size
                 .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
                 .disabled(newItemName.isEmpty || (newStoreName.isEmpty && selectedStore == nil))
                 .padding()
@@ -66,7 +70,7 @@ struct AddItemAndStoreCardView: View {
         }
         .frame(maxWidth: .infinity) // Expand to full screen width
         .frame(height: cardHeight) // Use the dynamic card height
-        .background(Color.clear) // Set the background color to clear
+        .background(Color.clear)   // Set the background color to clear
         .animation(.spring(), value: isAddItemAndStoreVisible)
         .onPreferenceChange(CardHeightKey.self) { cardHeight = $0 }
         .gesture(
@@ -78,7 +82,7 @@ struct AddItemAndStoreCardView: View {
                 .onEnded { value in
                     dragTranslation = 0 // Reset the drag translation
                     let flickVelocity = value.predictedEndTranslation.height // Use the velocity of the flick gesture
-
+                    
                     if flickVelocity < 0 {
                         self.isAddItemAndStoreVisible = true // Fully open the card for an upward flick
                         withAnimation(.spring()) {
@@ -99,7 +103,7 @@ struct AddItemAndStoreCardView: View {
                         }
                     }
                 }
-            )
+        )
 
     }
 

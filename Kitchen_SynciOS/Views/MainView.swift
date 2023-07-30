@@ -37,8 +37,9 @@ struct MainView: View {
                         StoreView(store: store, isAddItemAndStoreVisible: $isAddItemAndStoreVisible, selectedStore: $selectedStore)
                     }
                 }
-                .transition(.opacity) // Add a fade-in transition for the list of stores
+                .listStyle(PlainListStyle()) // Set the list style to PlainListStyle
             }
+
 
             Spacer() // Add spacer to push the ZStack to the bottom
             AddItemAndStoreCardView(newItemName: $newItemName, newStoreName: $newStoreName, isAddItemAndStoreVisible: $isAddItemAndStoreVisible, selectedStore: $selectedStore, refresh: $refresh, isKeyboardShowing: $isKeyboardShowing)
