@@ -51,9 +51,7 @@ struct AddItemAndStoreCardView: View {
             .gesture(DragGesture()
                 .onChanged { gesture in
                     let offsetY = gesture.translation.height
-                    if offsetY > 0 {
-                        slideOffset = offsetY
-                    }
+                    slideOffset = offsetY
                 }
                 .onEnded { gesture in
                     let offsetY = gesture.translation.height
@@ -62,14 +60,19 @@ struct AddItemAndStoreCardView: View {
                             isAddItemAndStoreVisible = false
                             slideOffset = 0
                         }
-                    } else {
+                    } else if offsetY < -100 {
                         withAnimation(.spring()) {
                             isAddItemAndStoreVisible = true
+                            slideOffset = 0
+                        }
+                    } else {
+                        withAnimation(.spring()) {
                             slideOffset = 0
                         }
                     }
                 }
             )
+
 
             Button(action: {
                 withAnimation(.spring()) {
