@@ -47,7 +47,6 @@
 		9AB874B22A7423450067D2C0 /* DeleteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB874B12A7423450067D2C0 /* DeleteItem.swift */; };
 		9AB874B42A7423540067D2C0 /* DeleteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB874B32A7423540067D2C0 /* DeleteStore.swift */; };
 		9AB874B62A7423680067D2C0 /* LogOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB874B52A7423680067D2C0 /* LogOut.swift */; };
-		9AB874B82A74237C0067D2C0 /* StoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB874B72A74237C0067D2C0 /* StoreExtension.swift */; };
 		9ADDA6C12A77168800501029 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDA6C02A77168800501029 /* DismissKeyboard.swift */; };
 		9ADDA6C32A7716F600501029 /* CardHeightKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDA6C22A7716F600501029 /* CardHeightKey.swift */; };
 /* End PBXBuildFile section */
@@ -165,7 +164,6 @@
 		9AB874B12A7423450067D2C0 /* DeleteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItem.swift; sourceTree = "<group>"; };
 		9AB874B32A7423540067D2C0 /* DeleteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteStore.swift; sourceTree = "<group>"; };
 		9AB874B52A7423680067D2C0 /* LogOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOut.swift; sourceTree = "<group>"; };
-		9AB874B72A74237C0067D2C0 /* StoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreExtension.swift; sourceTree = "<group>"; };
 		9ADDA6C02A77168800501029 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
 		9ADDA6C22A7716F600501029 /* CardHeightKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHeightKey.swift; sourceTree = "<group>"; };
 		9AF43A512A55DF5300ED548A /* Kitchen_SyncWatchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kitchen_SyncWatchOS.entitlements; sourceTree = "<group>"; };
@@ -293,7 +291,6 @@
 				9AB874AF2A7423360067D2C0 /* AddItemAndStore.swift */,
 				9AB874B12A7423450067D2C0 /* DeleteItem.swift */,
 				9AB874B32A7423540067D2C0 /* DeleteStore.swift */,
-				9AB874B72A74237C0067D2C0 /* StoreExtension.swift */,
 				9AB874B52A7423680067D2C0 /* LogOut.swift */,
 				9ADDA6C02A77168800501029 /* DismissKeyboard.swift */,
 				9ADDA6C22A7716F600501029 /* CardHeightKey.swift */,
@@ -334,10 +331,10 @@
 			children = (
 				9AB80E192A5BAA4600459447 /* WatchDataModel.swift */,
 				9A91BE052A50F64500C2BBCA /* Persistence.swift */,
+				9A1BAD232A6F28F8006B90CB /* DataTypes.swift */,
 				9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */,
 				9AA721762A510EF40014BF46 /* Kitchen_Sync.entitlements */,
 				9AF43A512A55DF5300ED548A /* Kitchen_SyncWatchOS.entitlements */,
-				9A1BAD232A6F28F8006B90CB /* DataTypes.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -748,7 +745,6 @@
 				9A91BE042A50F64500C2BBCA /* Kitchen_SynciOSApp.swift in Sources */,
 				9AB874B62A7423680067D2C0 /* LogOut.swift in Sources */,
 				9A91BE0B2A50F64500C2BBCA /* ViewController.swift in Sources */,
-				9AB874B82A74237C0067D2C0 /* StoreExtension.swift in Sources */,
 				9AB874AD2A7422F60067D2C0 /* ItemView.swift in Sources */,
 				9A1A85692A760118005EAE55 /* AddItemAndStoreView.swift in Sources */,
 				9AB874B22A7423450067D2C0 /* DeleteItem.swift in Sources */,
