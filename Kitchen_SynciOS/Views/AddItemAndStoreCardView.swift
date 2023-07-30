@@ -103,6 +103,7 @@ struct AddItemAndStoreCardView: View {
                     } else {
                         if cardHeight < maximumCardHeight - 50 {
                             self.isAddItemAndStoreVisible = false // Close the card for a downward flick
+                            self.selectedStore = nil
                             withAnimation(.spring()) {
                                 cardHeight = 100
                             }
