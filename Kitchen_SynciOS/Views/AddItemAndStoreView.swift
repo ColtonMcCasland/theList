@@ -123,19 +123,7 @@ struct AddItemAndStoreView: View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 
-    // Define the `addItemAndStore` function here if it's not already defined in your code
-    // This function should handle the logic to add items and store to CoreData
-    // ...
-
-    // Preference key to track card height
-    struct CardHeightKey: PreferenceKey {
-        static var defaultValue: CGFloat = 100
-
-        static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-            value = nextValue()
-        }
-    }
-
+    
     @ViewBuilder
     func cardBackground(_ cardHeight: CGFloat) -> some View {
         Color(.systemGray6) // Grey background with frosted glass effect
