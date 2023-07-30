@@ -10,9 +10,12 @@ struct StoreView: View {
         VStack {
             Text(store.name ?? "Unspecified")
                 .onTapGesture {
-                    selectedStore = store
-                    isAddItemAndStoreVisible = true
-                }
+                       print("StoreView: Store \(store.name ?? "Unspecified") was tapped")
+                       selectedStore = store
+                       isAddItemAndStoreVisible = true
+                       print("StoreView: selectedStore set to \(selectedStore?.name ?? "None")")
+                       print("StoreView: isAddItemAndStoreVisible set to \(isAddItemAndStoreVisible)")
+                   }
             ForEach(store.itemsArray, id: \.self) { item in
                 HStack {
                     ItemView(item: item)

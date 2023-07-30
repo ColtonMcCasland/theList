@@ -44,6 +44,8 @@ struct AddItemAndStoreCardView: View {
                     newItemName = ""
                     newStoreName = ""
                     isAddItemAndStoreVisible = false
+                    print("AddItemAndStoreCardView: isAddItemAndStoreVisible set to \(isAddItemAndStoreVisible)")
+
                     selectedStore = nil
                     if isKeyboardShowing {
                         dismissKeyboard()
@@ -63,6 +65,11 @@ struct AddItemAndStoreCardView: View {
             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16.0)) // Use the dynamic card background
             .cornerRadius(20) // Apply corner radius directly here
             .offset(y: max(30, cardHeight - screenHeight + 100)) // Offset the card down when collapsed, with a buffer of 100 points to prevent exposure of the bottom
+            .onChange(of: isAddItemAndStoreVisible) { newValue in
+                withAnimation {
+                    cardHeight = newValue ? maximumCardHeight : 100
+                }
+            }
 
             // New Rectangle for the draggable view (Grey bar)
             Rectangle()
