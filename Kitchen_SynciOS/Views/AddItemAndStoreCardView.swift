@@ -29,7 +29,6 @@ struct AddItemAndStoreCardView: View {
                     .font(.headline)          // Adjust font size
                     .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
                     .animation(.spring(), value: cardHeight) // Add animation modifier
-                    .offset(y: isAddItemAndStoreVisible ? dragTranslation : 0) // Move based on dragTranslation
 
                 if selectedStore == nil {
                     TextField("New store name", text: $newStoreName)
@@ -38,7 +37,6 @@ struct AddItemAndStoreCardView: View {
                         .font(.headline)          // Adjust font size
                         .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
                         .animation(.spring(), value: cardHeight) // Add animation modifier
-                        .offset(y: isAddItemAndStoreVisible ? dragTranslation : 0) // Move based on dragTranslation
                 }
 
                 Button("Add Item") {
@@ -56,8 +54,8 @@ struct AddItemAndStoreCardView: View {
                 .disabled(newItemName.isEmpty || (newStoreName.isEmpty && selectedStore == nil))
                 .padding()
                 .animation(.spring(), value: cardHeight) // Add animation modifier
-                .offset(y: isAddItemAndStoreVisible ? dragTranslation : 0) // Move based on dragTranslation
             }
+
 
             .frame(maxWidth: .infinity)
             .frame(height: cardHeight) // Use the dynamic card height
