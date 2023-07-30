@@ -18,23 +18,29 @@ struct AddItemAndStoreCardView: View {
     @State private var cardHeight: CGFloat = 100
     @State private var dragTranslation: CGFloat = 0
     private let screenHeight = UIScreen.main.bounds.height
-    private let maximumCardHeight: CGFloat = 400 // Limit the card height when fully expanded
-
+    private let maximumCardHeight: CGFloat = 250
     var body: some View {
         ZStack(alignment: .top) {
+
             VStack {
                 TextField("New item name", text: $newItemName)
                     .padding(.horizontal, 20) // Reduce horizontal padding
                     .padding(.vertical, 10)   // Reduce vertical padding
                     .font(.headline)          // Adjust font size
                     .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
+                    .animation(.spring(), value: cardHeight) // Add animation modifier
+                    .offset(y: isAddItemAndStoreVisible ? dragTranslation : 0) // Move based on dragTranslation
+
                 if selectedStore == nil {
                     TextField("New store name", text: $newStoreName)
                         .padding(.horizontal, 20) // Reduce horizontal padding
                         .padding(.vertical, 10)   // Reduce vertical padding
                         .font(.headline)          // Adjust font size
                         .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
+                        .animation(.spring(), value: cardHeight) // Add animation modifier
+                        .offset(y: isAddItemAndStoreVisible ? dragTranslation : 0) // Move based on dragTranslation
                 }
+
                 Button("Add Item") {
                     addItemAndStore(newItemName: newItemName, newStoreName: selectedStore?.name ?? newStoreName, stores: stores, viewContext: viewContext, refresh: $refresh)
                     newItemName = ""
@@ -49,14 +55,15 @@ struct AddItemAndStoreCardView: View {
                 .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
                 .disabled(newItemName.isEmpty || (newStoreName.isEmpty && selectedStore == nil))
                 .padding()
+                .animation(.spring(), value: cardHeight) // Add animation modifier
+                .offset(y: isAddItemAndStoreVisible ? dragTranslation : 0) // Move based on dragTranslation
             }
+
             .frame(maxWidth: .infinity)
             .frame(height: cardHeight) // Use the dynamic card height
-            .background(
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .fill(Color.white)
-                    .shadow(radius: 5)
-            )
+            .padding()
+            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16.0)) // Use the dynamic card background
+            .cornerRadius(20) // Apply corner radius directly here
             .offset(y: max(30, cardHeight - screenHeight + 100)) // Offset the card down when collapsed, with a buffer of 100 points to prevent exposure of the bottom
 
             // New Rectangle for the draggable view (Grey bar)
@@ -70,7 +77,7 @@ struct AddItemAndStoreCardView: View {
         }
         .frame(maxWidth: .infinity) // Expand to full screen width
         .frame(height: cardHeight) // Use the dynamic card height
-        .background(Color.clear)   // Set the background color to clear
+
         .animation(.spring(), value: isAddItemAndStoreVisible)
         .onPreferenceChange(CardHeightKey.self) { cardHeight = $0 }
         .gesture(
@@ -82,7 +89,7 @@ struct AddItemAndStoreCardView: View {
                 .onEnded { value in
                     dragTranslation = 0 // Reset the drag translation
                     let flickVelocity = value.predictedEndTranslation.height // Use the velocity of the flick gesture
-                    
+
                     if flickVelocity < 0 {
                         self.isAddItemAndStoreVisible = true // Fully open the card for an upward flick
                         withAnimation(.spring()) {
@@ -107,6 +114,12 @@ struct AddItemAndStoreCardView: View {
 
     }
 
+    struct Blur: UIViewRepresentable {
+        var effect: UIVisualEffect?
+        func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView { UIVisualEffectView() }
+        func updateUIView(_ uiView: UIVisualEffectView, context: UIViewRepresentableContext<Self>) { uiView.effect = effect }
+    }
+
     func dismissKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
@@ -122,5 +135,12 @@ struct AddItemAndStoreCardView: View {
         static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
             value = nextValue()
         }
+    }
+
+    @ViewBuilder
+    func cardBackground(_ cardHeight: CGFloat) -> some View {
+        Color(.systemGray6) // Grey background with frosted glass effect
+            .opacity(0.95) // Apply transparency to create frosted glass effect
+            .blur(radius: 25) // Apply blur effect to create frosted glass effect
     }
 }
