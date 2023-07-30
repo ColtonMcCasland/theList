@@ -14,18 +14,23 @@ struct AddItemAndStoreCardView: View {
     @Binding var selectedStore: Store?
     @Binding var refresh: Bool
     @Binding var isKeyboardShowing: Bool
-    @GestureState private var dragOffset: CGFloat = 0.0 // Track the total drag offset
+
+    @State private var cardHeight: CGFloat = 100
+    @State private var dragTranslation: CGFloat = 0
+    private let screenHeight = UIScreen.main.bounds.height
+    private let maximumCardHeight: CGFloat = 400 // Limit the card height when fully expanded
 
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
+
                 TextField("New item name", text: $newItemName)
                     .padding()
-                    .opacity(isAddItemAndStoreVisible ? 1 : 0)
+                    .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
                 if selectedStore == nil {
                     TextField("New store name", text: $newStoreName)
                         .padding()
-                        .opacity(isAddItemAndStoreVisible ? 1 : 0)
+                        .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
                 }
                 Button("Add Item") {
                     addItemAndStore(newItemName: newItemName, newStoreName: selectedStore?.name ?? newStoreName, stores: stores, viewContext: viewContext, refresh: $refresh)
@@ -37,71 +42,65 @@ struct AddItemAndStoreCardView: View {
                         dismissKeyboard()
                     }
                 }
-                .opacity(isAddItemAndStoreVisible ? 1 : 0)
+                .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
                 .disabled(newItemName.isEmpty || (newStoreName.isEmpty && selectedStore == nil))
                 .padding()
             }
             .frame(maxWidth: .infinity)
-            .frame(height: isAddItemAndStoreVisible ? 300 : 100)
-            .padding(.bottom, isAddItemAndStoreVisible ? 70 : 15)
-            .background(Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-            .shadow(radius: 5)
-            .offset(y: dragOffset)
-            .gesture(DragGesture()
-                .updating($dragOffset) { value, state, _ in
-                    state = value.translation.height
-                }
-                .onEnded { gesture in
-                    let offsetY = gesture.translation.height
-                    if offsetY > 100 {
-                        withAnimation(.spring()) {
-                            isAddItemAndStoreVisible = false
-                        }
-                        dismissKeyboard() // Close the keyboard when the menu is closed
-                    } else if offsetY < -100 {
-                        withAnimation(.spring()) {
-                            isAddItemAndStoreVisible = true
-                        }
-                    }
-                }
+            .frame(height: cardHeight) // Use the dynamic card height
+            .background(
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .fill(Color.white)
+                    .shadow(radius: 5)
             )
+            .offset(y: max(30, cardHeight - screenHeight + 100)) // Offset the card down when collapsed, with a buffer of 100 points to prevent exposure of the bottom
 
-            Button(action: {
-                withAnimation(.spring()) {
-                    self.isAddItemAndStoreVisible.toggle()
-                    if !isAddItemAndStoreVisible {
-                        self.newItemName = ""
-                        self.newStoreName = ""
-                        self.selectedStore = nil
-                        if isKeyboardShowing {
-                            dismissKeyboard()
-                        }
+            // New Rectangle for the draggable view (Grey bar)
+            Rectangle()
+                .frame(width: 50, height: 5)
+                .foregroundColor(.gray)
+                .cornerRadius(2.5)
+                .padding(.top, 10)
+                .offset(y: max(30, cardHeight - screenHeight + 100)) // Use the same offset as the VStack
+
+        }
+        .frame(maxWidth: .infinity) // Expand to full screen width
+        .frame(height: cardHeight) // Use the dynamic card height
+        .background(Color.clear) // Set the background color to clear
+        .animation(.spring(), value: isAddItemAndStoreVisible)
+        .onPreferenceChange(CardHeightKey.self) { cardHeight = $0 }
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    dragTranslation = value.translation.height
+                    cardHeight = max(100, min(cardHeight - value.translation.height, 400)) // Adjust the maximum height as needed
+                }
+                .onEnded { value in
+                    dragTranslation = 0 // Reset the drag translation
+                    let dragThreshold: CGFloat = 50 // Adjust this threshold as needed
+                    if value.translation.height < -dragThreshold {
+                        self.isAddItemAndStoreVisible = true
+                    } else {
+                        self.isAddItemAndStoreVisible = false
                     }
                 }
-            }) {
-                Image(systemName: "chevron.up")
-                    .resizable()
-                    .frame(width: 80, height: 16)
-                    .rotation3DEffect(isAddItemAndStoreVisible ? Angle(degrees: 180) : Angle(degrees: 0), axis: (x: 1, y: 0, z: 0))
-                    .scaleEffect(isAddItemAndStoreVisible ? 1.3 : 1.0)
-            }
-            .padding()
-            .background(Color.white)
-            .clipShape(Circle())
-            .alignmentGuide(.top) { d in d[.bottom] - 50 }
-            .offset(y: dragOffset)
-        }
-        .frame(height: isAddItemAndStoreVisible ? 300 : 50)
-        .animation(.spring(), value: isAddItemAndStoreVisible)
-        .onChange(of: isAddItemAndStoreVisible) { newValue in
-            if !newValue {
-                dismissKeyboard() // Close the keyboard when the menu is closed
-            }
-        }
+        )
     }
 
     func dismissKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+
+    // Define the `addItemAndStore` function here if it's not already defined in your code
+    // This function should handle the logic to add items and store to CoreData
+    // ...
+
+    // Preference key to track card height
+    struct CardHeightKey: PreferenceKey {
+        static var defaultValue: CGFloat = 100
+
+        static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+            value = nextValue()
+        }
     }
 }
