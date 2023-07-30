@@ -78,20 +78,28 @@ struct AddItemAndStoreCardView: View {
                 .onEnded { value in
                     dragTranslation = 0 // Reset the drag translation
                     let flickVelocity = value.predictedEndTranslation.height // Use the velocity of the flick gesture
-                    
+
                     if flickVelocity < 0 {
-                        self.isAddItemAndStoreVisible = true // Fully open the card for upward flick
+                        self.isAddItemAndStoreVisible = true // Fully open the card for an upward flick
                         withAnimation(.spring()) {
                             cardHeight = maximumCardHeight
                         }
                     } else {
-                        self.isAddItemAndStoreVisible = false // Close the card for downward flick
-                        withAnimation(.spring()) {
-                            cardHeight = 100
+                        if cardHeight < maximumCardHeight - 50 {
+                            self.isAddItemAndStoreVisible = false // Close the card for a downward flick
+                            withAnimation(.spring()) {
+                                cardHeight = 100
+                            }
+                            dismissKeyboard() // Dismiss the system keyboard
+                        } else {
+                            self.isAddItemAndStoreVisible = true // Keep the card open as the user didn't flick it closed
+                            withAnimation(.spring()) {
+                                cardHeight = maximumCardHeight
+                            }
                         }
                     }
                 }
-        )
+            )
 
     }
 
