@@ -48,6 +48,30 @@ struct AddItemAndStoreCardView: View {
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             .shadow(radius: 5)
             .offset(y: slideOffset)
+            .gesture(DragGesture()
+                .onChanged { gesture in
+                    let offsetY = gesture.translation.height
+                    slideOffset = offsetY
+                }
+                .onEnded { gesture in
+                    let offsetY = gesture.translation.height
+                    if offsetY > 100 {
+                        withAnimation(.spring()) {
+                            isAddItemAndStoreVisible = false
+                            slideOffset = 0
+                        }
+                    } else if offsetY < -100 {
+                        withAnimation(.spring()) {
+                            isAddItemAndStoreVisible = true
+                            slideOffset = 0
+                        }
+                    } else {
+                        withAnimation(.spring()) {
+                            slideOffset = 0
+                        }
+                    }
+                }
+            )
 
             Button(action: {
                 withAnimation(.spring()) {
@@ -73,40 +97,6 @@ struct AddItemAndStoreCardView: View {
             .clipShape(Circle())
             .alignmentGuide(.top) { d in d[.bottom] - 50 }
             .offset(y: slideOffset)
-            .gesture(DragGesture()
-                .onChanged { gesture in
-                    let offsetY = gesture.translation.height
-                    if offsetY > 0 {
-                        slideOffset = offsetY
-                    }
-                }
-                .onEnded { gesture in
-                    let offsetY = gesture.translation.height
-                    if offsetY > 100 {
-                        isAddItemAndStoreVisible = false
-                    } else {
-                        isAddItemAndStoreVisible = true
-                    }
-                    withAnimation(.spring()) {
-                        slideOffset = 0
-                    }
-                }
-            )
-            .gesture(TapGesture()
-                .onEnded {
-                    withAnimation(.spring()) {
-                        self.isAddItemAndStoreVisible.toggle()
-                        if !isAddItemAndStoreVisible {
-                            self.newItemName = ""
-                            self.newStoreName = ""
-                            self.selectedStore = nil
-                            if isKeyboardShowing {
-                                dismissKeyboard()
-                            }
-                        }
-                    }
-                }
-            )
         }
         .frame(height: isAddItemAndStoreVisible ? 300 : 50)
         .animation(.spring(), value: isAddItemAndStoreVisible)
