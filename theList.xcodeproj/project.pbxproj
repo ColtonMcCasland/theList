@@ -7,28 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A1A85692A760118005EAE55 /* AddItemAndStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A85682A760118005EAE55 /* AddItemAndStoreView.swift */; };
 		9A1BAD242A6F28F8006B90CB /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1BAD232A6F28F8006B90CB /* DataTypes.swift */; };
-		9A5E8E9D2A5B30CE00894DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E8E9C2A5B30CE00894DDA /* AppDelegate.swift */; };
-		9A91BE042A50F64500C2BBCA /* Kitchen_SynciOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE032A50F64500C2BBCA /* Kitchen_SynciOSApp.swift */; };
 		9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE052A50F64500C2BBCA /* Persistence.swift */; };
-		9A91BE0B2A50F64500C2BBCA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE0A2A50F64500C2BBCA /* ViewController.swift */; };
-		9A91BE0D2A50F64600C2BBCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A91BE0C2A50F64600C2BBCA /* Assets.xcassets */; };
-		9A91BE112A50F64600C2BBCA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A91BE102A50F64600C2BBCA /* Preview Assets.xcassets */; };
 		9A91BE1B2A50F64600C2BBCA /* Kitchen_SyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE1A2A50F64600C2BBCA /* Kitchen_SyncTests.swift */; };
 		9A91BE252A50F64600C2BBCA /* Kitchen_SyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */; };
 		9A91BE272A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */; };
 		9AA721792A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */; };
-		9AA7217F2A5129270014BF46 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7217E2A5129270014BF46 /* ListView.swift */; };
-		9AA721812A512E760014BF46 /* ICloudLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721802A512E760014BF46 /* ICloudLoginView.swift */; };
-		9AB874AB2A7422E30067D2C0 /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB874AA2A7422E30067D2C0 /* StoreView.swift */; };
-		9AB874AD2A7422F60067D2C0 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB874AC2A7422F60067D2C0 /* ItemView.swift */; };
-		9AB874B02A7423360067D2C0 /* AddItemAndStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB874AF2A7423360067D2C0 /* AddItemAndStore.swift */; };
-		9AB874B22A7423450067D2C0 /* DeleteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB874B12A7423450067D2C0 /* DeleteItem.swift */; };
-		9AB874B42A7423540067D2C0 /* DeleteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB874B32A7423540067D2C0 /* DeleteStore.swift */; };
-		9AB874B62A7423680067D2C0 /* LogOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB874B52A7423680067D2C0 /* LogOut.swift */; };
-		9ADDA6C12A77168800501029 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDA6C02A77168800501029 /* DismissKeyboard.swift */; };
-		9ADDA6C32A7716F600501029 /* CardHeightKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDA6C22A7716F600501029 /* CardHeightKey.swift */; };
+		9ABBD1C42A772876005F6DF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B12A772876005F6DF0 /* ViewController.swift */; };
+		9ABBD1C52A772876005F6DF0 /* LogOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B32A772876005F6DF0 /* LogOut.swift */; };
+		9ABBD1C62A772876005F6DF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B42A772876005F6DF0 /* Assets.xcassets */; };
+		9ABBD1C72A772876005F6DF0 /* CardHeightKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B52A772876005F6DF0 /* CardHeightKey.swift */; };
+		9ABBD1C82A772876005F6DF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B72A772876005F6DF0 /* Preview Assets.xcassets */; };
+		9ABBD1C92A772876005F6DF0 /* DeleteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B82A772876005F6DF0 /* DeleteItem.swift */; };
+		9ABBD1CA2A772876005F6DF0 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B92A772876005F6DF0 /* DismissKeyboard.swift */; };
+		9ABBD1CB2A772876005F6DF0 /* AddItemAndStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1BA2A772876005F6DF0 /* AddItemAndStore.swift */; };
+		9ABBD1CC2A772876005F6DF0 /* DeleteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1BB2A772876005F6DF0 /* DeleteStore.swift */; };
+		9ABBD1CD2A772876005F6DF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1BC2A772876005F6DF0 /* AppDelegate.swift */; };
+		9ABBD1CE2A772876005F6DF0 /* theListOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1BD2A772876005F6DF0 /* theListOSApp.swift */; };
+		9ABBD1CF2A772876005F6DF0 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1BF2A772876005F6DF0 /* ItemView.swift */; };
+		9ABBD1D02A772876005F6DF0 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1C02A772876005F6DF0 /* ListView.swift */; };
+		9ABBD1D12A772876005F6DF0 /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1C12A772876005F6DF0 /* StoreView.swift */; };
+		9ABBD1D22A772876005F6DF0 /* AddItemAndStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1C22A772876005F6DF0 /* AddItemAndStoreView.swift */; };
+		9ABBD1D32A772876005F6DF0 /* ICloudLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1C32A772876005F6DF0 /* ICloudLoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,33 +62,32 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9A1A85682A760118005EAE55 /* AddItemAndStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemAndStoreView.swift; sourceTree = "<group>"; };
 		9A1BAD232A6F28F8006B90CB /* DataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
-		9A5E8E9C2A5B30CE00894DDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9A91BE002A50F64500C2BBCA /* Kitchen_Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kitchen_Sync.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A91BE032A50F64500C2BBCA /* Kitchen_SynciOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SynciOSApp.swift; sourceTree = "<group>"; };
+		9A91BE002A50F64500C2BBCA /* theList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A91BE052A50F64500C2BBCA /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		9A91BE0A2A50F64500C2BBCA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9A91BE0C2A50F64600C2BBCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9A91BE102A50F64600C2BBCA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9A91BE162A50F64600C2BBCA /* Kitchen_SyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kitchen_SyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A91BE162A50F64600C2BBCA /* theListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = theListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A91BE1A2A50F64600C2BBCA /* Kitchen_SyncTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncTests.swift; sourceTree = "<group>"; };
-		9A91BE202A50F64600C2BBCA /* Kitchen_SyncUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kitchen_SyncUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A91BE202A50F64600C2BBCA /* theListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = theListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncUITests.swift; sourceTree = "<group>"; };
 		9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		9AA721762A510EF40014BF46 /* Kitchen_Sync.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Kitchen_Sync.entitlements; sourceTree = "<group>"; };
+		9AA721762A510EF40014BF46 /* theList.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = theList.entitlements; sourceTree = "<group>"; };
 		9AA721782A510EF40014BF46 /* Kitchen_Sync.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kitchen_Sync.xcdatamodel; sourceTree = "<group>"; };
-		9AA7217B2A511C380014BF46 /* Kitchen-Sync-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Kitchen-Sync-Info.plist"; sourceTree = SOURCE_ROOT; };
-		9AA7217E2A5129270014BF46 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		9AA721802A512E760014BF46 /* ICloudLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudLoginView.swift; sourceTree = "<group>"; };
-		9AB874AA2A7422E30067D2C0 /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
-		9AB874AC2A7422F60067D2C0 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
-		9AB874AF2A7423360067D2C0 /* AddItemAndStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemAndStore.swift; sourceTree = "<group>"; };
-		9AB874B12A7423450067D2C0 /* DeleteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItem.swift; sourceTree = "<group>"; };
-		9AB874B32A7423540067D2C0 /* DeleteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteStore.swift; sourceTree = "<group>"; };
-		9AB874B52A7423680067D2C0 /* LogOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOut.swift; sourceTree = "<group>"; };
-		9ADDA6C02A77168800501029 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
-		9ADDA6C22A7716F600501029 /* CardHeightKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHeightKey.swift; sourceTree = "<group>"; };
+		9ABBD1B12A772876005F6DF0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9ABBD1B32A772876005F6DF0 /* LogOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOut.swift; sourceTree = "<group>"; };
+		9ABBD1B42A772876005F6DF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9ABBD1B52A772876005F6DF0 /* CardHeightKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHeightKey.swift; sourceTree = "<group>"; };
+		9ABBD1B72A772876005F6DF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9ABBD1B82A772876005F6DF0 /* DeleteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteItem.swift; sourceTree = "<group>"; };
+		9ABBD1B92A772876005F6DF0 /* DismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
+		9ABBD1BA2A772876005F6DF0 /* AddItemAndStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemAndStore.swift; sourceTree = "<group>"; };
+		9ABBD1BB2A772876005F6DF0 /* DeleteStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteStore.swift; sourceTree = "<group>"; };
+		9ABBD1BC2A772876005F6DF0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9ABBD1BD2A772876005F6DF0 /* theListOSApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = theListOSApp.swift; sourceTree = "<group>"; };
+		9ABBD1BF2A772876005F6DF0 /* ItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		9ABBD1C02A772876005F6DF0 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		9ABBD1C12A772876005F6DF0 /* StoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
+		9ABBD1C22A772876005F6DF0 /* AddItemAndStoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemAndStoreView.swift; sourceTree = "<group>"; };
+		9ABBD1C32A772876005F6DF0 /* ICloudLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudLoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +118,7 @@
 		9A91BDF72A50F64500C2BBCA = {
 			isa = PBXGroup;
 			children = (
-				9A91BE022A50F64500C2BBCA /* Kitchen_SynciOS */,
+				9ABBD1B02A772876005F6DF0 /* theListiOS */,
 				9AA721752A510EF40014BF46 /* Shared */,
 				9AA722202A520EAC0014BF46 /* Tests */,
 				9A91BE012A50F64500C2BBCA /* Products */,
@@ -129,39 +128,11 @@
 		9A91BE012A50F64500C2BBCA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A91BE002A50F64500C2BBCA /* Kitchen_Sync.app */,
-				9A91BE162A50F64600C2BBCA /* Kitchen_SyncTests.xctest */,
-				9A91BE202A50F64600C2BBCA /* Kitchen_SyncUITests.xctest */,
+				9A91BE002A50F64500C2BBCA /* theList.app */,
+				9A91BE162A50F64600C2BBCA /* theListTests.xctest */,
+				9A91BE202A50F64600C2BBCA /* theListUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		9A91BE022A50F64500C2BBCA /* Kitchen_SynciOS */ = {
-			isa = PBXGroup;
-			children = (
-				9A91BE032A50F64500C2BBCA /* Kitchen_SynciOSApp.swift */,
-				9A5E8E9C2A5B30CE00894DDA /* AppDelegate.swift */,
-				9AA7217D2A5128D20014BF46 /* Views */,
-				9A91BE0A2A50F64500C2BBCA /* ViewController.swift */,
-				9AB874AF2A7423360067D2C0 /* AddItemAndStore.swift */,
-				9AB874B12A7423450067D2C0 /* DeleteItem.swift */,
-				9AB874B32A7423540067D2C0 /* DeleteStore.swift */,
-				9AB874B52A7423680067D2C0 /* LogOut.swift */,
-				9ADDA6C02A77168800501029 /* DismissKeyboard.swift */,
-				9ADDA6C22A7716F600501029 /* CardHeightKey.swift */,
-				9AA7217B2A511C380014BF46 /* Kitchen-Sync-Info.plist */,
-				9A91BE0C2A50F64600C2BBCA /* Assets.xcassets */,
-				9A91BE0F2A50F64600C2BBCA /* Preview Content */,
-			);
-			path = Kitchen_SynciOS;
-			sourceTree = "<group>";
-		};
-		9A91BE0F2A50F64600C2BBCA /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				9A91BE102A50F64600C2BBCA /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		9A91BE192A50F64600C2BBCA /* Kitchen_SyncTests */ = {
@@ -187,21 +158,8 @@
 				9A91BE052A50F64500C2BBCA /* Persistence.swift */,
 				9A1BAD232A6F28F8006B90CB /* DataTypes.swift */,
 				9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */,
-				9AA721762A510EF40014BF46 /* Kitchen_Sync.entitlements */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		9AA7217D2A5128D20014BF46 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9A1A85682A760118005EAE55 /* AddItemAndStoreView.swift */,
-				9AA721802A512E760014BF46 /* ICloudLoginView.swift */,
-				9AA7217E2A5129270014BF46 /* ListView.swift */,
-				9AB874AA2A7422E30067D2C0 /* StoreView.swift */,
-				9AB874AC2A7422F60067D2C0 /* ItemView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		9AA722202A520EAC0014BF46 /* Tests */ = {
@@ -213,12 +171,52 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		9ABBD1B02A772876005F6DF0 /* theListiOS */ = {
+			isa = PBXGroup;
+			children = (
+				9AA721762A510EF40014BF46 /* theList.entitlements */,
+				9ABBD1B12A772876005F6DF0 /* ViewController.swift */,
+				9ABBD1B32A772876005F6DF0 /* LogOut.swift */,
+				9ABBD1B42A772876005F6DF0 /* Assets.xcassets */,
+				9ABBD1B52A772876005F6DF0 /* CardHeightKey.swift */,
+				9ABBD1B62A772876005F6DF0 /* Preview Content */,
+				9ABBD1B82A772876005F6DF0 /* DeleteItem.swift */,
+				9ABBD1B92A772876005F6DF0 /* DismissKeyboard.swift */,
+				9ABBD1BA2A772876005F6DF0 /* AddItemAndStore.swift */,
+				9ABBD1BB2A772876005F6DF0 /* DeleteStore.swift */,
+				9ABBD1BC2A772876005F6DF0 /* AppDelegate.swift */,
+				9ABBD1BD2A772876005F6DF0 /* theListOSApp.swift */,
+				9ABBD1BE2A772876005F6DF0 /* Views */,
+			);
+			path = theListiOS;
+			sourceTree = "<group>";
+		};
+		9ABBD1B62A772876005F6DF0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9ABBD1B72A772876005F6DF0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9ABBD1BE2A772876005F6DF0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9ABBD1BF2A772876005F6DF0 /* ItemView.swift */,
+				9ABBD1C02A772876005F6DF0 /* ListView.swift */,
+				9ABBD1C12A772876005F6DF0 /* StoreView.swift */,
+				9ABBD1C22A772876005F6DF0 /* AddItemAndStoreView.swift */,
+				9ABBD1C32A772876005F6DF0 /* ICloudLoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9A91BDFF2A50F64500C2BBCA /* Kitchen_Sync */ = {
+		9A91BDFF2A50F64500C2BBCA /* theList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A91BE2A2A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "Kitchen_Sync" */;
+			buildConfigurationList = 9A91BE2A2A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "theList" */;
 			buildPhases = (
 				9A91BDFC2A50F64500C2BBCA /* Sources */,
 				9A91BDFD2A50F64500C2BBCA /* Frameworks */,
@@ -229,14 +227,14 @@
 			);
 			dependencies = (
 			);
-			name = Kitchen_Sync;
+			name = theList;
 			productName = Kitchen_Sync;
-			productReference = 9A91BE002A50F64500C2BBCA /* Kitchen_Sync.app */;
+			productReference = 9A91BE002A50F64500C2BBCA /* theList.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9A91BE152A50F64600C2BBCA /* Kitchen_SyncTests */ = {
+		9A91BE152A50F64600C2BBCA /* theListTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A91BE2D2A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "Kitchen_SyncTests" */;
+			buildConfigurationList = 9A91BE2D2A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "theListTests" */;
 			buildPhases = (
 				9A91BE122A50F64600C2BBCA /* Sources */,
 				9A91BE132A50F64600C2BBCA /* Frameworks */,
@@ -247,14 +245,14 @@
 			dependencies = (
 				9A91BE182A50F64600C2BBCA /* PBXTargetDependency */,
 			);
-			name = Kitchen_SyncTests;
+			name = theListTests;
 			productName = Kitchen_SyncTests;
-			productReference = 9A91BE162A50F64600C2BBCA /* Kitchen_SyncTests.xctest */;
+			productReference = 9A91BE162A50F64600C2BBCA /* theListTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9A91BE1F2A50F64600C2BBCA /* Kitchen_SyncUITests */ = {
+		9A91BE1F2A50F64600C2BBCA /* theListUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A91BE302A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "Kitchen_SyncUITests" */;
+			buildConfigurationList = 9A91BE302A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "theListUITests" */;
 			buildPhases = (
 				9A91BE1C2A50F64600C2BBCA /* Sources */,
 				9A91BE1D2A50F64600C2BBCA /* Frameworks */,
@@ -265,9 +263,9 @@
 			dependencies = (
 				9A91BE222A50F64600C2BBCA /* PBXTargetDependency */,
 			);
-			name = Kitchen_SyncUITests;
+			name = theListUITests;
 			productName = Kitchen_SyncUITests;
-			productReference = 9A91BE202A50F64600C2BBCA /* Kitchen_SyncUITests.xctest */;
+			productReference = 9A91BE202A50F64600C2BBCA /* theListUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -293,7 +291,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9A91BDFB2A50F64500C2BBCA /* Build configuration list for PBXProject "Kitchen_Sync" */;
+			buildConfigurationList = 9A91BDFB2A50F64500C2BBCA /* Build configuration list for PBXProject "theList" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -306,9 +304,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9A91BDFF2A50F64500C2BBCA /* Kitchen_Sync */,
-				9A91BE152A50F64600C2BBCA /* Kitchen_SyncTests */,
-				9A91BE1F2A50F64600C2BBCA /* Kitchen_SyncUITests */,
+				9A91BDFF2A50F64500C2BBCA /* theList */,
+				9A91BE152A50F64600C2BBCA /* theListTests */,
+				9A91BE1F2A50F64600C2BBCA /* theListUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -318,8 +316,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A91BE112A50F64600C2BBCA /* Preview Assets.xcassets in Resources */,
-				9A91BE0D2A50F64600C2BBCA /* Assets.xcassets in Resources */,
+				9ABBD1C82A772876005F6DF0 /* Preview Assets.xcassets in Resources */,
+				9ABBD1C62A772876005F6DF0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,22 +342,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AB874B02A7423360067D2C0 /* AddItemAndStore.swift in Sources */,
-				9AA721812A512E760014BF46 /* ICloudLoginView.swift in Sources */,
-				9A91BE042A50F64500C2BBCA /* Kitchen_SynciOSApp.swift in Sources */,
-				9AB874B62A7423680067D2C0 /* LogOut.swift in Sources */,
-				9A91BE0B2A50F64500C2BBCA /* ViewController.swift in Sources */,
-				9AB874AD2A7422F60067D2C0 /* ItemView.swift in Sources */,
-				9A1A85692A760118005EAE55 /* AddItemAndStoreView.swift in Sources */,
-				9AB874B22A7423450067D2C0 /* DeleteItem.swift in Sources */,
+				9ABBD1CD2A772876005F6DF0 /* AppDelegate.swift in Sources */,
+				9ABBD1C52A772876005F6DF0 /* LogOut.swift in Sources */,
 				9AA721792A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld in Sources */,
-				9ADDA6C32A7716F600501029 /* CardHeightKey.swift in Sources */,
-				9A5E8E9D2A5B30CE00894DDA /* AppDelegate.swift in Sources */,
-				9ADDA6C12A77168800501029 /* DismissKeyboard.swift in Sources */,
+				9ABBD1C92A772876005F6DF0 /* DeleteItem.swift in Sources */,
 				9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */,
-				9AA7217F2A5129270014BF46 /* ListView.swift in Sources */,
-				9AB874AB2A7422E30067D2C0 /* StoreView.swift in Sources */,
-				9AB874B42A7423540067D2C0 /* DeleteStore.swift in Sources */,
+				9ABBD1C42A772876005F6DF0 /* ViewController.swift in Sources */,
+				9ABBD1CA2A772876005F6DF0 /* DismissKeyboard.swift in Sources */,
+				9ABBD1D22A772876005F6DF0 /* AddItemAndStoreView.swift in Sources */,
+				9ABBD1CB2A772876005F6DF0 /* AddItemAndStore.swift in Sources */,
+				9ABBD1C72A772876005F6DF0 /* CardHeightKey.swift in Sources */,
+				9ABBD1CF2A772876005F6DF0 /* ItemView.swift in Sources */,
+				9ABBD1D32A772876005F6DF0 /* ICloudLoginView.swift in Sources */,
+				9ABBD1D02A772876005F6DF0 /* ListView.swift in Sources */,
+				9ABBD1CE2A772876005F6DF0 /* theListOSApp.swift in Sources */,
+				9ABBD1CC2A772876005F6DF0 /* DeleteStore.swift in Sources */,
+				9ABBD1D12A772876005F6DF0 /* StoreView.swift in Sources */,
 				9A1BAD242A6F28F8006B90CB /* DataTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,12 +384,12 @@
 /* Begin PBXTargetDependency section */
 		9A91BE182A50F64600C2BBCA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9A91BDFF2A50F64500C2BBCA /* Kitchen_Sync */;
+			target = 9A91BDFF2A50F64500C2BBCA /* theList */;
 			targetProxy = 9A91BE172A50F64600C2BBCA /* PBXContainerItemProxy */;
 		};
 		9A91BE222A50F64600C2BBCA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9A91BDFF2A50F64500C2BBCA /* Kitchen_Sync */;
+			target = 9A91BDFF2A50F64500C2BBCA /* theList */;
 			targetProxy = 9A91BE212A50F64600C2BBCA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -514,15 +512,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Shared/Kitchen_Sync.entitlements;
+				CODE_SIGN_ENTITLEMENTS = theListiOS/theList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Kitchen_SynciOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"theListiOS/Preview Content\"";
 				DEVELOPMENT_TEAM = EYMBCDF9AD;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Kitchen-Sync-Info.plist";
+				INFOPLIST_FILE = "theList-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -538,7 +536,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.coltonmccasland.Kitchen-Sync";
+				PRODUCT_BUNDLE_IDENTIFIER = com.coltonmccasland.theList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -556,15 +554,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Shared/Kitchen_Sync.entitlements;
+				CODE_SIGN_ENTITLEMENTS = theListiOS/theList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Kitchen_SynciOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"theListiOS/Preview Content\"";
 				DEVELOPMENT_TEAM = EYMBCDF9AD;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Kitchen-Sync-Info.plist";
+				INFOPLIST_FILE = "theList-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -580,7 +578,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.coltonmccasland.Kitchen-Sync";
+				PRODUCT_BUNDLE_IDENTIFIER = com.coltonmccasland.theList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -611,7 +609,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kitchen_Sync.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Kitchen_Sync";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/theList.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/theList";
 			};
 			name = Debug;
 		};
@@ -634,7 +632,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kitchen_Sync.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Kitchen_Sync";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/theList.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/theList";
 			};
 			name = Release;
 		};
@@ -685,7 +683,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9A91BDFB2A50F64500C2BBCA /* Build configuration list for PBXProject "Kitchen_Sync" */ = {
+		9A91BDFB2A50F64500C2BBCA /* Build configuration list for PBXProject "theList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A91BE282A50F64600C2BBCA /* Debug */,
@@ -694,7 +692,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A91BE2A2A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "Kitchen_Sync" */ = {
+		9A91BE2A2A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "theList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A91BE2B2A50F64600C2BBCA /* Debug */,
@@ -703,7 +701,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A91BE2D2A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "Kitchen_SyncTests" */ = {
+		9A91BE2D2A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "theListTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A91BE2E2A50F64600C2BBCA /* Debug */,
@@ -712,7 +710,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A91BE302A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "Kitchen_SyncUITests" */ = {
+		9A91BE302A50F64600C2BBCA /* Build configuration list for PBXNativeTarget "theListUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A91BE312A50F64600C2BBCA /* Debug */,

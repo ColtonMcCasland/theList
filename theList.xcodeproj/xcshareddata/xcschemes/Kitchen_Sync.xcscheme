@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9A91BDFF2A50F64500C2BBCA"
-               BuildableName = "Kitchen_Sync.app"
-               BlueprintName = "Kitchen_Sync"
-               ReferencedContainer = "container:Kitchen_Sync.xcodeproj">
+               BuildableName = "theList.app"
+               BlueprintName = "theList"
+               ReferencedContainer = "container:theList.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9A91BDFF2A50F64500C2BBCA"
-            BuildableName = "Kitchen_Sync.app"
-            BlueprintName = "Kitchen_Sync"
-            ReferencedContainer = "container:Kitchen_Sync.xcodeproj">
+            BuildableName = "theList.app"
+            BlueprintName = "theList"
+            ReferencedContainer = "container:theList.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9A91BDFF2A50F64500C2BBCA"
-            BuildableName = "Kitchen_Sync.app"
-            BlueprintName = "Kitchen_Sync"
-            ReferencedContainer = "container:Kitchen_Sync.xcodeproj">
+            BuildableName = "theList.app"
+            BlueprintName = "theList"
+            ReferencedContainer = "container:theList.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
