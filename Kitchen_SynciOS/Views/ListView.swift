@@ -2,24 +2,19 @@ import SwiftUI
 import CoreData
 import UniformTypeIdentifiers
 
-struct MainView: View {
+struct ListView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Store.name, ascending: true)],
-        animation: .default)
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Store.name, ascending: true)],animation: .default)
     private var stores: FetchedResults<Store>
     @AppStorage("isLoggedIn") private var isLoggedIn = true
     @State private var showingActionSheet = false
 
     @State private var newItemName = ""
     @State private var newStoreName = ""
-    
     @State private var refresh = false
-
     @State private var isAddItemAndStoreVisible = false
     @State private var selectedStore: Store?
     @State private var isKeyboardShowing = false
-
     @State private var slideOffset: CGFloat = 0.0
     @State private var dragOffset: CGFloat = 0.0
 

@@ -123,7 +123,6 @@ struct AddItemAndStoreView: View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 
-    
     @ViewBuilder
     func cardBackground(_ cardHeight: CGFloat) -> some View {
         Color(.systemGray6) // Grey background with frosted glass effect

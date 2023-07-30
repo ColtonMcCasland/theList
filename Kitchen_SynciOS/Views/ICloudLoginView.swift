@@ -11,7 +11,7 @@ struct ICloudLoginView: View {
     var body: some View {
         Group {
             if isLoggedIn {
-                MainView()
+					ListView()
             } else {
                 VStack {
                     Text("Welcome to Kitchen Sync")

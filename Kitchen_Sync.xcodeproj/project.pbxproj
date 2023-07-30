@@ -29,7 +29,7 @@
 		9A91BE252A50F64600C2BBCA /* Kitchen_SyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */; };
 		9A91BE272A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */; };
 		9AA721792A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721772A510EF40014BF46 /* Kitchen_Sync.xcdatamodeld */; };
-		9AA7217F2A5129270014BF46 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7217E2A5129270014BF46 /* MainView.swift */; };
+		9AA7217F2A5129270014BF46 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7217E2A5129270014BF46 /* ListView.swift */; };
 		9AA721812A512E760014BF46 /* ICloudLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721802A512E760014BF46 /* ICloudLoginView.swift */; };
 		9AA721EF2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift */; };
 		9AA721F32A5202BA0014BF46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AA721F22A5202BA0014BF46 /* Assets.xcassets */; };
@@ -145,7 +145,7 @@
 		9AA721762A510EF40014BF46 /* Kitchen_Sync.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Kitchen_Sync.entitlements; sourceTree = "<group>"; };
 		9AA721782A510EF40014BF46 /* Kitchen_Sync.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kitchen_Sync.xcdatamodel; sourceTree = "<group>"; };
 		9AA7217B2A511C380014BF46 /* Kitchen-Sync-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Kitchen-Sync-Info.plist"; sourceTree = SOURCE_ROOT; };
-		9AA7217E2A5129270014BF46 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		9AA7217E2A5129270014BF46 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		9AA721802A512E760014BF46 /* ICloudLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudLoginView.swift; sourceTree = "<group>"; };
 		9AA721EC2A5202B90014BF46 /* Kitchen_SyncCompanion Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kitchen_SyncCompanion Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA721EE2A5202B90014BF46 /* Kitchen_SyncWatchOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncWatchOS.swift; sourceTree = "<group>"; };
@@ -286,10 +286,17 @@
 		9A91BE022A50F64500C2BBCA /* Kitchen_SynciOS */ = {
 			isa = PBXGroup;
 			children = (
-				9AB874AE2A74231D0067D2C0 /* Logic */,
-				9AA7217D2A5128D20014BF46 /* Views */,
 				9A91BE032A50F64500C2BBCA /* Kitchen_SynciOSApp.swift */,
 				9A5E8E9C2A5B30CE00894DDA /* AppDelegate.swift */,
+				9AA7217D2A5128D20014BF46 /* Views */,
+				9A91BE0A2A50F64500C2BBCA /* ViewController.swift */,
+				9AB874AF2A7423360067D2C0 /* AddItemAndStore.swift */,
+				9AB874B12A7423450067D2C0 /* DeleteItem.swift */,
+				9AB874B32A7423540067D2C0 /* DeleteStore.swift */,
+				9AB874B72A74237C0067D2C0 /* StoreExtension.swift */,
+				9AB874B52A7423680067D2C0 /* LogOut.swift */,
+				9ADDA6C02A77168800501029 /* DismissKeyboard.swift */,
+				9ADDA6C22A7716F600501029 /* CardHeightKey.swift */,
 				9AA7217B2A511C380014BF46 /* Kitchen-Sync-Info.plist */,
 				9A91BE0C2A50F64600C2BBCA /* Assets.xcassets */,
 				9A91BE0F2A50F64600C2BBCA /* Preview Content */,
@@ -340,7 +347,7 @@
 			children = (
 				9A1A85682A760118005EAE55 /* AddItemAndStoreView.swift */,
 				9AA721802A512E760014BF46 /* ICloudLoginView.swift */,
-				9AA7217E2A5129270014BF46 /* MainView.swift */,
+				9AA7217E2A5129270014BF46 /* ListView.swift */,
 				9AB874AA2A7422E30067D2C0 /* StoreView.swift */,
 				9AB874AC2A7422F60067D2C0 /* ItemView.swift */,
 			);
@@ -397,21 +404,6 @@
 				9A786F632A546C1600C14196 /* Kitchen_SyncMacOSUITests */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		9AB874AE2A74231D0067D2C0 /* Logic */ = {
-			isa = PBXGroup;
-			children = (
-				9A91BE0A2A50F64500C2BBCA /* ViewController.swift */,
-				9AB874AF2A7423360067D2C0 /* AddItemAndStore.swift */,
-				9AB874B12A7423450067D2C0 /* DeleteItem.swift */,
-				9AB874B32A7423540067D2C0 /* DeleteStore.swift */,
-				9AB874B72A74237C0067D2C0 /* StoreExtension.swift */,
-				9AB874B52A7423680067D2C0 /* LogOut.swift */,
-				9ADDA6C02A77168800501029 /* DismissKeyboard.swift */,
-				9ADDA6C22A7716F600501029 /* CardHeightKey.swift */,
-			);
-			path = Logic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -765,7 +757,7 @@
 				9A5E8E9D2A5B30CE00894DDA /* AppDelegate.swift in Sources */,
 				9ADDA6C12A77168800501029 /* DismissKeyboard.swift in Sources */,
 				9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */,
-				9AA7217F2A5129270014BF46 /* MainView.swift in Sources */,
+				9AA7217F2A5129270014BF46 /* ListView.swift in Sources */,
 				9AB874AB2A7422E30067D2C0 /* StoreView.swift in Sources */,
 				9AB874B42A7423540067D2C0 /* DeleteStore.swift in Sources */,
 				9A1BAD242A6F28F8006B90CB /* DataTypes.swift in Sources */,
