@@ -73,18 +73,26 @@ struct AddItemAndStoreCardView: View {
             DragGesture()
                 .onChanged { value in
                     dragTranslation = value.translation.height
-                    cardHeight = max(100, min(cardHeight - value.translation.height, 400)) // Adjust the maximum height as needed
+                    cardHeight = max(100, min(cardHeight - value.translation.height, maximumCardHeight))
                 }
                 .onEnded { value in
                     dragTranslation = 0 // Reset the drag translation
-                    let dragThreshold: CGFloat = 50 // Adjust this threshold as needed
-                    if value.translation.height < -dragThreshold {
-                        self.isAddItemAndStoreVisible = true
+                    let flickVelocity = value.predictedEndTranslation.height // Use the velocity of the flick gesture
+                    
+                    if flickVelocity < 0 {
+                        self.isAddItemAndStoreVisible = true // Fully open the card for upward flick
+                        withAnimation(.spring()) {
+                            cardHeight = maximumCardHeight
+                        }
                     } else {
-                        self.isAddItemAndStoreVisible = false
+                        self.isAddItemAndStoreVisible = false // Close the card for downward flick
+                        withAnimation(.spring()) {
+                            cardHeight = 100
+                        }
                     }
                 }
         )
+
     }
 
     func dismissKeyboard() {
