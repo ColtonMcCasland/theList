@@ -10,13 +10,10 @@ struct StoreView: View {
 	
 	var body: some View {
 		VStack {
-			Text(store.name ?? "Unspecified")
+			Text(store.name ?? "Unspecified").font(.title)
 				.onTapGesture {
-					print("StoreView: Store \(store.name ?? "Unspecified") was tapped")
 					selectedStore = store
 					isAddItemAndStoreVisible = true
-					print("StoreView: selectedStore set to \(selectedStore?.name ?? "None")")
-					print("StoreView: isAddItemAndStoreVisible set to \(isAddItemAndStoreVisible)")
 				}
 			ForEach(store.itemsArray, id: \.self) { item in
 				ItemView(item: item)

@@ -2,6 +2,7 @@ import SwiftUI
 import CoreData
 
 struct AddItemAndStoreView: View {
+	
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Store.name, ascending: true)],
@@ -22,6 +23,16 @@ struct AddItemAndStoreView: View {
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
+					
+					if selectedStore == nil {
+						TextField("New store name", text: $newStoreName)
+							.padding(.horizontal, 20) // Reduce horizontal padding
+							.padding(.vertical, 10)   // Reduce vertical padding
+							.font(.headline)          // Adjust font size
+							.opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
+							.animation(.spring(), value: cardHeight) // Add animation modifier
+					}
+
                 TextField("New item name", text: $newItemName)
                     .padding(.horizontal, 20) // Reduce horizontal padding
                     .padding(.vertical, 10)   // Reduce vertical padding
@@ -29,26 +40,17 @@ struct AddItemAndStoreView: View {
                     .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
                     .animation(.spring(), value: cardHeight) // Add animation modifier
 
-                if selectedStore == nil {
-                    TextField("New store name", text: $newStoreName)
-                        .padding(.horizontal, 20) // Reduce horizontal padding
-                        .padding(.vertical, 10)   // Reduce vertical padding
-                        .font(.headline)          // Adjust font size
-                        .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
-                        .animation(.spring(), value: cardHeight) // Add animation modifier
-                }
-
                 Button("Add Item") {
                     addItemAndStore(newItemName: newItemName, newStoreName: selectedStore?.name ?? newStoreName, stores: stores, viewContext: viewContext, refresh: $refresh)
                     newItemName = ""
                     newStoreName = ""
-                    isAddItemAndStoreVisible = false
+//                    isAddItemAndStoreVisible = false
                     print("AddItemAndStoreCardView: isAddItemAndStoreVisible set to \(isAddItemAndStoreVisible)")
 
                     selectedStore = nil
-                    if isKeyboardShowing {
-                        dismissKeyboard()
-                    }
+//                    if isKeyboardShowing {
+//                        dismissKeyboard()
+//                    }
                 }
                 .font(.headline)              // Adjust font size
                 .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)

@@ -32,7 +32,8 @@ func addItemAndStore(newItemName: String, newStoreName: String, stores: FetchedR
     do {
         try viewContext.save()
         viewContext.refreshAllObjects() // Refresh the managed objects to trigger a fetch request update
-        refresh.wrappedValue.toggle()  // Toggle the refresh state variable to refresh the view
+		 
+//        refresh.wrappedValue.toggle()  // Toggle the refresh state variable to refresh the view
     } catch {
         let nserror = error as NSError
         fatalError("Unresolved error \(nserror), \(nserror.userInfo)")

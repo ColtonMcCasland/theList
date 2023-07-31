@@ -39,7 +39,7 @@ struct ListView: View {
             AddItemAndStoreView(newItemName: $newItemName, newStoreName: $newStoreName, isAddItemAndStoreVisible: $isAddItemAndStoreVisible, selectedStore: $selectedStore, refresh: $refresh, isKeyboardShowing: $isKeyboardShowing)
         }
         .id(refresh)
-        .navigationBarTitle("Grocery List", displayMode: .inline)
+        .navigationBarTitle("the List.", displayMode: .inline)
         .navigationBarItems(trailing:
             Button(action: {
                 showingActionSheet = true
