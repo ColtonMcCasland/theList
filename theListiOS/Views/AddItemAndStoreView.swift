@@ -25,7 +25,10 @@ struct AddItemAndStoreView: View {
             VStack {
 					
 					if selectedStore == nil {
-						TextField("New store name", text: $newStoreName)
+							HStack {
+								Image(systemName: "cart")
+								TextField("New store name", text: $newStoreName)
+							}
 							.padding(.horizontal, 20) // Reduce horizontal padding
 							.padding(.vertical, 10)   // Reduce vertical padding
 							.font(.headline)          // Adjust font size
@@ -33,12 +36,15 @@ struct AddItemAndStoreView: View {
 							.animation(.spring(), value: cardHeight) // Add animation modifier
 					}
 
-                TextField("New item name", text: $newItemName)
-                    .padding(.horizontal, 20) // Reduce horizontal padding
-                    .padding(.vertical, 10)   // Reduce vertical padding
-                    .font(.headline)          // Adjust font size
-                    .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
-                    .animation(.spring(), value: cardHeight) // Add animation modifier
+						HStack {
+							Image(systemName: "checklist")
+							TextField("New item name", text: $newItemName)
+						}
+					  .padding(.horizontal, 20) // Reduce horizontal padding
+					  .padding(.vertical, 10)   // Reduce vertical padding
+					  .font(.headline)          // Adjust font size
+					  .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
+					  .animation(.spring(), value: cardHeight) // Add animation modifier
 
                 Button("Add Item") {
                     addItemAndStore(newItemName: newItemName, newStoreName: selectedStore?.name ?? newStoreName, stores: stores, viewContext: viewContext, refresh: $refresh)
