@@ -174,19 +174,19 @@
 		9ABBD1B02A772876005F6DF0 /* theListiOS */ = {
 			isa = PBXGroup;
 			children = (
+				9ABBD1BD2A772876005F6DF0 /* theListOSApp.swift */,
 				9ABBD1B12A772876005F6DF0 /* ViewController.swift */,
 				9ABBD1B32A772876005F6DF0 /* LogOut.swift */,
 				9ABBD1B52A772876005F6DF0 /* CardHeightKey.swift */,
-				9ABBD1B62A772876005F6DF0 /* Preview Content */,
 				9ABBD1B82A772876005F6DF0 /* DeleteItem.swift */,
 				9ABBD1B92A772876005F6DF0 /* DismissKeyboard.swift */,
 				9ABBD1BA2A772876005F6DF0 /* AddItemAndStore.swift */,
 				9ABBD1BB2A772876005F6DF0 /* DeleteStore.swift */,
 				9ABBD1BC2A772876005F6DF0 /* AppDelegate.swift */,
-				9ABBD1BD2A772876005F6DF0 /* theListOSApp.swift */,
+				9ABBD1BE2A772876005F6DF0 /* Views */,
 				9AA721762A510EF40014BF46 /* theList.entitlements */,
 				9ABBD1B42A772876005F6DF0 /* Assets.xcassets */,
-				9ABBD1BE2A772876005F6DF0 /* Views */,
+				9ABBD1B62A772876005F6DF0 /* Preview Content */,
 			);
 			path = theListiOS;
 			sourceTree = "<group>";
