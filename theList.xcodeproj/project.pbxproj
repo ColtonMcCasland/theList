@@ -135,21 +135,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9A91BE192A50F64600C2BBCA /* Kitchen_SyncTests */ = {
+		9A91BE192A50F64600C2BBCA /* theListTests */ = {
 			isa = PBXGroup;
 			children = (
 				9A91BE1A2A50F64600C2BBCA /* Kitchen_SyncTests.swift */,
 			);
-			path = Kitchen_SyncTests;
+			path = theListTests;
 			sourceTree = "<group>";
 		};
-		9A91BE232A50F64600C2BBCA /* Kitchen_SyncUITests */ = {
+		9A91BE232A50F64600C2BBCA /* theListUITests */ = {
 			isa = PBXGroup;
 			children = (
 				9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */,
 				9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */,
 			);
-			path = Kitchen_SyncUITests;
+			path = theListUITests;
 			sourceTree = "<group>";
 		};
 		9AA721752A510EF40014BF46 /* Shared */ = {
@@ -165,8 +165,8 @@
 		9AA722202A520EAC0014BF46 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9A91BE192A50F64600C2BBCA /* Kitchen_SyncTests */,
-				9A91BE232A50F64600C2BBCA /* Kitchen_SyncUITests */,
+				9A91BE192A50F64600C2BBCA /* theListTests */,
+				9A91BE232A50F64600C2BBCA /* theListUITests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -174,10 +174,8 @@
 		9ABBD1B02A772876005F6DF0 /* theListiOS */ = {
 			isa = PBXGroup;
 			children = (
-				9AA721762A510EF40014BF46 /* theList.entitlements */,
 				9ABBD1B12A772876005F6DF0 /* ViewController.swift */,
 				9ABBD1B32A772876005F6DF0 /* LogOut.swift */,
-				9ABBD1B42A772876005F6DF0 /* Assets.xcassets */,
 				9ABBD1B52A772876005F6DF0 /* CardHeightKey.swift */,
 				9ABBD1B62A772876005F6DF0 /* Preview Content */,
 				9ABBD1B82A772876005F6DF0 /* DeleteItem.swift */,
@@ -186,6 +184,8 @@
 				9ABBD1BB2A772876005F6DF0 /* DeleteStore.swift */,
 				9ABBD1BC2A772876005F6DF0 /* AppDelegate.swift */,
 				9ABBD1BD2A772876005F6DF0 /* theListOSApp.swift */,
+				9AA721762A510EF40014BF46 /* theList.entitlements */,
+				9ABBD1B42A772876005F6DF0 /* Assets.xcassets */,
 				9ABBD1BE2A772876005F6DF0 /* Views */,
 			);
 			path = theListiOS;
