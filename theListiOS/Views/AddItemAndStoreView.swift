@@ -39,7 +39,7 @@ struct AddItemAndStoreView: View {
 					}
 
 						HStack {
-							Image(systemName: "checklist")
+							Image(systemName: "checkmark.circle")
 							TextField("New item name", text: $newItemName)
 						}
 					  .padding(.horizontal, 20) // Reduce horizontal padding
