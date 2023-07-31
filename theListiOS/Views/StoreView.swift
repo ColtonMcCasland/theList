@@ -1,49 +1,37 @@
 import SwiftUI
 
 struct StoreView: View {
+	
 	@Environment(\.managedObjectContext) private var viewContext
+	
 	let store: Store
 	@Binding var isAddItemAndStoreVisible: Bool
 	@Binding var selectedStore: Store?
 	
 	var body: some View {
 		VStack {
-			HStack {
-				Text(store.name ?? "Unspecified")
-					.font(.title)
-					.fontWeight(.bold)
-					.padding()
-					.background(Color.blue.opacity(0.2))
-					.cornerRadius(10)
-					.onTapGesture {
-						selectedStore = store
-						isAddItemAndStoreVisible = true
-					}
-				Spacer()
-			}
-			.padding(.horizontal)
-			
-			ForEach(store.itemsArray, id: \.self) { item in
-				HStack {
-					ItemView(item: item)
-					Spacer()
-				}
-				.padding(.horizontal)
+			Text(store.name ?? "Unspecified")
 				.onTapGesture {
-					item.isBought.toggle()
-					do {
-						try viewContext.save()
-					} catch {
-						// handle the Core Data error
-					}
-					checkAndDeleteStoreIfAllItemsBought(store: store)
+					print("StoreView: Store \(store.name ?? "Unspecified") was tapped")
+					selectedStore = store
+					isAddItemAndStoreVisible = true
+					print("StoreView: selectedStore set to \(selectedStore?.name ?? "None")")
+					print("StoreView: isAddItemAndStoreVisible set to \(isAddItemAndStoreVisible)")
 				}
+			ForEach(store.itemsArray, id: \.self) { item in
+				ItemView(item: item)
+					.onTapGesture {
+						item.isBought.toggle()
+						do {
+							try viewContext.save()
+						} catch {
+							// handle the Core Data error
+						}
+						checkAndDeleteStoreIfAllItemsBought(store: store)
+					}
 			}
+			Spacer()
 		}
-		.padding(.vertical)
-		.background(Color.white)
-		.cornerRadius(10)
-		.shadow(color: .gray, radius: 5, x: 0, y: 0)
 	}
 	
 	private func checkAndDeleteStoreIfAllItemsBought(store: Store) {

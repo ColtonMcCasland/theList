@@ -5,17 +5,17 @@ import WatchConnectivity
 
 @main
 struct Kitchen_SyncApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
-    var body: some Scene {
-        WindowGroup {
-            ViewController()
-                .environment(\.managedObjectContext, appDelegate.persistenceController.container.viewContext)
-                .environmentObject(appDelegate)
-                .onAppear {
-                    appDelegate.sendRecordsToWatch()
-                }
-                .accentColor(Color.black)
+    
+	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+	
+		var body: some Scene {
+		  WindowGroup {
+				ViewController()
+				 .environment(\.managedObjectContext, appDelegate.persistenceController.container.viewContext)
+				 .environmentObject(appDelegate)
+				 .onAppear {
+					  appDelegate.sendRecordsToWatch()
+				 }
         }
     }
 }
