@@ -15,6 +15,8 @@ struct StoreView: View {
 					selectedStore = store
 					isAddItemAndStoreVisible = true
 				}
+			Spacer()
+
 			ForEach(store.itemsArray, id: \.self) { item in
 				ItemView(item: item)
 					.onTapGesture {
@@ -28,6 +30,7 @@ struct StoreView: View {
 					}
 			}
 			Spacer()
+
 		}
 	}
 	

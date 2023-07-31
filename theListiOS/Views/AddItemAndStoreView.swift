@@ -54,6 +54,7 @@ struct AddItemAndStoreView: View {
 						newStoreName = ""
 						selectedStore = nil
 					}
+
 					.font(.headline)
 					.opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
 					.disabled(newItemName.isEmpty || (newStoreName.isEmpty && selectedStore == nil))
@@ -66,10 +67,10 @@ struct AddItemAndStoreView: View {
 			  
 				.background(
 					RoundedRectangle(cornerRadius: 16)
-						.fill(colorScheme == .dark ? Color(.lightGray) : Color(.systemGroupedBackground)) // Use dynamic background color based on the mode
+						.fill(colorScheme == .dark ? Color(.darkGray) : Color(.systemGroupedBackground)) // Use dynamic background color based on the mode
 						.overlay(
 							RoundedRectangle(cornerRadius: 16)
-								.stroke(colorScheme == .dark ? Color(.darkGray) : Color(.lightGray), lineWidth: 4) // Customize the border color based on the mode
+								.stroke(colorScheme == .dark ? Color(.darkGray) : Color(.lightGray), lineWidth: 3) // Customize the border color based on the mode
 						)
 				)
 			  
@@ -84,7 +85,6 @@ struct AddItemAndStoreView: View {
             // New Rectangle for the draggable view (Grey bar)
             Rectangle()
                 .frame(width: 50, height: 5)
-                .foregroundColor(.gray)
                 .cornerRadius(2.5)
                 .padding(.top, 10)
                 .offset(y: max(30, cardHeight - screenHeight + 100)) // Use the same offset as the VStack
