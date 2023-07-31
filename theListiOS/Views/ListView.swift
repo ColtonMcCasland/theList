@@ -23,7 +23,6 @@ struct ListView: View {
             if stores.isEmpty || stores.contains(where: { ($0.items as? Set<GroceryItem>)?.isEmpty ?? true }) {
                 VStack {
                     Text("The list is empty. Add stores and items.")
-                        .foregroundColor(.gray)
                         .padding()
                 }
             } else {
