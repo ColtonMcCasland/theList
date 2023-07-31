@@ -2,24 +2,24 @@ import SwiftUI
 import CoreData
 
 struct AddItemAndStoreView: View {
+	@Environment(\.managedObjectContext) private var viewContext
+	@FetchRequest(
+		sortDescriptors: [NSSortDescriptor(keyPath: \Store.name, ascending: true)],
+		animation: .default)
+	private var stores: FetchedResults<Store>
 	
-    @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Store.name, ascending: true)],
-        animation: .default)
-    private var stores: FetchedResults<Store>
-
-    @Binding var newItemName: String
-    @Binding var newStoreName: String
-    @Binding var isAddItemAndStoreVisible: Bool
-    @Binding var selectedStore: Store?
-    @Binding var refresh: Bool
-    @Binding var isKeyboardShowing: Bool
-
-    @State private var cardHeight: CGFloat = 100
-    @State private var dragTranslation: CGFloat = 0
-    private let screenHeight = UIScreen.main.bounds.height
-    private let maximumCardHeight: CGFloat = 250
+	@Binding var newItemName: String
+	@Binding var newStoreName: String
+	@Binding var isAddItemAndStoreVisible: Bool
+	@Binding var selectedStore: Store?
+	@Binding var refresh: Bool
+	@Binding var isKeyboardShowing: Bool
+	
+	@State private var cardHeight: CGFloat = 100
+	@State private var dragTranslation: CGFloat = 0
+	private let screenHeight = UIScreen.main.bounds.height
+	private let maximumCardHeight: CGFloat = 250
+	
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
@@ -46,23 +46,17 @@ struct AddItemAndStoreView: View {
 					  .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
 					  .animation(.spring(), value: cardHeight) // Add animation modifier
 
-                Button("Add Item") {
-                    addItemAndStore(newItemName: newItemName, newStoreName: selectedStore?.name ?? newStoreName, stores: stores, viewContext: viewContext, refresh: $refresh)
-                    newItemName = ""
-                    newStoreName = ""
-//                    isAddItemAndStoreVisible = false
-                    print("AddItemAndStoreCardView: isAddItemAndStoreVisible set to \(isAddItemAndStoreVisible)")
-
-                    selectedStore = nil
-//                    if isKeyboardShowing {
-//                        dismissKeyboard()
-//                    }
-                }
-                .font(.headline)              // Adjust font size
-                .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
-                .disabled(newItemName.isEmpty || (newStoreName.isEmpty && selectedStore == nil))
-                .padding()
-                .animation(.spring(), value: cardHeight) // Add animation modifier
+					Button("Add Item") {
+						addItemAndStore(newItemName: newItemName, newStoreName: selectedStore?.name ?? newStoreName, stores: stores, viewContext: viewContext, refresh: $refresh, selectedStore: $selectedStore)
+						newItemName = ""
+						newStoreName = ""
+						selectedStore = nil
+					}
+					.font(.headline)
+					.opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
+					.disabled(newItemName.isEmpty || (newStoreName.isEmpty && selectedStore == nil))
+					.padding()
+					.animation(.spring(), value: cardHeight)
             }
             .frame(maxWidth: .infinity)
             .frame(height: cardHeight) // Use the dynamic card height
