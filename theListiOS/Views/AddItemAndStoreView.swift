@@ -2,6 +2,8 @@ import SwiftUI
 import CoreData
 
 struct AddItemAndStoreView: View {
+	@Environment(\.colorScheme) var colorScheme
+
 	@Environment(\.managedObjectContext) private var viewContext
 	@FetchRequest(
 		sortDescriptors: [NSSortDescriptor(keyPath: \Store.name, ascending: true)],
@@ -61,8 +63,18 @@ struct AddItemAndStoreView: View {
             .frame(maxWidth: .infinity)
             .frame(height: cardHeight) // Use the dynamic card height
             .padding()
-            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16.0)) // Use the dynamic card background
-            .cornerRadius(20) // Apply corner radius directly here
+			  
+				.background(
+					RoundedRectangle(cornerRadius: 16)
+						.fill(colorScheme == .dark ? Color(.lightGray) : Color(.systemGroupedBackground)) // Use dynamic background color based on the mode
+						.overlay(
+							RoundedRectangle(cornerRadius: 16)
+								.stroke(colorScheme == .dark ? Color(.darkGray) : Color(.lightGray), lineWidth: 4) // Customize the border color based on the mode
+						)
+				)
+			  
+			  
+            .cornerRadius(16) // Apply corner radius directly here
             .offset(y: max(30, cardHeight - screenHeight + 100)) // Offset the card down when collapsed, with a buffer of 100 points to prevent exposure of the bottom
             .onChange(of: isAddItemAndStoreVisible) { newValue in
                 withAnimation {
