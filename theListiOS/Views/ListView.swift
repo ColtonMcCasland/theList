@@ -11,6 +11,8 @@ struct ListView: View {
 
     @State private var newItemName = ""
     @State private var newStoreName = ""
+	 @State private var newItemPriority = ""
+
     @State private var refresh = false
     @State private var isAddItemAndStoreVisible = false
     @State private var selectedStore: Store?
@@ -35,7 +37,7 @@ struct ListView: View {
             }
 
             Spacer() // Add spacer to push the ZStack to the bottom
-            AddItemAndStoreView(newItemName: $newItemName, newStoreName: $newStoreName, isAddItemAndStoreVisible: $isAddItemAndStoreVisible, selectedStore: $selectedStore, refresh: $refresh, isKeyboardShowing: $isKeyboardShowing)
+			  AddItemAndStoreView(newStoreName: $newStoreName, newItemName: $newItemName, newItemPriority: $newItemPriority, isAddItemAndStoreVisible: $isAddItemAndStoreVisible, selectedStore: $selectedStore, refresh: $refresh, isKeyboardShowing: $isKeyboardShowing)
         }
         .id(refresh)
         .navigationBarTitle("the List.", displayMode: .inline)

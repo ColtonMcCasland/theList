@@ -2,10 +2,11 @@ import CoreData
 import SwiftUI
 
 // Helper function to add an item and store to the CoreData context
-func addItemAndStore(newItemName: String, newStoreName: String, stores: FetchedResults<Store>, viewContext: NSManagedObjectContext, refresh: Binding<Bool>, selectedStore: Binding<Store?>) {
+func addItemAndStore(newItemName: String, newStoreName: String, newItemPriority: String, stores: FetchedResults<Store>, viewContext: NSManagedObjectContext, refresh: Binding<Bool>, selectedStore: Binding<Store?>) {
 	let formattedStoreName = newStoreName.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
 	let formattedItemName = newItemName.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
-	
+	let formattedItemPriority = newItemPriority.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
+
 	let store: Store
 	if !formattedStoreName.isEmpty {
 		// Check if a store with the given name already exists
@@ -30,6 +31,8 @@ func addItemAndStore(newItemName: String, newStoreName: String, stores: FetchedR
 	if !formattedItemName.isEmpty {
 		let newItem = GroceryItem(context: viewContext)
 		newItem.name = formattedItemName
+		newItem.priority = formattedItemPriority
+
 		newItem.store = store
 	}
 	

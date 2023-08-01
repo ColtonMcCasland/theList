@@ -10,8 +10,12 @@ struct AddItemAndStoreView: View {
 		animation: .default)
 	private var stores: FetchedResults<Store>
 	
-	@Binding var newItemName: String
 	@Binding var newStoreName: String
+	@Binding var newItemName: String
+	@Binding var newItemPriority: String
+	let priorities = ["Optional", "Required"]
+
+
 	@Binding var isAddItemAndStoreVisible: Bool
 	@Binding var selectedStore: Store?
 	@Binding var refresh: Bool
@@ -47,9 +51,29 @@ struct AddItemAndStoreView: View {
 					  .font(.headline)          // Adjust font size
 					  .opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
 					  .animation(.spring(), value: cardHeight) // Add animation modifier
+					
+						HStack {
+							Image(systemName: "clock.badge.questionmark")
+							Picker("Priority", selection: $newItemPriority) {
+								ForEach(priorities, id: \.self) {
+									Text($0)
+								}
+							}
+							.pickerStyle(SegmentedPickerStyle())
+							.padding(.horizontal, 20) // Reduce horizontal padding
+							.padding(.vertical, 10)   // Reduce vertical padding
+							.font(.headline)          // Adjust font size
+							.opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
+							.animation(.spring(), value: cardHeight) // Add animation modifier
+						}
+						.padding(.horizontal, 20) // Reduce horizontal padding
+						.padding(.vertical, 10)   // Reduce vertical padding
+						.font(.headline)          // Adjust font size
+						.opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
+						.animation(.spring(), value: cardHeight) // Add animation modifier
 
 					Button("Add Item") {
-						addItemAndStore(newItemName: newItemName, newStoreName: selectedStore?.name ?? newStoreName, stores: stores, viewContext: viewContext, refresh: $refresh, selectedStore: $selectedStore)
+						addItemAndStore(newItemName: newItemName, newStoreName: selectedStore?.name ?? newStoreName, newItemPriority: newItemPriority, stores: stores, viewContext: viewContext, refresh: $refresh, selectedStore: $selectedStore)
 						newItemName = ""
 						newStoreName = ""
 						selectedStore = nil
@@ -68,7 +92,7 @@ struct AddItemAndStoreView: View {
 			  
 				.background(
 					RoundedRectangle(cornerRadius: 16)
-						.fill(colorScheme == .dark ? Color(.darkGray) : Color(.systemGroupedBackground)) // Use dynamic background color based on the mode
+						.fill(colorScheme == .dark ? Color(.darkGray) : Color(.white)) // Use dynamic background color based on the mode
 						.overlay(
 							RoundedRectangle(cornerRadius: 16)
 								.stroke(colorScheme == .dark ? Color(.darkGray) : Color(.lightGray), lineWidth: 3) // Customize the border color based on the mode

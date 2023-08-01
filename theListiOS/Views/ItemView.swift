@@ -19,6 +19,8 @@ struct ItemView: View {
         }) {
             Text(item.name ?? "Unspecified")
                 .strikethrough(item.isBought)
+			  Spacer()
+			  Text(item.priority ?? "Unspecified")
         }
         .buttonStyle(PlainButtonStyle())
     }
