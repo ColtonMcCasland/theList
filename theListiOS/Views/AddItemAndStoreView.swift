@@ -63,7 +63,8 @@ struct AddItemAndStoreView: View {
             }
             .frame(maxWidth: .infinity)
             .frame(height: cardHeight) // Use the dynamic card height
-            .padding()
+				.padding()
+            
 			  
 				.background(
 					RoundedRectangle(cornerRadius: 16)
@@ -82,6 +83,8 @@ struct AddItemAndStoreView: View {
                     cardHeight = newValue ? maximumCardHeight : 100
                 }
             }
+				.background( Color(.systemGroupedBackground))
+
             // New Rectangle for the draggable view (Grey bar)
             Rectangle()
                 .frame(width: 50, height: 5)
@@ -92,6 +95,7 @@ struct AddItemAndStoreView: View {
         .frame(maxWidth: .infinity) // Expand to full screen width
         .frame(height: cardHeight) // Use the dynamic card height
         .animation(.spring(), value: isAddItemAndStoreVisible)
+		 
         .onPreferenceChange(CardHeightKey.self) { cardHeight = $0 }
         .gesture(
             DragGesture()
