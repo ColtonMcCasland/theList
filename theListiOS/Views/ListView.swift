@@ -31,7 +31,7 @@ struct ListView: View {
                         StoreView(store: store, isAddItemAndStoreVisible: $isAddItemAndStoreVisible, selectedStore: $selectedStore)
                     }
                 }
-//                .listStyle(DefaultListStyle()) // Set the list style to PlainListStyle
+                .listStyle(DefaultListStyle()) // Set the list style to PlainListStyle
             }
 
             Spacer() // Add spacer to push the ZStack to the bottom
@@ -57,5 +57,7 @@ struct ListView: View {
                 ])
             }
         )
+		  .background( Color(.systemGroupedBackground))
+
     }
 }
