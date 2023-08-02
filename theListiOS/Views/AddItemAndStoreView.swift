@@ -30,18 +30,17 @@ struct AddItemAndStoreView: View {
         ZStack(alignment: .top) {
             VStack {
 					
-					if selectedStore == nil {
-							HStack {
-								Image(systemName: "cart")
-								TextField("New store name", text: $newStoreName)
+						if selectedStore == nil {
+								HStack {
+									Image(systemName: "cart")
+									TextField("New store name", text: $newStoreName)
+								}
+								.padding(.horizontal, 20) // Reduce horizontal padding
+								.padding(.vertical, 10)   // Reduce vertical padding
+								.font(.headline)          // Adjust font size
+								.opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
+								.animation(.spring(), value: cardHeight) // Add animation modifier
 							}
-							.padding(.horizontal, 20) // Reduce horizontal padding
-							.padding(.vertical, 10)   // Reduce vertical padding
-							.font(.headline)          // Adjust font size
-							.opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
-							.animation(.spring(), value: cardHeight) // Add animation modifier
-					}
-
 						HStack {
 							Image(systemName: "checkmark.circle")
 							TextField("New item name", text: $newItemName)
@@ -60,11 +59,7 @@ struct AddItemAndStoreView: View {
 								}
 							}
 							.pickerStyle(SegmentedPickerStyle())
-							.padding(.horizontal, 20) // Reduce horizontal padding
-							.padding(.vertical, 10)   // Reduce vertical padding
 							.font(.headline)          // Adjust font size
-							.opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
-							.animation(.spring(), value: cardHeight) // Add animation modifier
 						}
 						.padding(.horizontal, 20) // Reduce horizontal padding
 						.padding(.vertical, 10)   // Reduce vertical padding
