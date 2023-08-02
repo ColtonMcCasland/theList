@@ -27,7 +27,7 @@ struct StoreView: View {
 	
 	var body: some View {
 		VStack {
-			Text(store.name ?? "Unspecified").font(.title)
+			Text(store.name ?? "").font(.title)
 				.onTapGesture {
 					selectedStore = store
 					isAddItemAndStoreVisible = true
