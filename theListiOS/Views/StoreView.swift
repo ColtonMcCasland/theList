@@ -34,7 +34,8 @@ struct StoreView: View {
 				}
 			Spacer()
 			
-			ForEach(items, id: \.self) { item in
+			let sortedItems = ItemView.sortRequiredItemsFirst(items)
+			ForEach(sortedItems, id: \.self) { item in
 				ItemView(item: item)
 					.onTapGesture {
 						item.isBought.toggle()

@@ -6,6 +6,10 @@ struct ListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Store.name, ascending: true)],animation: .default)
     private var stores: FetchedResults<Store>
+	
+	// Fetch request for the items with 'Required' priority
+	@FetchRequest(entity: GroceryItem.entity(), sortDescriptors: [], predicate: NSPredicate(format: "priority == %@", "Required")) var requiredItems: FetchedResults<GroceryItem>
+
     @AppStorage("isLoggedIn") private var isLoggedIn = true
     @State private var showingActionSheet = false
 
@@ -28,8 +32,14 @@ struct ListView: View {
                         .padding()
                 }
             } else {
+					let sortedStores = stores.sorted { store1, store2 in
+						let requiredItemsCount1 = store1.itemsArray.filter { $0.priority == "Required" }.count
+						let requiredItemsCount2 = store2.itemsArray.filter { $0.priority == "Required" }.count
+						return requiredItemsCount1 > requiredItemsCount2
+					}
+					
                 List {
-                    ForEach(stores, id: \.self) { store in
+                    ForEach(sortedStores, id: \.self) { store in
                         StoreView(store: store, isAddItemAndStoreVisible: $isAddItemAndStoreVisible, selectedStore: $selectedStore)
                     }
                 }

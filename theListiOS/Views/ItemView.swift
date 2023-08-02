@@ -3,7 +3,6 @@ import UniformTypeIdentifiers
 
 struct ItemView: View {
 	@Environment(\.colorScheme) var colorScheme
-
 	@Environment(\.managedObjectContext) private var viewContext
 	@ObservedObject var item: GroceryItem
 	
@@ -34,7 +33,7 @@ struct ItemView: View {
 			.padding(.horizontal, 16)
 			.background(colorScheme == .dark ? Color(.darkGray) : Color(.white))
 			.cornerRadius(10)
-			.shadow(color: .gray, radius: 1, x: 0, y: 5)
+			.shadow(color: .gray, radius: 1, x: 0, y: 2)
 		}
 		.buttonStyle(PlainButtonStyle())
 	}
@@ -51,3 +50,24 @@ struct ItemView: View {
 		}
 	}
 }
+
+// Now, let's create a custom sorting function to sort the items with 'Required' priority to the top.
+
+extension ItemView {
+	static func sortRequiredItemsFirst(_ items: FetchedResults<GroceryItem>) -> [GroceryItem] {
+		let sortedItems = items.sorted {
+			if $0.priority == "Required" && $1.priority != "Required" {
+				return true
+			} else if $0.priority != "Required" && $1.priority == "Required" {
+				return false
+			} else {
+				// If both items have the same priority or both are not 'Required',
+				// sort alphabetically by their name.
+				return ($0.name ?? "") < ($1.name ?? "")
+			}
+		}
+		return sortedItems
+	}
+}
+
+
