@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A1BAD242A6F28F8006B90CB /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1BAD232A6F28F8006B90CB /* DataTypes.swift */; };
+		9A3683572A7B2F280005320C /* CloudSharingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3683562A7B2F280005320C /* CloudSharingController.swift */; };
 		9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE052A50F64500C2BBCA /* Persistence.swift */; };
 		9A91BE1B2A50F64600C2BBCA /* Kitchen_SyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE1A2A50F64600C2BBCA /* Kitchen_SyncTests.swift */; };
 		9A91BE252A50F64600C2BBCA /* Kitchen_SyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */; };
@@ -63,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		9A1BAD232A6F28F8006B90CB /* DataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
+		9A3683562A7B2F280005320C /* CloudSharingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSharingController.swift; sourceTree = "<group>"; };
 		9A91BE002A50F64500C2BBCA /* theList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A91BE052A50F64500C2BBCA /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		9A91BE162A50F64600C2BBCA /* theListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = theListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +189,7 @@
 				9AA721762A510EF40014BF46 /* theList.entitlements */,
 				9ABBD1B42A772876005F6DF0 /* Assets.xcassets */,
 				9ABBD1B62A772876005F6DF0 /* Preview Content */,
+				9A3683562A7B2F280005320C /* CloudSharingController.swift */,
 			);
 			path = theListiOS;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				9ABBD1CE2A772876005F6DF0 /* theListOSApp.swift in Sources */,
 				9ABBD1CC2A772876005F6DF0 /* DeleteStore.swift in Sources */,
 				9ABBD1D12A772876005F6DF0 /* StoreView.swift in Sources */,
+				9A3683572A7B2F280005320C /* CloudSharingController.swift in Sources */,
 				9A1BAD242A6F28F8006B90CB /* DataTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -4,7 +4,7 @@ import CoreData
 struct StoreView: View {
 	@Environment(\.managedObjectContext) private var viewContext
 	
-	let store: Store
+	@ObservedObject var store: Store
 	@Binding var isAddItemAndStoreVisible: Bool
 	@Binding var selectedStore: Store?
 	
@@ -50,6 +50,7 @@ struct StoreView: View {
 			Spacer()
 		}
 	}
+	
 	
 	private func checkAndDeleteStoreIfAllItemsBought(store: Store) {
 		let allItemsBought = items.allSatisfy { $0.isBought }
