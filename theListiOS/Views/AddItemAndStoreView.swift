@@ -73,7 +73,7 @@ struct AddItemAndStoreView: View {
 						newStoreName = ""
 						selectedStore = nil
 					}
-
+					.foregroundColor(buttonTextColor)
 					.font(.headline)
 					.opacity(isAddItemAndStoreVisible && cardHeight >= 250 ? 1 : 0)
 					.disabled(newItemName.isEmpty || (newStoreName.isEmpty && selectedStore == nil))
@@ -153,4 +153,12 @@ struct AddItemAndStoreView: View {
     func dismissKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
+	
+	var buttonTextColor: Color {
+		if newItemName.isEmpty || (newStoreName.isEmpty && selectedStore == nil) {
+			return Color.gray
+		} else {
+			return colorScheme == .dark ? .white : .black
+		}
+	}
 }
