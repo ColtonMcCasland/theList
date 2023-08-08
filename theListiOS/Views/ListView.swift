@@ -26,6 +26,9 @@ struct ListView: View {
 	@State private var slideOffset: CGFloat = 0.0
 	@State private var dragOffset: CGFloat = 0.0
 	
+	@State private var shareController: UICloudSharingController?
+
+	
 	var body: some View {
 		VStack {
 			if stores.isEmpty || stores.contains(where: { ($0.items as? Set<GroceryItem>)?.isEmpty ?? true }) {
@@ -79,8 +82,7 @@ struct ListView: View {
 	}
 	
 	func shareUserList(userList: UserList?) {
-		guard let userList = userList,
-				let userListRecord = getCKRecordForUserList(userList: userList) else {
+		guard let userListRecord = getCKRecordForUserList(userList: userList) else {
 			print("Failed to get CKRecord for userList")
 			return
 		}
@@ -90,7 +92,7 @@ struct ListView: View {
 		share.publicPermission = .readWrite
 		
 		let modifyRecordsOperation = CKModifyRecordsOperation(recordsToSave: [userListRecord, share], recordIDsToDelete: nil)
-		modifyRecordsOperation.modifyRecordsCompletionBlock = { savedRecords, _, error in
+		modifyRecordsOperation.modifyRecordsCompletionBlock = { (savedRecords: [CKRecord]?, deletedRecordIDs: [CKRecord.ID]?, error: Error?) in
 			if let error = error {
 				print("Failed to create share: \(error)")
 			} else {
@@ -100,8 +102,13 @@ struct ListView: View {
 		CKContainer.default().privateCloudDatabase.add(modifyRecordsOperation)
 	}
 	
-	func getCKRecordForUserList(userList: UserList) -> CKRecord? {
-		let recordID = CKRecord.ID(recordName: "\(userList.objectID)")
+	func getCKRecordForUserList(userList: UserList?) -> CKRecord? {
+		if userList == nil {
+			print("UserList is nil")
+			return nil
+		}
+		
+		let recordID = CKRecord.ID(recordName: "\(userList!.objectID)")
 		let record = CKRecord(recordType: "UserList", recordID: recordID)
 		
 		// Set properties of the userList...
@@ -109,4 +116,5 @@ struct ListView: View {
 		
 		return record
 	}
+
 }
