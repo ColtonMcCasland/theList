@@ -8,7 +8,6 @@ struct ListView: View {
 	@FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Store.name, ascending: true)],animation: .default)
 	private var stores: FetchedResults<Store>
 	
-	// Fetch request for the items with 'Required' priority
 	@FetchRequest(entity: GroceryItem.entity(), sortDescriptors: [], predicate: NSPredicate(format: "priority == %@", "Required")) var requiredItems: FetchedResults<GroceryItem>
 	@FetchRequest(entity: UserList.entity(), sortDescriptors: []) var userLists: FetchedResults<UserList>
 	
@@ -25,9 +24,6 @@ struct ListView: View {
 	@State private var isKeyboardShowing = false
 	@State private var slideOffset: CGFloat = 0.0
 	@State private var dragOffset: CGFloat = 0.0
-	
-	@State private var shareController: UICloudSharingController?
-
 	
 	var body: some View {
 		VStack {
@@ -75,46 +71,11 @@ struct ListView: View {
 				])
 			}
 		)
-		.navigationBarItems(trailing: Button(action: { shareUserList(userList: userLists.first) }) {
+		.navigationBarItems(trailing: Button(action: {}) {
 			Image(systemName: "square.and.arrow.up")
 		})
 		.background( Color(.systemGroupedBackground))
 	}
 	
-	func shareUserList(userList: UserList?) {
-		guard let userListRecord = getCKRecordForUserList(userList: userList) else {
-			print("Failed to get CKRecord for userList")
-			return
-		}
-		
-		let share = CKShare(rootRecord: userListRecord)
-		share[CKShare.SystemFieldKey.title] = "Shared UserList" as CKRecordValue
-		share.publicPermission = .readWrite
-		
-		let modifyRecordsOperation = CKModifyRecordsOperation(recordsToSave: [userListRecord, share], recordIDsToDelete: nil)
-		modifyRecordsOperation.modifyRecordsCompletionBlock = { (savedRecords: [CKRecord]?, deletedRecordIDs: [CKRecord.ID]?, error: Error?) in
-			if let error = error {
-				print("Failed to create share: \(error)")
-			} else {
-				print("Successfully created share")
-			}
-		}
-		CKContainer.default().privateCloudDatabase.add(modifyRecordsOperation)
-	}
-	
-	func getCKRecordForUserList(userList: UserList?) -> CKRecord? {
-		if userList == nil {
-			print("UserList is nil")
-			return nil
-		}
-		
-		let recordID = CKRecord.ID(recordName: "\(userList!.objectID)")
-		let record = CKRecord(recordType: "UserList", recordID: recordID)
-		
-		// Set properties of the userList...
-		// You'll need to decide how to represent the connected Store and GroceryItem entities in the CKRecord.
-		
-		return record
-	}
 
 }
