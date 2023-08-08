@@ -26,6 +26,8 @@ struct AddItemAndStoreView: View {
 	private let screenHeight = UIScreen.main.bounds.height
 	private let maximumCardHeight: CGFloat = 250
 	
+	var onItemAdded: (() -> Void)?
+	
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
@@ -70,8 +72,7 @@ struct AddItemAndStoreView: View {
 					Button("Add Item") {
 						addItemAndStore(newItemName: newItemName, newStoreName: selectedStore?.name ?? newStoreName, newItemPriority: newItemPriority, stores: stores, viewContext: viewContext, refresh: $refresh, selectedStore: $selectedStore)
 						newItemName = ""
-						newStoreName = ""
-						selectedStore = nil
+						onItemAdded?() // Call the callback when an item is added
 					}
 					.foregroundColor(buttonTextColor)
 					.font(.headline)
@@ -115,39 +116,43 @@ struct AddItemAndStoreView: View {
         .frame(height: cardHeight) // Use the dynamic card height
         .animation(.spring(), value: isAddItemAndStoreVisible)
 		 
-        .onPreferenceChange(CardHeightKey.self) { cardHeight = $0 }
-        .gesture(
-            DragGesture()
-                .onChanged { value in
-                    dragTranslation = value.translation.height
-                    cardHeight = max(100, min(cardHeight - value.translation.height, maximumCardHeight))
-                }
-                .onEnded { value in
-                    dragTranslation = 0 // Reset the drag translation
-                    let flickVelocity = value.predictedEndTranslation.height // Use the velocity of the flick gesture
-
-                    if flickVelocity < 0 {
-                        self.isAddItemAndStoreVisible = true // Fully open the card for an upward flick
-                        withAnimation(.spring()) {
-                            cardHeight = maximumCardHeight
-                        }
-                    } else {
-                        if cardHeight < maximumCardHeight - 50 {
-                            self.isAddItemAndStoreVisible = false // Close the card for a downward flick
-                            self.selectedStore = nil
-                            withAnimation(.spring()) {
-                                cardHeight = 100
-                            }
-                            dismissKeyboard() // Dismiss the system keyboard
-                        } else {
-                            self.isAddItemAndStoreVisible = true // Keep the card open as the user didn't flick it closed
-                            withAnimation(.spring()) {
-                                cardHeight = maximumCardHeight
-                            }
-                        }
-                    }
-                }
-        )
+		  .onPreferenceChange(CardHeightKey.self) { cardHeight = $0 }
+		  .gesture(
+			DragGesture()
+				.onChanged { value in
+					dragTranslation = value.translation.height
+					cardHeight = max(100, min(cardHeight - value.translation.height, maximumCardHeight))
+				}
+				.onEnded { value in
+					dragTranslation = 0 // Reset the drag translation
+					let flickVelocity = value.predictedEndTranslation.height // Use the velocity of the flick gesture
+					
+					if flickVelocity < 0 {
+						self.isAddItemAndStoreVisible = true // Fully open the card for an upward flick
+						withAnimation(.spring()) {
+							cardHeight = maximumCardHeight
+						}
+					} else {
+						if cardHeight < maximumCardHeight - 50 {
+							self.isAddItemAndStoreVisible = false // Close the card for a downward flick
+							self.selectedStore = nil
+							withAnimation(.spring()) {
+								cardHeight = 100
+							}
+							dismissKeyboard() // Dismiss the system keyboard
+							
+							// Reset the text fields when the view is collapsed
+							newItemName = ""
+							newStoreName = ""
+						} else {
+							self.isAddItemAndStoreVisible = true // Keep the card open as the user didn't flick it closed
+							withAnimation(.spring()) {
+								cardHeight = maximumCardHeight
+							}
+						}
+					}
+				}
+		  )
     }
 
     func dismissKeyboard() {
