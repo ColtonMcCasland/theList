@@ -9,9 +9,9 @@ struct ViewController: View {
 	@EnvironmentObject var appDelegate: AppDelegate
 	
 	@FetchRequest(
-		sortDescriptors: [NSSortDescriptor(keyPath: \Store.timestamp, ascending: true)],
+		sortDescriptors: [NSSortDescriptor(keyPath: \UserList.title, ascending: true)],
 		animation: .default)
-	private var listNodes: FetchedResults<Store>
+	private var listNodes: FetchedResults<UserList>
 	
 	@FetchRequest(entity: UserList.entity(), sortDescriptors: [])
 	private var users: FetchedResults<UserList>
