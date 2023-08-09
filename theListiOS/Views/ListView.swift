@@ -25,6 +25,8 @@ struct ListView: View {
 	@State private var slideOffset: CGFloat = 0.0
 	@State private var dragOffset: CGFloat = 0.0
 	
+	let user: UserList
+	
 	var body: some View {
 		VStack {
 			if stores.isEmpty || stores.contains(where: { ($0.items as? Set<GroceryItem>)?.isEmpty ?? true }) {

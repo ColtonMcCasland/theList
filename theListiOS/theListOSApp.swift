@@ -4,10 +4,11 @@ import SwiftUI
 import WatchConnectivity
 
 @main
-struct Kitchen_SyncApp: App {
+struct theList: App {
     
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-	
+	let persistenceController = PersistenceController.shared
+
 		var body: some Scene {
 		  WindowGroup {
 				ViewController()

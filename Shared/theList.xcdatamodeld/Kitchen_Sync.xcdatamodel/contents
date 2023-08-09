@@ -26,7 +26,7 @@
     <entity name="UserList" representedClassName="UserList" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isShared" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="items" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroceryItem" inverseName="list" inverseEntity="GroceryItem"/>
         <relationship name="stores" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Store" inverseName="lists" inverseEntity="Store"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="lists" inverseEntity="User"/>
