@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9A03F3F42A7C3ABC003117B3 /* theList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A03F3F22A7C3ABC003117B3 /* theList.xcdatamodeld */; };
-		9A1BAD242A6F28F8006B90CB /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1BAD232A6F28F8006B90CB /* DataTypes.swift */; };
 		9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE052A50F64500C2BBCA /* Persistence.swift */; };
 		9A91BE1B2A50F64600C2BBCA /* Kitchen_SyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE1A2A50F64600C2BBCA /* Kitchen_SyncTests.swift */; };
 		9A91BE252A50F64600C2BBCA /* Kitchen_SyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */; };
@@ -56,7 +55,6 @@
 
 /* Begin PBXFileReference section */
 		9A03F3F32A7C3ABC003117B3 /* Kitchen_Sync.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kitchen_Sync.xcdatamodel; sourceTree = "<group>"; };
-		9A1BAD232A6F28F8006B90CB /* DataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
 		9A91BE002A50F64500C2BBCA /* theList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A91BE052A50F64500C2BBCA /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		9A91BE162A50F64600C2BBCA /* theListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = theListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,7 +141,6 @@
 			children = (
 				9A03F3F22A7C3ABC003117B3 /* theList.xcdatamodeld */,
 				9A91BE052A50F64500C2BBCA /* Persistence.swift */,
-				9A1BAD232A6F28F8006B90CB /* DataTypes.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -329,7 +326,6 @@
 				9ABBD1D32A772876005F6DF0 /* ICloudLoginView.swift in Sources */,
 				9A966B4E2A833C1800C6CE96 /* NotesView.swift in Sources */,
 				9ABBD1CE2A772876005F6DF0 /* theListOSApp.swift in Sources */,
-				9A1BAD242A6F28F8006B90CB /* DataTypes.swift in Sources */,
 				9A03F3F42A7C3ABC003117B3 /* theList.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

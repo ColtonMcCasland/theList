@@ -14,9 +14,6 @@ struct theList: App {
 				ViewController()
 				 .environment(\.managedObjectContext, appDelegate.persistenceController.container.viewContext)
 				 .environmentObject(appDelegate)
-//				 .onAppear {
-//					  appDelegate.sendRecordsToWatch()
-//				 }
         }
     }
 }
