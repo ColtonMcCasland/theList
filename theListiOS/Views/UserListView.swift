@@ -31,7 +31,7 @@ struct UserListView: View {
 				}
 				.navigationBarTitle("Lists")
 				.navigationBarItems(trailing: Button(action: {
-					withAnimation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0)) {
+					withAnimation(.spring(response: 0.6, dampingFraction: 0.9, blendDuration: 0.4)) {
 						showingAddListAlert = true
 					}
 				}) {
