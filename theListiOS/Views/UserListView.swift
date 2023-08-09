@@ -13,33 +13,37 @@ struct UserListView: View {
 	
 	var body: some View {
 		ZStack {
-			Group {
-				if users.isEmpty {
-					Text("No lists found")
-						.foregroundColor(.gray)
-				} else {
-					List {
-						ForEach(users) { user in
-							NavigationLink(destination: NotesView(userList: user)) {
-								Text(user.title ?? "Unknown List")
+			NavigationView {
+				Group {
+					if users.isEmpty {
+						Text("No lists found")
+							.foregroundColor(.gray)
+					} else {
+						List {
+							ForEach(users) { user in
+								NavigationLink(destination: NotesView(userList: user)) {
+									Text(user.title ?? "Unknown List")
+								}
 							}
+							.onDelete(perform: removeList)
 						}
-						.onDelete(perform: deleteUser)
 					}
 				}
+				.navigationBarTitle("Lists")
+				.navigationBarItems(trailing: Button(action: {
+					withAnimation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0)) {
+						showingAddListAlert = true
+					}
+				}) {
+					Image(systemName: "plus")
+				})
 			}
-			.navigationBarTitle("Lists")
-			.navigationBarItems(trailing: Button(action: {
-				showingAddListAlert = true
-			}) {
-				Image(systemName: "plus")
-			})
 			
 			if showingAddListAlert {
 				Color.black.opacity(0.4)
 					.edgesIgnoringSafeArea(.all)
 					.onTapGesture {
-						withAnimation {
+						withAnimation(.easeInOut(duration: 0.3)) {
 							showingAddListAlert = false
 						}
 					}
@@ -52,14 +56,14 @@ struct UserListView: View {
 						.padding()
 					HStack {
 						Button("Cancel") {
-							withAnimation {
+							withAnimation(.easeInOut(duration: 0.3)) {
 								showingAddListAlert = false
 							}
 						}
 						.padding()
 						Button("OK") {
-							addUser()
-							withAnimation {
+							addList()
+							withAnimation(.easeInOut(duration: 0.3)) {
 								showingAddListAlert = false
 							}
 							newListTitle = ""
@@ -71,13 +75,13 @@ struct UserListView: View {
 				.background(Color.white)
 				.cornerRadius(10)
 				.shadow(radius: 10)
-				.transition(.move(edge: .bottom)) // Slide-in and slide-out animation
-				.animation(.default) // Apply default animation
+				.transition(.scale(scale: 0)) // Scale-in and scale-out animation
+				.animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0)) // Spring animation
 			}
 		}
 	}
 	
-	private func addUser() {
+	private func addList() {
 		withAnimation {
 			let newUser = UserList(context: viewContext)
 			newUser.id = UUID()
@@ -92,7 +96,7 @@ struct UserListView: View {
 		}
 	}
 	
-	private func deleteUser(offsets: IndexSet) {
+	private func removeList(offsets: IndexSet) {
 		withAnimation {
 			offsets.map { users[$0] }.forEach(viewContext.delete)
 			
