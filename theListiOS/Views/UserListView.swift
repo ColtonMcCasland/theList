@@ -20,7 +20,7 @@ struct UserListView: View {
 				} else {
 					List {
 						ForEach(users) { user in
-							NavigationLink(destination: ListView(user: user)) {
+							NavigationLink(destination: NotesView()) {
 								Text(user.title ?? "Unknown List")
 							}
 						}

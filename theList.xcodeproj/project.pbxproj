@@ -14,21 +14,13 @@
 		9A91BE252A50F64600C2BBCA /* Kitchen_SyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */; };
 		9A91BE272A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */; };
 		9A966B4C2A83004F00C6CE96 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A966B4B2A83004F00C6CE96 /* UserListView.swift */; };
+		9A966B4E2A833C1800C6CE96 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A966B4D2A833C1800C6CE96 /* NotesView.swift */; };
 		9ABBD1C42A772876005F6DF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B12A772876005F6DF0 /* ViewController.swift */; };
 		9ABBD1C52A772876005F6DF0 /* LogOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B32A772876005F6DF0 /* LogOut.swift */; };
 		9ABBD1C62A772876005F6DF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B42A772876005F6DF0 /* Assets.xcassets */; };
-		9ABBD1C72A772876005F6DF0 /* CardHeightKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B52A772876005F6DF0 /* CardHeightKey.swift */; };
 		9ABBD1C82A772876005F6DF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B72A772876005F6DF0 /* Preview Assets.xcassets */; };
-		9ABBD1C92A772876005F6DF0 /* DeleteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B82A772876005F6DF0 /* DeleteItem.swift */; };
-		9ABBD1CA2A772876005F6DF0 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B92A772876005F6DF0 /* DismissKeyboard.swift */; };
-		9ABBD1CB2A772876005F6DF0 /* AddItemAndStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1BA2A772876005F6DF0 /* AddItemAndStore.swift */; };
-		9ABBD1CC2A772876005F6DF0 /* DeleteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1BB2A772876005F6DF0 /* DeleteStore.swift */; };
 		9ABBD1CD2A772876005F6DF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1BC2A772876005F6DF0 /* AppDelegate.swift */; };
 		9ABBD1CE2A772876005F6DF0 /* theListOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1BD2A772876005F6DF0 /* theListOSApp.swift */; };
-		9ABBD1CF2A772876005F6DF0 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1BF2A772876005F6DF0 /* ItemView.swift */; };
-		9ABBD1D02A772876005F6DF0 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1C02A772876005F6DF0 /* ListView.swift */; };
-		9ABBD1D12A772876005F6DF0 /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1C12A772876005F6DF0 /* StoreView.swift */; };
-		9ABBD1D22A772876005F6DF0 /* AddItemAndStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1C22A772876005F6DF0 /* AddItemAndStoreView.swift */; };
 		9ABBD1D32A772876005F6DF0 /* ICloudLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1C32A772876005F6DF0 /* ICloudLoginView.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,22 +65,14 @@
 		9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncUITests.swift; sourceTree = "<group>"; };
 		9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9A966B4B2A83004F00C6CE96 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
+		9A966B4D2A833C1800C6CE96 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		9AA721762A510EF40014BF46 /* theList.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = theList.entitlements; sourceTree = "<group>"; };
 		9ABBD1B12A772876005F6DF0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9ABBD1B32A772876005F6DF0 /* LogOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOut.swift; sourceTree = "<group>"; };
 		9ABBD1B42A772876005F6DF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9ABBD1B52A772876005F6DF0 /* CardHeightKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHeightKey.swift; sourceTree = "<group>"; };
 		9ABBD1B72A772876005F6DF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9ABBD1B82A772876005F6DF0 /* DeleteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteItem.swift; sourceTree = "<group>"; };
-		9ABBD1B92A772876005F6DF0 /* DismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
-		9ABBD1BA2A772876005F6DF0 /* AddItemAndStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemAndStore.swift; sourceTree = "<group>"; };
-		9ABBD1BB2A772876005F6DF0 /* DeleteStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteStore.swift; sourceTree = "<group>"; };
 		9ABBD1BC2A772876005F6DF0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ABBD1BD2A772876005F6DF0 /* theListOSApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = theListOSApp.swift; sourceTree = "<group>"; };
-		9ABBD1BF2A772876005F6DF0 /* ItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
-		9ABBD1C02A772876005F6DF0 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		9ABBD1C12A772876005F6DF0 /* StoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
-		9ABBD1C22A772876005F6DF0 /* AddItemAndStoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemAndStoreView.swift; sourceTree = "<group>"; };
 		9ABBD1C32A772876005F6DF0 /* ICloudLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudLoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,11 +163,6 @@
 				9ABBD1BD2A772876005F6DF0 /* theListOSApp.swift */,
 				9ABBD1B12A772876005F6DF0 /* ViewController.swift */,
 				9ABBD1B32A772876005F6DF0 /* LogOut.swift */,
-				9ABBD1B52A772876005F6DF0 /* CardHeightKey.swift */,
-				9ABBD1B82A772876005F6DF0 /* DeleteItem.swift */,
-				9ABBD1B92A772876005F6DF0 /* DismissKeyboard.swift */,
-				9ABBD1BA2A772876005F6DF0 /* AddItemAndStore.swift */,
-				9ABBD1BB2A772876005F6DF0 /* DeleteStore.swift */,
 				9ABBD1BC2A772876005F6DF0 /* AppDelegate.swift */,
 				9ABBD1BE2A772876005F6DF0 /* Views */,
 				9AA721762A510EF40014BF46 /* theList.entitlements */,
@@ -204,12 +183,9 @@
 		9ABBD1BE2A772876005F6DF0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9ABBD1BF2A772876005F6DF0 /* ItemView.swift */,
-				9ABBD1C02A772876005F6DF0 /* ListView.swift */,
-				9ABBD1C12A772876005F6DF0 /* StoreView.swift */,
-				9ABBD1C22A772876005F6DF0 /* AddItemAndStoreView.swift */,
 				9ABBD1C32A772876005F6DF0 /* ICloudLoginView.swift */,
 				9A966B4B2A83004F00C6CE96 /* UserListView.swift */,
+				9A966B4D2A833C1800C6CE96 /* NotesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -348,19 +324,11 @@
 				9ABBD1CD2A772876005F6DF0 /* AppDelegate.swift in Sources */,
 				9A966B4C2A83004F00C6CE96 /* UserListView.swift in Sources */,
 				9ABBD1C52A772876005F6DF0 /* LogOut.swift in Sources */,
-				9ABBD1C92A772876005F6DF0 /* DeleteItem.swift in Sources */,
 				9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */,
 				9ABBD1C42A772876005F6DF0 /* ViewController.swift in Sources */,
-				9ABBD1CA2A772876005F6DF0 /* DismissKeyboard.swift in Sources */,
-				9ABBD1D22A772876005F6DF0 /* AddItemAndStoreView.swift in Sources */,
-				9ABBD1CB2A772876005F6DF0 /* AddItemAndStore.swift in Sources */,
-				9ABBD1C72A772876005F6DF0 /* CardHeightKey.swift in Sources */,
-				9ABBD1CF2A772876005F6DF0 /* ItemView.swift in Sources */,
 				9ABBD1D32A772876005F6DF0 /* ICloudLoginView.swift in Sources */,
-				9ABBD1D02A772876005F6DF0 /* ListView.swift in Sources */,
+				9A966B4E2A833C1800C6CE96 /* NotesView.swift in Sources */,
 				9ABBD1CE2A772876005F6DF0 /* theListOSApp.swift in Sources */,
-				9ABBD1CC2A772876005F6DF0 /* DeleteStore.swift in Sources */,
-				9ABBD1D12A772876005F6DF0 /* StoreView.swift in Sources */,
 				9A1BAD242A6F28F8006B90CB /* DataTypes.swift in Sources */,
 				9A03F3F42A7C3ABC003117B3 /* theList.xcdatamodeld in Sources */,
 			);
