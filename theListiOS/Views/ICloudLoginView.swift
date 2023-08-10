@@ -7,15 +7,15 @@ struct ICloudLoginView: View {
 	@AppStorage("isLoggedIn") private var isLoggedIn = false
 	@State private var appleIDCredential: ASAuthorizationAppleIDCredential?
 	@Environment(\.managedObjectContext) private var viewContext // Access the managedObjectContext
-	@FetchRequest(entity: UserList.entity(), sortDescriptors: [])
+	@FetchRequest(entity: List.entity(), sortDescriptors: [])
 	
-	private var users: FetchedResults<UserList>
+	private var users: FetchedResults<List>
 	
 	var body: some View {
 		Group {
 			if isLoggedIn {
 				if let firstUser = users.first {
-					UserListView()
+					ListView()
 				} else {
 					// Handle the case where no users are available.
 				}

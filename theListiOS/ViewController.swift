@@ -1,5 +1,3 @@
-// ViewController.swift
-
 import SwiftUI
 import CoreData
 
@@ -9,12 +7,10 @@ struct ViewController: View {
 	@EnvironmentObject var appDelegate: AppDelegate
 	
 	@FetchRequest(
-		sortDescriptors: [NSSortDescriptor(keyPath: \UserList.title, ascending: true)],
+		entity: List.entity(),
+		sortDescriptors: [NSSortDescriptor(key: "title", ascending: true)],
 		animation: .default)
-	private var listNodes: FetchedResults<UserList>
-	
-	@FetchRequest(entity: UserList.entity(), sortDescriptors: [])
-	private var users: FetchedResults<UserList>
+	private var listNodes: FetchedResults<List>
 	
 	@State private var showingAddNodeView = false
 	@State private var newNodeTitle = ""
@@ -22,7 +18,7 @@ struct ViewController: View {
 	var body: some View {
 		NavigationView {
 			if isLoggedIn {
-				UserListView()
+				ListView()
 			} else {
 				ICloudLoginView()
 					.frame(minWidth: 200, idealWidth: 300, maxWidth: .infinity, minHeight: 200, idealHeight: 300, maxHeight: .infinity)

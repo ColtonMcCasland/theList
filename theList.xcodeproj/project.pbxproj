@@ -12,10 +12,9 @@
 		9A91BE1B2A50F64600C2BBCA /* Kitchen_SyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE1A2A50F64600C2BBCA /* Kitchen_SyncTests.swift */; };
 		9A91BE252A50F64600C2BBCA /* Kitchen_SyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */; };
 		9A91BE272A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */; };
-		9A966B4C2A83004F00C6CE96 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A966B4B2A83004F00C6CE96 /* UserListView.swift */; };
-		9A966B4E2A833C1800C6CE96 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A966B4D2A833C1800C6CE96 /* NotesView.swift */; };
-		9A966B522A8342D600C6CE96 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A966B512A8342D600C6CE96 /* NotesViewController.swift */; };
-		9ABBD1C42A772876005F6DF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B12A772876005F6DF0 /* ViewController.swift */; };
+		9A966B542A84553700C6CE96 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A966B532A84553700C6CE96 /* ListView.swift */; };
+		9A966B562A8457AF00C6CE96 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A966B552A8457AF00C6CE96 /* ViewController.swift */; };
+		9A966B582A84644400C6CE96 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A966B572A84644400C6CE96 /* AddItemView.swift */; };
 		9ABBD1C52A772876005F6DF0 /* LogOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B32A772876005F6DF0 /* LogOut.swift */; };
 		9ABBD1C62A772876005F6DF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B42A772876005F6DF0 /* Assets.xcassets */; };
 		9ABBD1C82A772876005F6DF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ABBD1B72A772876005F6DF0 /* Preview Assets.xcassets */; };
@@ -63,11 +62,10 @@
 		9A91BE202A50F64600C2BBCA /* theListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = theListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A91BE242A50F64600C2BBCA /* Kitchen_SyncUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncUITests.swift; sourceTree = "<group>"; };
 		9A91BE262A50F64600C2BBCA /* Kitchen_SyncUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_SyncUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		9A966B4B2A83004F00C6CE96 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
-		9A966B4D2A833C1800C6CE96 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
-		9A966B512A8342D600C6CE96 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		9A966B532A84553700C6CE96 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		9A966B552A8457AF00C6CE96 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9A966B572A84644400C6CE96 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 		9AA721762A510EF40014BF46 /* theList.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = theList.entitlements; sourceTree = "<group>"; };
-		9ABBD1B12A772876005F6DF0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9ABBD1B32A772876005F6DF0 /* LogOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOut.swift; sourceTree = "<group>"; };
 		9ABBD1B42A772876005F6DF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ABBD1B72A772876005F6DF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -159,15 +157,14 @@
 		9ABBD1B02A772876005F6DF0 /* theListiOS */ = {
 			isa = PBXGroup;
 			children = (
+				9A966B552A8457AF00C6CE96 /* ViewController.swift */,
 				9ABBD1BD2A772876005F6DF0 /* theListOSApp.swift */,
-				9ABBD1B12A772876005F6DF0 /* ViewController.swift */,
 				9ABBD1B32A772876005F6DF0 /* LogOut.swift */,
 				9ABBD1BC2A772876005F6DF0 /* AppDelegate.swift */,
 				9ABBD1BE2A772876005F6DF0 /* Views */,
 				9AA721762A510EF40014BF46 /* theList.entitlements */,
 				9ABBD1B42A772876005F6DF0 /* Assets.xcassets */,
 				9ABBD1B62A772876005F6DF0 /* Preview Content */,
-				9A966B512A8342D600C6CE96 /* NotesViewController.swift */,
 			);
 			path = theListiOS;
 			sourceTree = "<group>";
@@ -184,8 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				9ABBD1C32A772876005F6DF0 /* ICloudLoginView.swift */,
-				9A966B4B2A83004F00C6CE96 /* UserListView.swift */,
-				9A966B4D2A833C1800C6CE96 /* NotesView.swift */,
+				9A966B532A84553700C6CE96 /* ListView.swift */,
+				9A966B572A84644400C6CE96 /* AddItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -322,15 +319,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ABBD1CD2A772876005F6DF0 /* AppDelegate.swift in Sources */,
-				9A966B4C2A83004F00C6CE96 /* UserListView.swift in Sources */,
+				9A966B582A84644400C6CE96 /* AddItemView.swift in Sources */,
 				9ABBD1C52A772876005F6DF0 /* LogOut.swift in Sources */,
 				9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */,
-				9ABBD1C42A772876005F6DF0 /* ViewController.swift in Sources */,
+				9A966B562A8457AF00C6CE96 /* ViewController.swift in Sources */,
 				9ABBD1D32A772876005F6DF0 /* ICloudLoginView.swift in Sources */,
-				9A966B522A8342D600C6CE96 /* NotesViewController.swift in Sources */,
-				9A966B4E2A833C1800C6CE96 /* NotesView.swift in Sources */,
 				9ABBD1CE2A772876005F6DF0 /* theListOSApp.swift in Sources */,
 				9A03F3F42A7C3ABC003117B3 /* theList.xcdatamodeld in Sources */,
+				9A966B542A84553700C6CE96 /* ListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

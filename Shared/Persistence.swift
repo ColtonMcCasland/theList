@@ -7,8 +7,8 @@ struct PersistenceController {
 		let result = PersistenceController(inMemory: true)
 		let viewContext = result.container.viewContext
 		for _ in 0..<10 {
-			let newUserList = UserList(context: viewContext)
-			// Set properties for UserList as needed
+			let newList = List(context: viewContext)
+			// Set properties for List as needed
 		}
 		do {
 			try viewContext.save()
@@ -37,16 +37,16 @@ struct PersistenceController {
 				fatalError("Unresolved error \(error), \(error.userInfo)")
 			}
 			
-			// Fetch UserLists from Core Data
-			let fetchRequest: NSFetchRequest<UserList> = UserList.fetchRequest()
+			// Fetch Lists from Core Data
+			let fetchRequest: NSFetchRequest<List> = List.fetchRequest()
 			do {
-				let userLists = try container.viewContext.fetch(fetchRequest)
-				print("UserLists in Core Data:")
-				for userList in userLists {
-					print(userList)
+				let lists = try container.viewContext.fetch(fetchRequest)
+				print("Lists in Core Data:")
+				for list in lists {
+					print(list)
 				}
 			} catch {
-				print("Error fetching UserLists: \(error)")
+				print("Error fetching Lists: \(error)")
 			}
 		}
 		
