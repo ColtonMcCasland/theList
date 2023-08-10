@@ -8,7 +8,7 @@ struct ListView: View {
 			NavigationView {
 				VStack {
 					// Example list item
-					Text("Untitled Item")
+					Text("No Items")
 				}
 				.navigationBarTitle("Items", displayMode: .inline)
 				.navigationBarItems(trailing:
