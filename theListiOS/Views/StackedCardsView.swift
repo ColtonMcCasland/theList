@@ -12,23 +12,33 @@ struct StackedCardsView: View {
 	
 	var body: some View {
 		ZStack {
-			// Background tap gesture to deselect the card and close the keyboard
-			Color.clear
-				.contentShape(Rectangle())
-				.onTapGesture {
-					selectedIndex = nil
-					closeKeyboard()
-				}
-			
+			// Cards
 			VStack(spacing: -180) { // Negative spacing to create a close-stacked effect
 				ForEach(0..<3) { index in
 					CardView(content: AnyView(EditNotesView(isFocused: selectedIndex == index)), offset: offset(for: index))
-						.onTapGesture {
-							selectedIndex = selectedIndex == index ? nil : index
-						}
+						.gesture(
+							TapGesture()
+								.onEnded { _ in
+									if selectedIndex != index {
+										selectedIndex = index
+									} else {
+										closeKeyboard()
+									}
+								}
+						)
+						.contentShape(Rectangle()) // Ensure the entire card is tappable
 				}
 			}
 			.offset(y: 180) // Offset the entire stack to position it at the bottom
+			.background(
+				// Background tap gesture to deselect the card and close the keyboard
+				Color.clear
+					.contentShape(Rectangle())
+					.onTapGesture {
+						selectedIndex = nil
+						closeKeyboard()
+					}
+			)
 		}
 		.animation(.default) // Animate transitions
 	}
@@ -43,4 +53,3 @@ struct StackedCardsView: View {
 		UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
 	}
 }
-
