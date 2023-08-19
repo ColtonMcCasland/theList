@@ -15,7 +15,7 @@ struct ICloudLoginView: View {
 		Group {
 			if isLoggedIn {
 				if let firstUser = users.first {
-					EditNotesView()
+					StackedCardsView()
 				} else {
 					// Handle the case where no users are available.
 				}
