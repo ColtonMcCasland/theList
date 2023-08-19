@@ -18,7 +18,7 @@ struct ViewController: View {
 	var body: some View {
 		NavigationView {
 			if isLoggedIn {
-				ListView()
+				EditNotesView()
 			} else {
 				ICloudLoginView()
 					.frame(minWidth: 200, idealWidth: 300, maxWidth: .infinity, minHeight: 200, idealHeight: 300, maxHeight: .infinity)
