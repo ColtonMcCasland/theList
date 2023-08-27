@@ -1,55 +1,62 @@
-//
-//  StackedCardsView.swift
-//  theList
-//
-//  Created by Colton McCasland on 8/18/23.
-//
-
 import SwiftUI
 
 struct StackedCardsView: View {
-	@State private var selectedIndex: Int? = nil
+	var body: some View {
+		ScrollView {
+			VStack(spacing: 20) { // Spacing between cards
+				ForEach(0..<6) { index in
+					CardView(itemCount: index < 3 ? 3 : 10) // Conditionally set the number of items
+						.animation(.spring()) // Subtle animation for elegance
+				}
+			}
+			.padding(.vertical, 20) // Vertical padding for elegance
+		}
+	}
+}
+
+@available(iOS 15.0, *)
+struct CardView: View {
+	let itemCount: Int
+	@State private var isCompleted: [Bool] // State for each item's completion status
+	
+	init(itemCount: Int) {
+		self.itemCount = itemCount
+		self._isCompleted = State(initialValue: Array(repeating: false, count: itemCount))
+	}
 	
 	var body: some View {
 		ZStack {
-			// Cards
-			VStack(spacing: -180) { // Negative spacing to create a close-stacked effect
-				ForEach(0..<3) { index in
-					CardView(content: AnyView(EditNotesView(isFocused: selectedIndex == index)), offset: offset(for: index))
-						.gesture(
-							TapGesture()
-								.onEnded { _ in
-									if selectedIndex != index {
-										selectedIndex = index
-									} else {
-										closeKeyboard()
-									}
-								}
-						)
-						.contentShape(Rectangle()) // Ensure the entire card is tappable
+			VStack {
+				Text("Title").font(.title)
+				Spacer()
+				itemListView
+			}
+			.frame(maxWidth: .infinity) // Allow the width to take up available space
+			.padding(10) // Padding around the content
+			.background(Color.white)
+			.cornerRadius(20) // Increased corner radius for a softer appearance
+			.shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10) // Subtle shadow for elegance
+		
+		}
+	}
+	
+	var itemListView: some View {
+		VStack {
+			ForEach(0..<itemCount, id: \.self) { index in
+				HStack {
+					Text("Item \(index + 1)")
+						.font(.subheadline) // Adjusted font size
+					Text("Description \(index + 1)")
+						.font(.subheadline) // Adjusted font size
+					Spacer()
+					Image(systemName: isCompleted[index] ? "checkmark.circle.fill" : "circle")
+						.resizable() // Make the image resizable
+						.frame(width: 20, height: 20) // Adjusted frame size for the image
+						.onTapGesture {
+							isCompleted[index].toggle()
+						}
 				}
 			}
-			.offset(y: 180) // Offset the entire stack to position it at the bottom
-			.background(
-				// Background tap gesture to deselect the card and close the keyboard
-				Color.clear
-					.contentShape(Rectangle())
-					.onTapGesture {
-						selectedIndex = nil
-						closeKeyboard()
-					}
-			)
 		}
-		.animation(.default) // Animate transitions
-	}
-	
-	// Calculate the vertical offset for a given index
-	private func offset(for index: Int) -> CGFloat {
-		return selectedIndex == index ? -150 : 0
-	}
-	
-	// Function to close the keyboard
-	private func closeKeyboard() {
-		UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
 	}
 }

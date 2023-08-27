@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9A03F3F42A7C3ABC003117B3 /* theList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A03F3F22A7C3ABC003117B3 /* theList.xcdatamodeld */; };
-		9A554EC92A907B140034BD05 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A554EC82A907B140034BD05 /* CardView.swift */; };
 		9A554ECB2A9081530034BD05 /* StackedCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A554ECA2A9081530034BD05 /* StackedCardsView.swift */; };
 		9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE052A50F64500C2BBCA /* Persistence.swift */; };
 		9A91BE1B2A50F64600C2BBCA /* Kitchen_SyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91BE1A2A50F64600C2BBCA /* Kitchen_SyncTests.swift */; };
@@ -56,7 +55,6 @@
 
 /* Begin PBXFileReference section */
 		9A03F3F32A7C3ABC003117B3 /* Kitchen_Sync.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kitchen_Sync.xcdatamodel; sourceTree = "<group>"; };
-		9A554EC82A907B140034BD05 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		9A554ECA2A9081530034BD05 /* StackedCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedCardsView.swift; sourceTree = "<group>"; };
 		9A91BE002A50F64500C2BBCA /* theList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A91BE052A50F64500C2BBCA /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 			children = (
 				9ABBD1C32A772876005F6DF0 /* ICloudLoginView.swift */,
 				9A966B532A84553700C6CE96 /* EditNotesView.swift */,
-				9A554EC82A907B140034BD05 /* CardView.swift */,
 				9A554ECA2A9081530034BD05 /* StackedCardsView.swift */,
 			);
 			path = Views;
@@ -322,7 +319,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ABBD1CD2A772876005F6DF0 /* AppDelegate.swift in Sources */,
-				9A554EC92A907B140034BD05 /* CardView.swift in Sources */,
 				9ABBD1C52A772876005F6DF0 /* LogOut.swift in Sources */,
 				9A91BE062A50F64500C2BBCA /* Persistence.swift in Sources */,
 				9A966B562A8457AF00C6CE96 /* ViewController.swift in Sources */,
